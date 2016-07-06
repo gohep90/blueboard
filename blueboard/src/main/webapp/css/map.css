@@ -1,0 +1,30 @@
+@charset "utf-8";
+header#firstheader { position: relative; width:100%; height: 10%; margin:5px;  z-index:40;}
+.main_content{
+	position: relative;
+	width: 100%;
+	height: 85%;
+	margin: 5px;
+	}
+#gnb:after { content:""; display:block; clear:both; }
+#gnb  ul { float:left; }
+#gnb li { float:left; width:198px; height:39px; text-align:center; background:#3da7db; margin-right:1px; }
+#gnb li a.mm { float:left; width:205px; height:29px; text-align:center; padding-top:10px; color:#fff; }
+#gnb li ul { display:none; position:relative; right:0px;}
+#gnb li ul li ul { display:none; position:relative; left:198px;}
+#gnb li ul li{color:#fff;}
+#gnb li ul li { font:Georgia, "Times New Roman", Times, serif; background:none; border: solid 1px #000;
+background:#fff;}
+#map {
+	position: absolute;
+	width: 70%;
+	height: 100%;
+	left: 0px;
+	top: 10px;
+	margin: 5px;
+}
+#info {
+	position: relative;
+	width: 30%;
+	height: 100%;
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blue">
+
+	<select id="selectFirstEdu" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy
+			ORDER BY big desc
+		]]>
+	</select>
+	
+	<select id="selectEduList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy
+			WHERE
+				address like concat('%',#{gu},'%')
+			ORDER BY big desc
+			LIMIT
+				#{current},10
+		]]>
+	</select>
+	
+	
+	<select id="selectCount" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   count(*) as last
+			FROM
+			    academy
+			WHERE
+				address like concat('%',#{gu},'%')
+		]]>
+	</select>
+	
+	
+	
+	<update id="updateEdu" parameterType="hashmap">
+		<![CDATA[
+			UPDATE
+				academy
+			SET
+				lat=#{lat},
+				lng=#{lng}
+			WHERE
+				id=#{seq}
+		]]>
+	</update>	
+	
+	
+	
+	
+</mapper>
