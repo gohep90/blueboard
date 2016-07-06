@@ -37,7 +37,7 @@
 			</div>
 			<hr>
 			<div>
-				<h3 style="margin: 10px 0 5px 5px;">이 지역 추천 학원</h3>
+				<h3 id="test7" style="margin: 10px 0 5px 5px;">이 지역 추천 학원</h3>
 			</div>
 			<ul id="placesList"></ul>
 			<div id="pagination"></div>

@@ -1155,6 +1155,18 @@ function displayPlaces(places) {
 
 	// 검색 결과 목록에 추가된 항목들을 제거합니다
 	removeAllChildNods(listEl);
+	
+	
+	for (var i = 0; i < places.length; i++) {
+		if(places[i].big==1){
+			$('#test7').text("이 지역 추천 학원");
+			break;
+		}else{
+			//alert("2");
+			$('#test7').text("이 지역 주변 학원");
+			break;  //해도 되겠지?
+		}
+	}
 
 
 	
