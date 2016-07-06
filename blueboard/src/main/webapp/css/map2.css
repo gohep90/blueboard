@@ -20,13 +20,13 @@ html, body {
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:13px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:85%;}
-#menu_wrap {position:absolute;top:0;right:0;bottom:0;width:350px;margin:10px 20px 0 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+.map_wrap {position:relative;width:100%;height:90%;}
+#menu_wrap {position:absolute;top:20px;right:0;bottom:25px;width:350px;margin:10px 10px 0 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#ffffff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
+.option{position:absolute;top:0;right:0;width:365px; height:30px; z-index: 1; background:#3da7db; text-align:center; }
+.option p {margin:10px 0;}  
+.option button {margin-left:5px;}
 
 <!--  #placesList -->
 #placesList ul { margin: 0;  padding: 0; }
@@ -49,8 +49,8 @@ html, body {
 .bigInfo .tel {color:#009900;}
 .item .bigbg {width:100%; height:150px; margin:5px; background:url(http://localhost:8080/blueboard/images/academy1.jpg) no-repeat; background-size:100%;}
 
-#pagination {margin:10px auto;text-align: center;}
-#pagination a {display:inline-block;margin-right:10px;}
+#pagination {position:absolute; right:0;bottom:0; width:365px; height:30px; z-index: 1; background:#3da7db; text-align: center;}
+#pagination a {display:inline-block;margin-right:10px; color:#ffffff; font-size:15px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
 .seq{background:#ffffff; margin:1px; border-radius: 5px; border:1px solid #BDBDBD; }

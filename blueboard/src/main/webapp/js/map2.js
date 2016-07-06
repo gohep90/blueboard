@@ -1157,17 +1157,18 @@ function displayPlaces(places) {
 	removeAllChildNods(listEl);
 	
 	
+	
+	//이 지역 추천 타이틀 변경!!
 	for (var i = 0; i < places.length; i++) {
 		if(places[i].big==1){
-			$('#test7').text("이 지역 추천 학원");
+			$('#recommend').text("이 지역 추천 학원");
 			break;
 		}else{
 			//alert("2");
-			$('#test7').text("이 지역 주변 학원");
+			$('#recommend').text("이 지역 주변 학원");
 			break;  //해도 되겠지?
 		}
 	}
-
 
 	
 	for (var i = 0; i < places.length; i++) {
@@ -1268,17 +1269,14 @@ function displayOneMarker(maker, lat, lng) {
 		image : markerImage
 	// 마커이미지 설정 
 	});
-
 	// 마커가 지도 위에 표시되도록 설정합니다
 	marker.setMap(map);
-
 }
+
 
 function removeMarker(maker) {
 	marker.setMap(null);
 }
-
-
 
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -1296,6 +1294,7 @@ function getListItem(index, places) {
 	return el;
 }
 
+
 function getBigItem(index,places){
 	
 	var el	=	document.createElement('li'), 
@@ -1303,17 +1302,14 @@ function getBigItem(index,places){
 			+places.name+'</h5><span>학원 간단한 설명??</span><span class="gray">'
 			+places.address+'</span><span class="tel">'
 			+places.tel +'</span></div></div>';
-
+	
+	
 	el.innerHTML = itemStr;
 	el.className = 'item';
 
 	return el;
 	
 }
-
-
-
-
 
 
 
