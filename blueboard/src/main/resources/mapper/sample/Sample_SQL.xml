@@ -20,7 +20,7 @@
 			FROM
 			    academy
 			WHERE
-				address like concat('%',#{gu},'%')
+				academyAddress like concat('%',#{gu},'%')
 			ORDER BY big desc
 			LIMIT
 				#{current},10
@@ -35,7 +35,7 @@
 			FROM
 			    academy
 			WHERE
-				address like concat('%',#{gu},'%')
+				academyAddress like concat('%',#{gu},'%')
 		]]>
 	</select>
 	
@@ -49,7 +49,7 @@
 				lat=#{lat},
 				lng=#{lng}
 			WHERE
-				id=#{seq}
+				academyId=#{seq}
 		]]>
 	</update>	
 	
