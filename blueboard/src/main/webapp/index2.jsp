@@ -16,15 +16,22 @@
 </head>
 
 <body>
-	<p style="height: 5%; width: 100%;">
-		사용한 데이터를 보시려면 <em class="link"> <a href="eduJson.do"
-			target="_blank">여기를 클릭하세요!</a>
-		</em>
-	</p>
+	<div style=" position: relative; width: 100%; height: 60px; min-height:60px;" >
+		<a href="main.do" ><img src="images/logo.png" style="width:50px; height:50px;" /></a>
+		
+	</div>
+	<div style=" position: relative; width: 100%; height: 40px; min-height:40px;">
+		<ul class="header" >
+		  	<li><a class="active" href="#home">Home</a></li>
+ 	 	  	<li><a href="#news">News</a></li>
+  		  	<li><a href="#contact">Contact</a></li>
+  			<li><a href="#about">About</a></li>
+		</ul>
+	</div>
 	
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+			style="width: 100%; height: 100%; overflow: hidden;"></div>
 			
 		<div class="option">
 			<div>
@@ -40,7 +47,6 @@
 		</div>
 		<div id="pagination"></div>
 	</div>
-
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=7a6be21565c5c8e58c1ab67fb77914cf&libraries=clusterer"></script>
 	<script type="text/javascript" src="<c:url value='/js/map2.js'/>"></script>

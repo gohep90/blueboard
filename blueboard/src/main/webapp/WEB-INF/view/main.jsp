@@ -29,7 +29,6 @@
 			<li><a href="#">News</a></li>
 			<li><a href="#">Contact</a></li>
 		</ul>	
-    </nav>	
 </header>
 <div id="main_content">
 	<h1>당신이 찾는 학원,<br/>푸른 칠판에는 다있다.</h1>
