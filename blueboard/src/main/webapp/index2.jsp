@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>마커 클러스터러에 클릭이벤트 추가하기</title>
+<title>배우러 가는길 지도</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/map2.css'/>" />
@@ -16,11 +16,10 @@
 </head>
 
 <body>
-	<div style=" position: relative; width: 100%; height: 60px; min-height:60px;" >
-		<a href="main.do" ><img src="images/logo.png" style="width:50px; height:50px;" /></a>
-		
+	<div class="logo">
+		<a href="main.do" ><img src="images/logo.png" style="width:55px; height:63px;" /></a>
 	</div>
-	<div style=" position: relative; width: 100%; height: 40px; min-height:40px;">
+	<div style=" position: relative; width: 100%; height: 37px; min-height:37px;">
 		<ul class="header" >
 		  	<li><a class="active" href="#home">Home</a></li>
  	 	  	<li><a href="#news">News</a></li>
@@ -35,9 +34,9 @@
 			
 		<div class="option">
 			<div>
-				<form onsubmit="searchPlaces(); return false;">
-					<font color="#ffffff">학원검색 :</font> <input type="text" value="전체" id="keyword" size="15">
-					<button type="submit">검색하기</button>
+				<form name="sform" action="#" method="get" id="sform">
+					<input type="search" id="keyword" class="tbox" placeholder="무엇을 배우러 갈까요?" />
+					<input type="image" class="sbtn" src="images/search.png" alt="검색" />
 				</form>
 			</div>
 		</div>

@@ -7,7 +7,7 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>학원 홈페이지</title>
+<title>배우러 가는길 학원 홈페이지</title>
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/academy.css'/>" />
@@ -28,101 +28,106 @@
 
 <body>
 	<header id="firstheader">
-	<h1>
-		<a href="main.do"><img src="images/logo.gif" alt="푸른 칠판" /></a>
-	</h1>
-	<nav id="gnb">
-	<h1 class="skip">메인메뉴</h1>
+<h1><a href="main.do"><img src="images/logo.png" alt="푸른 칠판" /></a></h1>
+<nav id="gnb">
+	<h1 class="skip" >메인메뉴</h1> 
 	<ul class="gnblist">
-		<li class="m m1"><a class="mm" href="#">교과목</a>
+    	<li class="m m1"><a class="mm" href="#">유아/초등</a>
 			<ul class="gnblist2">
-				<li><a href="#">고등교육</a>
-					<ul>
-						<li><a href="#">국어</a></li>
-						<li><a href="#">영어</a></li>
-						<li><a href="#">수학</a></li>
-						<li><a href="#">사회/과학</a></li>
-						<li><a href="#">제2외국어</a></li>
-						<li><a href="#">논술</a></li>
-						<li><a href="#">예체능</a></li>
-					</ul></li>
-				<li><a href="#">중등교육</a>
-					<ul>
-						<li><a href="#">국어</a></li>
-						<li><a href="#">영어</a></li>
-						<li><a href="#">수학</a></li>
-						<li><a href="#">사회/과학</a></li>
-						<li><a href="#">제2외국어</a></li>
-						<li><a href="#">논술</a></li>
-						<li><a href="#">예체능</a></li>
-					</ul></li>
-				<li><a href="#">초등교육</a>
-					<ul>
-						<li><a href="#">국어</a></li>
-						<li><a href="#">영어</a></li>
-						<li><a href="#">수학</a></li>
-						<li><a href="#">사회/과학</a></li>
-						<li><a href="#">제2외국어</a></li>
-						<li><a href="#">논술</a></li>
-						<li><a href="#">예체능</a></li>
-					</ul></li>
-				<li><a href="#">유아교육</a></li>
-			</ul></li>
-
-		<li class="m m2"><a class="mm" href="#">외국어</a>
+				<li><a href="#">초등</a>
+                	<!--<ul>
+                    	<li><a href="#">국어</a></li>
+                        <li><a href="#">영어</a></li>
+                        <li><a href="#">수학</a></li>
+                        <li><a href="#">사회/과학</a></li>
+                        <li><a href="#">제2외국어</a></li>
+                        <li><a href="#">논술</a></li>
+                        <li><a href="#">예체능</a></li>
+                    </ul>-->
+                </li>
+                <li><a href="#">영재교육</a>
+                	<!--<ul>
+                    	<li><a href="#">국어</a></li>
+                        <li><a href="#">영어</a></li>
+                        <li><a href="#">수학</a></li>
+                        <li><a href="#">사회/과학</a></li>
+                        <li><a href="#">제2외국어</a></li>
+                        <li><a href="#">논술</a></li>
+                        <li><a href="#">예체능</a></li>
+                    </ul>-->
+                </li>
+                <li><a href="#">유아</a>
+               	    <!-- <ul>
+                    	<li><a href="#">국어</a></li>
+                        <li><a href="#">영어</a></li>
+                        <li><a href="#">수학</a></li>
+                        <li><a href="#">사회/과학</a></li>
+                        <li><a href="#">제2외국어</a></li>
+                        <li><a href="#">논술</a></li>
+                        <li><a href="#">예체능</a></li>
+                    </ul>-->
+                </li>
+			</ul>
+		</li>
+		
+		<li class="m m2"><a class="mm" href="#">내신/입시</a>
 			<ul class="gnblist2">
-				<li><a href="#">영어</a>
-					<ul>
-						<li><a href="#">자격증</a></li>
-						<li><a href="#">회화</a></li>
-					</ul></li>
-				<li><a href="#">중국어</a><
-					<ul>
-						<li><a href="#">자격증</a></li>
-						<li><a href="#">회화</a></li>
-					</ul></li>
-				<li><a href="#">일본어</a>
-					<ul>
-						<li><a href="#">자격증</a></li>
-						<li><a href="#">회화</a></li>
-					</ul></li>
-				<li><a href="#">스페인어</a>
-					<ul>
-						<li><a href="#">자격증</a></li>
-						<li><a href="#">회화</a></li>
-					</ul></li>
-				<li><a href="#">기타언어</a></li>
-			</ul></li>
-		<li class="m m3"><a class="mm" href="#">운동</a>
+				<li><a href="#">고등</a></li>
+                <li><a href="#">논술</a></li>
+                <li><a href="#">중등</a></li>
+			</ul>
+		</li>
+		<li class="m m3"><a class="mm" href="#">외국어</a>
 			<ul class="gnblist2">
-				<li><a href="#">실내운동</a>
-					<ul>
-						<li><a href="#">피트니스</a></li>
-						<li><a href="#">크로스핏</a></li>
-						<li><a href="#">요가</a></li>
-						<li><a href="#">필라테스</a></li>
-						<li><a href="#">수영</a></li>
-						<li><a href="#">기타</a></li>
-					</ul></li>
-				<li><a href="#">실외운동</a></li>
-				<li><a href="#">계절 스포츠</a></li>
-			</ul></li>
-		<li class="m m4"><a class="mm" href="#">음악</a>
+				<li><a href="#">영어</a></li>
+				<li><a href="#">중국어</a></li>
+				<li><a href="#">일본어</a></li>
+                <li><a href="#">스페인어</a></li>
+                <li><a href="#">기타언어</a></li>
+			</ul>				
+		</li>
+		<li class="m m4"><a class="mm" href="#">스포츠</a>
 			<ul>
-				<li><a href="#">보컬</a></li>
-				<li><a href="#">악기</a></li>
-			</ul></li>
-		<li class="m m5"><a class="mm" href="#">미술/공예</a>
+				<li><a href="#">피트니스</a></li>
+				<li><a href="#">요가</a></li>
+                <li><a href="#">필라테스</a></li>	
+                <li><a href="#">태권도</a></li>	
+                <li><a href="#">수영</a></li>	
+                <li><a href="#">댄스/무용</a></li>
+                <li><a href="#">격투기</a></li>
+                <li><a href="#">기타</a></li>						
+			</ul>				
+		</li>		
+        <li class="m m5"><a class="mm" href="#">음악/미술</a>
 			<ul class="gnblist2">
-				<li><a href="#">미술</a></li>
-				<li><a href="#">공예</a>
-					<ul>
-						<li><a href="#">가구 공방</a></li>
-						<li><a href="#">액세서리 공방</a></li>
-					</ul></li>
-			</ul></li>
+  				<li><a href="#">보컬</a></li>
+				<li><a href="#">작곡/작사</a></li>		
+                <li><a href="#">악기</a></li>
+                <li><a href="#">미술</a></li>				
+			</ul>				
+		</li>
+        <li class="m m6"><a class="mm" href="#">여가생활</a>
+			<ul class="gnblist2">
+  				<li><a href="#">DIY가구</a></li>
+				<li><a href="#">가죽공예</a></li>		
+                <li><a href="#">악세사리</a></li>
+                <li><a href="#">요리/베이킹</a></li>
+                <li><a href="#">기타</a></li>				
+			</ul>				
+		</li>
+        <li class="m m7"><a class="mm" href="#">직업교육</a>
+			<ul class="gnblist2">
+  				<li><a href="#">공무원시험</a></li>
+				<li><a href="#">컴퓨터</a></li>		
+                <li><a href="#">CPA</a></li>
+                <li><a href="#">공인중개사</a></li>
+                <li><a href="#">기타</a></li>
+                <li><a href="#">방송</a></li>				
+			</ul>				
+		</li>
 	</ul>
-	</nav> </header>
+</nav>
+</header>
 
 	<div id="main_content">
 

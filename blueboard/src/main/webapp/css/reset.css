@@ -14,7 +14,9 @@ img,fieldset,iframe{border:0;}`
 img,fieldset { border:none; }
 img{ max-width:100%; }/*ipad사이즈에서 userlogin 의 title등 %로 된  것을 위해*/
 li img, dd img { vertical-align:top; }
-input { vertical-align:middle; }
+input {
+	vertical-align: middle;
+}
 
 
 #skip, .skip { font-size:0; width:0; height:0; line-height:0; position:absolute; left:-9999px; }

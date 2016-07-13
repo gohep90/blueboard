@@ -26,14 +26,15 @@ border: solid 3px #009FAA;
 border: solid 3px #009FAA;	
 }
 #gnb:after { content:""; display:block; clear:both; }
-#gnb  ul { float:left; }
-#gnb li { float:left; width:198px; height:39px; text-align:center; background:#3da7db; margin-right:1px; }
-#gnb li a.mm { float:left; width:205px; height:29px; text-align:center; padding-top:10px; color:#fff; }
-#gnb li ul { display:none; position:relative; right:0px;}
-#gnb li ul li ul { display:none; position:relative; left:198px;}
+#gnb { background-color:rgba(204,204,204,0.5);}
+#gnb  ul { float:left;  }
+#gnb li { float:left; width:100px; height:39px; text-align:center; background-color:rgba(204,204,204,0.8); margin-right:1px ; }
+#gnb li a.mm { float:left; width:100px; height:29px; text-align:center; padding-top:10px; color:#7F7F7F; }
+#gnb li:hover {background-color:rgba(16,185,224,0.4);}
+#gnb li ul { display:none; position:relative; right:0px; text-align:center; }
 #gnb li ul li{color:#fff;}
 #gnb li ul li { font:Georgia, "Times New Roman", Times, serif; background:none; border: solid 1px #000;
-background:#fff;}
+background:#fff;} /*드랍다운 메뉴 CSS*/
 /* slider */
 #slider
 {

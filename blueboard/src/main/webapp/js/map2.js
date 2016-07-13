@@ -3,6 +3,7 @@ var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
 
 
+
 // 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
 var areas = [
     {
@@ -1281,14 +1282,14 @@ function getListItem(index, places) {
 	if(noCommend==0){
 		var el = document.createElement('li'), 
 		itemStr ='<div style="margin: 5px;"><img src="images/recommend.png" style="width:15px; height:15px; float:left;"></img><h3 id="recommend" style="margin: 10px 10px 5px 20px;"> 이 지역 주변 학원</h3></div>'
-				+'<div class="seq" id="seq_'+(index)+'"><image src="images/store7.png" class="markerbg"></image><div class="info"><h5>'
+				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy4.jpg" class="markerbg"></image><div class="info"><h5>'
 				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
 				+places.academyAddress+'</span><span class="tel">'
 				+places.academyTel +'</span></div></div>';
 		
 	}else{
 		var el = document.createElement('li'), 
-		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/store7.png" class="markerbg"></image><div class="info"><h5>'
+		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
 				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
 				+places.academyAddress+'</span><span class="tel">'
 				+places.academyTel +'</span></div></div>';
