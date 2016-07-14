@@ -22,13 +22,11 @@
 <script type="text/javascript"
 	src="<c:url value='/js/jquery.slidertron-1.1.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/main.js'/>"></script>
-
-
 </head>
 
 <body>
-	<header id="firstheader">
-<h1><a href="main.do"><img src="images/logo.png" alt="Çª¸¥ Ä¥ÆÇ" /></a></h1>
+<header id="firstheader">
+<h1><a href="#"><img src="images/logo.png" alt="Çª¸¥ Ä¥ÆÇ" /></a></h1>
 <nav id="gnb">
 	<h1 class="skip" >¸ÞÀÎ¸Þ´º</h1> 
 	<ul class="gnblist">
@@ -125,7 +123,9 @@
                 <li><a href="#">¹æ¼Û</a></li>				
 			</ul>				
 		</li>
+        <div id="item"><a class="mm" href="#">°ü½Éµî·Ï</a></div>
 	</ul>
+    	
 </nav>
 </header>
 
@@ -156,7 +156,7 @@
 					</div>
 					<div class="slide">
 						<a class="link" href="#">Full story ...</a> <img
-							src="images/new_book1.jpg" alt="" />
+							src="images/logo.png" alt="" />
 					</div>
 				</div>
 			</div>

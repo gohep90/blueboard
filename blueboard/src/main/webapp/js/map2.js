@@ -4,6 +4,8 @@ var noCommend=0;	//일반학원
 
 
 
+
+
 // 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
 var areas = [
     {
@@ -961,18 +963,17 @@ function displayArea(area) {
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
     daum.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
-        polygon.setOptions({fillColor: '#09f'});
-
- 		customOverlay.setContent('<div class="area">' + area.name + '</div>');
-        
-        customOverlay.setPosition(mouseEvent.latLng); 
-        customOverlay.setMap(map);
-
+    	if(map.getLevel()>=7){
+    		polygon.setOptions({fillColor: '#09f'});
+    		customOverlay.setContent('<div class="area">' + area.name + '</div>');
+    		customOverlay.setPosition(mouseEvent.latLng); 
+    		customOverlay.setMap(map);
+    	}
     });
+    
     
     // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
     daum.maps.event.addListener(polygon, 'mousemove', function(mouseEvent) {
-        
         customOverlay.setPosition(mouseEvent.latLng); 
     });
 
@@ -989,7 +990,6 @@ function displayArea(area) {
     
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
     daum.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-    	
     	document.getElementById("keyword").value=area.name;
     	gu=area.name;
     	gotoPage(1,gu);
@@ -1004,8 +1004,8 @@ function displayArea(area) {
    // 		map.setLevel(level);
     //	}
     });
+    }
    
-}
 
 //마커 클러스터러를 생성합니다 
 // 마커 클러스터러를 생성할 때 disableClickZoom 값을 true로 지정하지 않은 경우
@@ -1069,17 +1069,55 @@ function firstMarker() { //초기 조건을
 firstMarker();
 
 */
-
+var infos = null; //infowindow를 위해서??
 //데이터를 가져오기 위해 jQuery를 사용합니다
 //데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
 $.get("firstEdu.do", function(data) {
+	var oinfo = $(data.positions).map(function(i, position) {
+		
+		var small= '<div class="item"><div class="seq"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
+				+position.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+position.academyAddress+'</span><span class="tel">'
+				+position.academyTel +'</span></div></div>';
+		
+		var big='<div class="item"><div class="seq"><div class="bigbg"></div><div class="bigInfo"><h5>'
+				+position.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+position.academyAddress+'</span><span class="tel">'
+				+position.academyTel +'</span></div></div></div>';
+		
+		var temp ="";
+		if(position.big==1)
+			temp=big;
+		else
+			temp=small;
+        
+		return new daum.maps.InfoWindow({
+            position : new daum.maps.LatLng(position.lat, position.lng),
+            content : temp
+        });
+    });
+	infos = oinfo;
     // 데이터에서 좌표 값을 가지고 마커를 표시합니다
     // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
     var markers = $(data.positions).map(function(i, position) {
-    	
-        return new daum.maps.Marker({
-            position : new daum.maps.LatLng(position.lat, position.lng)
+    	var imageSrc = 'images/marker.png', // 마커이미지의 주소입니다    
+        imageSize = new daum.maps.Size(25, 45), // 마커이미지의 크기입니다
+        imageOption = {offset: new daum.maps.Point(12, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+          
+    	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    	var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+        var omaker = new daum.maps.Marker({
+            position : new daum.maps.LatLng(position.lat, position.lng),
+            image:markerImage
         });
+        daum.maps.event.addListener(omaker, 'mouseover', function(){
+            infos[i].open(map, omaker );
+        });
+        daum.maps.event.addListener(omaker, 'mouseout', function(){
+            infos[i].close();
+        });
+        return omaker;
     });
     // 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
@@ -1249,10 +1287,10 @@ function removeInfowindow(infowindow) {
 // map에 마커를 표시합니다
 function displayOneMarker(maker, lat, lng) {
 	///////////////////////////////////////클릭시 위치 알려주기!!////////////////////////////////////////////////
-	var imageSrc = 'http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', // 마커이미지의 주소입니다    
-	imageSize = new daum.maps.Size(35, 50), // 마커이미지의 크기입니다
+	var imageSrc = 'http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
+	imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
 	imageOption = {
-		offset : new daum.maps.Point(20, 50)
+		offset : new daum.maps.Point(27, 69)
 	}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
@@ -1290,7 +1328,7 @@ function getListItem(index, places) {
 	}else{
 		var el = document.createElement('li'), 
 		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
-				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray" >'
 				+places.academyAddress+'</span><span class="tel">'
 				+places.academyTel +'</span></div></div>';
 	}

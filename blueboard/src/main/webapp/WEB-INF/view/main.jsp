@@ -23,7 +23,7 @@
 <body>
 	<header id="firstheader">
 	<h1>
-		<a href="#"><img src="images/logo.png" alt="푸른 칠판" /></a>
+		<a href="main.do"><img src="images/logo.png"  alt="푸른 칠판" /></a>
 	</h1>
 	<ul class="util2">
 		<li><a href="#">JOIN</a></li>
@@ -45,8 +45,11 @@
 		<h1>그런 당신을 위한 69,000개의 교육이 여기,당신을 기다리고 있습니다</h1>
 
 		<form name="sform" action="#" method="get" id="sform">
-			<input type="search" id="sbox" class="tbox" placeholder="통합 검색어 입력" /> 
-			<input type="image" class="sbtn" src="images/search.png" alt="검색" />
+		<fieldset>
+			<legend class="skip">통합검색</legend>	
+			<label for="sbox" class="skip">통합 검색어 입력</label><input type="search" id="sbox" class="tbox" placeholder="통합 검색어 입력" />
+        	<input type="image" class="sbtn" src="images/search.png" alt="검색" />
+        </fieldset>
 		</form>
 	</div>
 	<div id="main_subject">

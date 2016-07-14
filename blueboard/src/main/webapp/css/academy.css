@@ -33,9 +33,11 @@ border: solid 3px #009FAA;
 #gnb li:hover {background-color:rgba(16,185,224,0.4);}
 #gnb li ul { display:none; position:relative; right:0px; text-align:center; }
 #gnb li ul li{color:#fff;}
-#gnb li ul li { font:Georgia, "Times New Roman", Times, serif; background:none; border: solid 1px #000;
-background:#fff;} /*드랍다운 메뉴 CSS*/
-/* slider */
+#gnb li ul li { font-size:13px; font-weight:lighter; font:"굴림체";  background:none; border: solid 1px #C0C0C0;
+background:#fff;  text-align:center;  padding-top:10px; height:30px;} /*드랍다운 메뉴 CSS*/
+#item {position:absolute; right:0px;float:left; padding-top:11px; text-align:center; font-size:13px; width:80px; height:29px;}
+#item a{ color:#1EB0D4;}
+/* slider */ 
 #slider
 {
 	overflow: hidden;

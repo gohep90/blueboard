@@ -10,21 +10,45 @@
 <meta charset="utf-8">
 <title>배우러 가는길 지도</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/map2.css'/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/css/reset.css'/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/css/base.css'/>" />
+
 	
 </head>
 
 <body>
 	<div class="logo">
-		<a href="main.do" ><img src="images/logo.png" style="width:55px; height:63px;" /></a>
+		<a href="main.do"><img src="images/logo.png"  alt="푸른 칠판" /></a>
+		
+		<ul class="util">
+			<li><a href="#">JOIN</a></li>
+			<li><a href="#">LOGIN</a></li>
+			<li><a href="#">SITEMAP</a></li>
+			<li><a href="#">ABOUT US</a></li>
+		</ul>
 	</div>
-	<div style=" position: relative; width: 100%; height: 37px; min-height:37px;">
+	
+	<div>
 		<ul class="header" >
-		  	<li><a class="active" href="#home">Home</a></li>
- 	 	  	<li><a href="#news">News</a></li>
-  		  	<li><a href="#contact">Contact</a></li>
-  			<li><a href="#about">About</a></li>
+		  	<li><a class="active" href="#home">유아/초등</a></li>
+ 	 	  	<li><a href="#news">내신/입시</a></li>
+  		  	<li><a href="#contact">스포츠/댄스</a></li>
+  			<li><a href="#about">음악/미술</a></li>
+  			<li><a href="#news">여가생활</a></li>
+  		  	<li><a href="#contact">외국어</a></li>
+  			<li>
+  				<a href="#about">직업교육</a>
+  				<div class="dropdown-content">
+  					<a href="#">Link 1</a>
+				    <a href="#">Link 2</a>
+				    <a href="#">Link 3</a>
+  				</div>
+  			</li>
 		</ul>
 	</div>
 	

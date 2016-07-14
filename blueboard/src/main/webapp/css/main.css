@@ -40,21 +40,21 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	top:80px;
 	height: 30px;
 	width: 340px;
-	border: solid 3px #1EB0D4; border-radius:10px;
+		/*border: solid 3px #1EB0D4; border-radius:10px;*/
 
 }
 #sform .tbox {
 	position: absolute;
-	left: 0px;
+	left: 1px;
 	height: 30px;
 	width: 260px;
-	border: 1px solid #ccc;
+	border: 3px solid #1EB0D4;
 	border-top-left-radius: 0.5em;
 	border-bottom-left-radius: 0.5em;
 	top: 0px;
 }
 
-#sform .sbtn{left: 260px; top: 0px; position: absolute; height:32px; width:80px;}
+#sform .sbtn{left: 260px; top: 0px; position: absolute; width: 80px; height: 30px;}
 #content h1{ width:95%; font-size: 20px; font-family:굴림체; text-align:center; padding-top:40px;}
 #content h4{ width:95%; text-align:center;}
 #main_subject{position:relative; width:1510px; height:900px; margin:0 auto; z-index:40;}
