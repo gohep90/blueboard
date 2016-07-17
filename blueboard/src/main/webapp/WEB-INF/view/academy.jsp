@@ -21,12 +21,12 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript"
 	src="<c:url value='/js/jquery.slidertron-1.1.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/main.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/academy.js'/>"></script>
 </head>
 
 <body>
 <header id="firstheader">
-<h1><a href="#"><img src="images/logo.png" alt="«™∏• ƒ•∆«" /></a></h1>
+<h1><a href="main.do"><img src="images/logo.png" alt="«™∏• ƒ•∆«" /></a></h1>
 <nav id="gnb">
 	<h1 class="skip" >∏ﬁ¿Œ∏ﬁ¥∫</h1> 
 	<ul class="gnblist">

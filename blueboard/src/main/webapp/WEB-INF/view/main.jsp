@@ -18,6 +18,8 @@
 <link rel="stylesheet" type="text/css" href="css/main_ie.css" />
 <![endif]-->
 
+<script type="text/javascript" src="<c:url value='/js/main.js'/>"></script>
+
 </head>
 
 <body>
@@ -54,31 +56,31 @@
 	</div>
 	<div id="main_subject">
 		<div id="subject1">
-			<a href='map.do'><img src="images/sq_01.png" alt="푸른 칠판" /></a>
+			<a href='map.do'><img src="images/sq_01.png" alt="무엇을 배울까요?" /></a>
 		</div>
-		<div id="subject2">
-			<a href="#"><img src="images/sq_02.png" alt="푸른 칠판" /></a>
+		<div id="subject2" onclick="post_to_url('map.do',{'highDivision':'유아/초등'})">
+			<img src="images/sq_02.png" alt="유아/초등" />
 		</div>
-		<div id="subject3">
-			<a href="#"><img src="images/sq_03.png" alt="푸른 칠판" /></a>
+		<div id="subject3" onclick="post_to_url('map.do',{'highDivision':'내신/입시'})">
+			<img src="images/sq_03.png" alt="내신/입시" />
 		</div>
-		<div id="subject4">
-			<a href="#"><img src="images/sq_04.png" alt="푸른 칠판" /></a>
+		<div id="subject4" onclick="post_to_url('map.do',{'highDivision':'스포츠'})">
+			<img src="images/sq_04.png" alt="스포츠/댄스" />
 		</div>
-		<div id="subject5">
-			<a href='지도홈페이지.html'><img src="images/sq_05.png" alt="푸른 칠판" /></a>
+		<div id="subject5" onclick="post_to_url('map.do',{'highDivision':'음악/미술'})">
+			<img src="images/sq_05.png" alt="음악/미술" />
 		</div>
-		<div id="subject6">
-			<a href='지도홈페이지.html'><img src="images/sq_06.png" alt="푸른 칠판" /></a>
+		<div id="subject6" onclick="post_to_url('map.do',{'highDivision':'여가생활'})">
+			<img src="images/sq_06.png" alt="여가생활" />
 		</div>
-		<div id="subject7">
-			<a href='지도홈페이지.html'><img src="images/sq_07.png" alt="푸른 칠판" /></a>
+		<div id="subject7" onclick="post_to_url('map.do',{'highDivision':'외국어'})">
+			<img src="images/sq_07.png" alt="외국어" />
 		</div>
-		<div id="subject8">
-			<a href='지도홈페이지.html'><img src="images/sq_08.png" alt="푸른 칠판" /></a>
+		<div id="subject8" onclick="post_to_url('map.do',{'highDivision':'직업교육'})">
+			<img src="images/sq_08.png" alt="직업교육" />
 		</div>
-		<div id="subject9">
-			<a href='지도홈페이지.html'><img src="images/sq_09.png" alt="푸른 칠판" /></a>
+		<div id="subject9" >
+			<img src="images/sq_09.png" alt="관심항목 바로가기" />
 		</div>
 	</div>
 	<hr />

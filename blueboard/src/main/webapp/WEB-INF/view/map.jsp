@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <title>배우러 가는길 지도</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script type="text/javascript" src="<c:url value='/js/main.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/academy.js'/>"></script>
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/map2.css'/>" />
@@ -20,12 +21,15 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/base.css'/>" />
 
-
-
-
 </head>
 
-<body>
+<%	
+	String highDivision =request.getParameter("highDivision");	
+	System.out.println(highDivision);
+%>
+
+<body onload="startData('<%=highDivision%>')">
+
 	<div class="logo">
 		<a href="main.do"><img src="images/logo.png" alt="푸른 칠판" /></a>
 
@@ -41,7 +45,7 @@
 		<ul class="gnblist">
 			<li class="m m1"><a class="mm" href="#">유아/초등</a>
 				<ul class="gnblist2">
-					<li><a href="#">초등</a> <!--<ul>
+					<li onclick="test()">초등 <!--<ul>
                     	<li><a href="#">국어</a></li>
                         <li><a href="#">영어</a></li>
                         <li><a href="#">수학</a></li>
@@ -50,7 +54,7 @@
                         <li><a href="#">논술</a></li>
                         <li><a href="#">예체능</a></li>
                     </ul>--></li>
-					<li><a href="#">영재교육</a> <!--<ul>
+					<li>영재교육 <!--<ul>
                     	<li><a href="#">국어</a></li>
                         <li><a href="#">영어</a></li>
                         <li><a href="#">수학</a></li>
@@ -59,7 +63,7 @@
                         <li><a href="#">논술</a></li>
                         <li><a href="#">예체능</a></li>
                     </ul>--></li>
-					<li><a href="#">유아</a> <!-- <ul>
+					<li>유아 <!-- <ul>
                     	<li><a href="#">국어</a></li>
                         <li><a href="#">영어</a></li>
                         <li><a href="#">수학</a></li>
@@ -72,52 +76,52 @@
 
 			<li class="m m2"><a class="mm" href="#">내신/입시</a>
 				<ul class="gnblist2">
-					<li><a href="#">고등</a></li>
-					<li><a href="#">논술</a></li>
-					<li><a href="#">중등</a></li>
+					<li><div class="divisionList">고등</div></li>
+					<li><div class="divisionList">논술</div></li>
+					<li><div class="divisionList">중등</div></li>
 				</ul></li>
 			<li class="m m3"><a class="mm" href="#">외국어</a>
 				<ul class="gnblist2">
-					<li><a href="#">영어</a></li>
-					<li><a href="#">중국어</a></li>
-					<li><a href="#">일본어</a></li>
-					<li><a href="#">스페인어</a></li>
-					<li><a href="#">기타언어</a></li>
+					<li><div class="divisionList">영어</div></li>
+					<li><div class="divisionList">중국어</div></li>
+					<li><div class="divisionList">일본어</div></li>
+					<li><div class="divisionList">스페인어</div></li>
+					<li><div class="divisionList">기타언어</div></li>
 				</ul></li>
 			<li class="m m4"><a class="mm" href="#">스포츠</a>
 				<ul>
-					<li><a href="#">피트니스</a></li>
-					<li><a href="#">요가</a></li>
-					<li><a href="#">필라테스</a></li>
-					<li><a href="#">태권도</a></li>
-					<li><a href="#">수영</a></li>
-					<li><a href="#">댄스/무용</a></li>
-					<li><a href="#">격투기</a></li>
-					<li><a href="#">기타</a></li>
+					<li><div class="divisionList">피트니스</div></li>
+					<li><div class="divisionList">요가</div></li>
+					<li><div class="divisionList">필라테스</div></li>
+					<li><div class="divisionList">태권도</div></li>
+					<li><div class="divisionList">수영</div></li>
+					<li><div class="divisionList">댄스/무용</div></li>
+					<li><div class="divisionList">격투기</div></li>
+					<li><div class="divisionList">기타</div></li>
 				</ul></li>
 			<li class="m m5"><a class="mm" href="#">음악/미술</a>
 				<ul class="gnblist2">
-					<li><a href="#">보컬</a></li>
-					<li><a href="#">작곡/작사</a></li>
-					<li><a href="#">악기</a></li>
-					<li><a href="#">미술</a></li>
+					<li><div class="divisionList">보컬</div></li>
+					<li><div class="divisionList">작곡/작사</div></li>
+					<li><div class="divisionList">악기</div></li>
+					<li><div class="divisionList">미술</div></li>
 				</ul></li>
 			<li class="m m6"><a class="mm" href="#">여가생활</a>
 				<ul class="gnblist2">
-					<li><a href="#">DIY가구</a></li>
-					<li><a href="#">가죽공예</a></li>
-					<li><a href="#">악세사리</a></li>
-					<li><a href="#">요리/베이킹</a></li>
-					<li><a href="#">기타</a></li>
+					<li><div class="divisionList">DIY가구</div></li>
+					<li><div class="divisionList">가죽공예</div></li>
+					<li><div class="divisionList">악세사리</div></li>
+					<li><div class="divisionList">요리/베이킹</div></li>
+					<li><div class="divisionList">기타</div></li>
 				</ul></li>
 			<li class="m m7"><a class="mm" href="#">직업교육</a>
 				<ul class="gnblist2">
-					<li><a href="#">공무원시험</a></li>
-					<li><a href="#">컴퓨터</a></li>
-					<li><a href="#">CPA</a></li>
-					<li><a href="#">공인중개사</a></li>
-					<li><a href="#">기타</a></li>
-					<li><a href="#">방송</a></li>
+					<li><div class="divisionList">공무원시험</div></li>
+					<li><div class="divisionList">컴퓨터</div></li>
+					<li><div class="divisionList">CPA</div></li>
+					<li><div class="divisionList">공인중개사</div></li>
+					<li><div class="divisionList">기타</div></li>
+					<li><div class="divisionList">방송</div></li>
 				</ul></li>
 			<div id="item">
 				<a class="mm" href="#">관심항목</a>

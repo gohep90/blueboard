@@ -1,9 +1,7 @@
+var highDivision='';
 var gu ='';
 var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
-
-
-
 
 
 // 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
@@ -992,7 +990,7 @@ function displayArea(area) {
     daum.maps.event.addListener(polygon, 'click', function(mouseEvent) {
     	document.getElementById("keyword").value=area.name;
     	gu=area.name;
-    	gotoPage(1,gu);
+    	gotoPage(1,gu,highDivision);
     	
     	var moveLatLon = area.center;
     	map.panTo(moveLatLon);
@@ -1022,53 +1020,94 @@ var clusterer = new daum.maps.MarkerClusterer({
 });
 
 
-// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-//var infowindow = new daum.maps.InfoWindow({zIndex:1});
-
-
-
-/*
-
-
-
-function firstMarker() { //초기 조건을 
+function startData(division) { //초기 조건을 
+	var infos = null; //infowindow를 위해서??
+	highDivision=division;
 	$.ajax({
 		type : "POST",
 		url : "firstEdu.do",
+		async:false,
 		dataType : "json",
+		data : {
+			division : division
+		},
 		error : function(e) {
 			alert("에러났소!");
 			alert(e);
 		},
 		success : function(data) {
-	/*		var markers = $(data.positions).map(
-					function(i, position) {
-						return new daum.maps.Marker({
-							position : new daum.maps.LatLng(
-									position.lat, position.lng)
-						});
-
-					});
-			// 클러스터러에 마커들을 추가합니다
-			clusterer.addMarkers(markers);
-
-			$.each(data,function(){
-				var list = data['positions'];
+			//noCommend=0;	//추천학원 일반학원 초기화!!
+	    	//bigCommend=0;
+	    	
+			var oinfo = $(data.positions).map(function(i, position) {
 				
-				for(var i=0;i<list.length;i++){
-					var markers = new daum.maps.Marker({
-						position: new daum.maps.LatLng(list[i].lat,list[i].lng)
-					});
-					clusterer.addMarkers(markers);
-				}
-			});
-			gotoPage(1);
+				var small= '<div class="item"><div class="seq"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
+						+position.academyName+'</h5><span>'
+						+position.academyInfo+'</span><span class="gray">'
+						+position.academyAddress+'</span><span class="tel">'
+						+position.academyTel +'</span></div></div>';
+				
+				var big='<div class="item"><div class="seq"><div class="bigbg"></div><div class="bigInfo"><h5>'
+						+position.academyName+'</h5><span>'
+						+position.academyInfo+'</span><span class="gray">'
+						+position.academyAddress+'</span><span class="tel">'
+						+position.academyTel +'</span></div></div></div>';
+				
+				var temp ="";
+				if(position.big==1)
+					temp=big;
+				else
+					temp=small;
+		        
+				return new daum.maps.InfoWindow({
+		            position : new daum.maps.LatLng(position.lat, position.lng),
+		            content : temp
+		        });
+		    });
+			infos = oinfo;
+		    // 데이터에서 좌표 값을 가지고 마커를 표시합니다
+		    // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
+		    var markers = $(data.positions).map(function(i, position) {
+		    	var imageSrc = 'images/marker.png', // 마커이미지의 주소입니다    
+		        imageSize = new daum.maps.Size(25, 45), // 마커이미지의 크기입니다
+		        imageOption = {offset: new daum.maps.Point(12, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		          
+		    	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+		    	var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+		        var omaker = new daum.maps.Marker({
+		            position : new daum.maps.LatLng(position.lat, position.lng),
+		            image:markerImage
+		        });
+		        daum.maps.event.addListener(omaker, 'mouseover', function(){
+		            infos[i].open(map, omaker );
+		        });
+		        daum.maps.event.addListener(omaker, 'mouseout', function(){
+		            infos[i].close();
+		        });
+		        daum.maps.event.addListener(omaker, 'click', function(){
+		        	window.location.href = "academy.do";
+		        });
+		        return omaker;
+		    });
+		    // 클러스터러에 마커들을 추가합니다
+		    clusterer.addMarkers(markers);
+		    gotoPage(1,gu,highDivision);
 		}
 	});
 }
-firstMarker();
 
-*/
+
+
+
+
+
+// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+//var infowindow = new daum.maps.InfoWindow({zIndex:1});
+
+/*
+function startData(division){
+	alert(division);
 var infos = null; //infowindow를 위해서??
 //데이터를 가져오기 위해 jQuery를 사용합니다
 //데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
@@ -1076,12 +1115,14 @@ $.get("firstEdu.do", function(data) {
 	var oinfo = $(data.positions).map(function(i, position) {
 		
 		var small= '<div class="item"><div class="seq"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
-				+position.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+position.academyName+'</h5><span>'
+				+position.academyInfo+'</span><span class="gray">'
 				+position.academyAddress+'</span><span class="tel">'
 				+position.academyTel +'</span></div></div>';
 		
 		var big='<div class="item"><div class="seq"><div class="bigbg"></div><div class="bigInfo"><h5>'
-				+position.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+position.academyName+'</h5><span>'
+				+position.academyInfo+'</span><span class="gray">'
 				+position.academyAddress+'</span><span class="tel">'
 				+position.academyTel +'</span></div></div></div>';
 		
@@ -1125,8 +1166,9 @@ $.get("firstEdu.do", function(data) {
 },'json');
 
 
+}
 
-
+*/
 
 // 확대했을때 이벤트처리를 하기 위해
 // 마커 클러스터러에 클릭이벤트를 등록합니다 
@@ -1142,29 +1184,9 @@ daum.maps.event.addListener(clusterer, 'clusterclick',
 			});
 		});
 
-/*		
- function makeList() {
- $.ajax({
- type : "POST",
- url : "eduJson2.do",
- dataType : "json",
- data :{
- current : '1'
- },
- error : function(e) {
- alert("에러났소!");
- alert(e);
- },
- success : function(data) {
- displayPagination(data['pagination'],data['current']);
- }
- });
- }
- makeList();
 
- */
 
-function gotoPage(i,gu) { //page 이동할 때
+function gotoPage(i,gu,division) { //page 이동할 때
 	$.ajax({
 		type : "POST",
 		url : "eduJson.do",
@@ -1172,7 +1194,8 @@ function gotoPage(i,gu) { //page 이동할 때
 		dataType : "json",
 		data : {
 			current : i,
-			gu	:	gu
+			gu	:	gu,
+			division: division
 		},
 		error : function(e) {
 			alert("에러났소!");
@@ -1261,26 +1284,7 @@ function displayPlaces(places) {
 	// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 	//map.setBounds(bounds);
 }
-/*
-// 인포윈도우에 장소명을 표시합니다
-function displayInfowindow(places) {
 
-	var iwContent = '<div class="item"><span class="markerbg"></span><div class="info" style="float: left;"><h5>' 
-		+ places.name + '</h5><span>학원 간단한 설명??</span><span class="gray">' 
-		+ places.address + '</span><span class="tel">' 
-		+ places.tel + '</span></div></div>';
-	iwPosition = new daum.maps.LatLng(places.lat, places.lng), //인포윈도우 표시 위치입니다
-
-	infowindow.setContent(iwContent);
-	infowindow.setPosition(iwPosition);
-	infowindow.open(map); 
-}
-
-
-function removeInfowindow(infowindow) {
-	infowindow.close();
-}
-*/
 
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
@@ -1321,14 +1325,16 @@ function getListItem(index, places) {
 		var el = document.createElement('li'), 
 		itemStr ='<div style="margin: 5px;"><img src="images/recommend.png" style="width:15px; height:15px; float:left;"></img><h3 id="recommend" style="margin: 10px 10px 5px 20px;"> 이 지역 주변 학원</h3></div>'
 				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy4.jpg" class="markerbg"></image><div class="info"><h5>'
-				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+places.academyName+'</h5><span>'
+				+places.academyInfo+'</span><span class="gray">'
 				+places.academyAddress+'</span><span class="tel">'
 				+places.academyTel +'</span></div></div>';
 		
 	}else{
 		var el = document.createElement('li'), 
 		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
-				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray" >'
+				+places.academyName+'</h5><span>'
+				+places.academyInfo+'</span><span class="gray" >'
 				+places.academyAddress+'</span><span class="tel">'
 				+places.academyTel +'</span></div></div>';
 	}
@@ -1345,14 +1351,16 @@ function getBigItem(index,places){
 		var el	=	document.createElement('li'), 
 		itemStr ='<div style="margin: 5px;"><img src="images/recommend.png" style="width:15px; height:15px; float:left;"></img><h3 id="recommend" style="margin: 10px 10px 5px 20px;"> 이 지역 추천 학원</h3></div>'
 				+'<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5>'
-				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+places.academyName+'</h5><span>'
+				+places.academyInfo+'</span><span class="gray">'
 				+places.academyAddress+'</span><span class="tel">'
 				+places.academyTel +'</span></div></div>';
 		
 	}else{
 		var el	=	document.createElement('li'), 
 		itemStr ='<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5>'
-				+places.academyName+'</h5><span>학원 간단한 설명??</span><span class="gray">'
+				+places.academyName+'</h5><span>'
+				+places.academyInfo+'</span><span class="gray">'
 				+places.academyAddress+'</span><span class="tel">'
 				+places.academyTel +'</span></div></div>';
 	}
@@ -1416,7 +1424,7 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 					} else {
 						el.onclick = (function(i) {
 							return function() {
-								gotoPage(i,gu); //ajax함수로 !!
+								gotoPage(i,gu,highDivision); //ajax함수로 !!
 							}
 						})(i);
 					}
@@ -1450,7 +1458,7 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 					} else {
 						el.onclick = (function(i) {
 							return function() {
-								gotoPage(i,gu); //ajax함수로 !!
+								gotoPage(i,gu,highDivision); //ajax함수로 !!
 							}
 						})(i);
 					}
@@ -1501,7 +1509,7 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 function changePage(i,end){
 		return function() {
 			if(i>=1 && i<=end)
-				gotoPage(i,gu); 
+				gotoPage(i,gu,highDivision); 
 		}
 }
 
@@ -1512,4 +1520,10 @@ function removeAllChildNods(el) {
 	while (el.hasChildNodes()) {
 		el.removeChild(el.lastChild);
 	}
+}
+
+
+
+function test(){
+	alert("test");
 }

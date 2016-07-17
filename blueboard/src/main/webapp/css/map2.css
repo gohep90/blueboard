@@ -82,7 +82,7 @@ html, body {width: 100%; height: 100%; overflow: hidden; margin:0;}
 
 
 #gnb:after { content:""; display:block; clear:both; }
-#gnb { position:absolute; left:0; top:75px; width:100%; background-color:#f3f3f3; border: 1px solid #e7e7e7;  z-index: 10; padding-left:20px;}
+#gnb { position:absolute; left:0; top:75px; width:100%; background-color:#f3f3f3; border: 1px solid #e7e7e7;  z-index:10; padding-left:20px;}
 #gnb  ul { float:left; box-shadow:0px 2px 4px rgba(0,0,0,0.1); text-align:center;list-style-type: none; margin: 0;}
 #gnb li { float:left;  width:150px; border-right: 1px solid #bbb; height:39px; text-align:center;  margin-right:1px;}
 #gnb li:first-child {border-left:1px solid #bbb;}
@@ -90,6 +90,8 @@ html, body {width: 100%; height: 100%; overflow: hidden; margin:0;}
 #gnb li:hover {background-color: #1EB0D4;}
 #gnb li ul { display:none; position:relative; right:0px; text-align:center; }
 #gnb li ul li { border: solid 1px #C0C0C0; background:#fff;  text-align:center;  padding-top:10px; height:30px;} /*드랍다운 메뉴 CSS*/
+/*네비게이션 바 누를시 나오는것*/
+#gnb li ul li:hover {color:#ffffff; cursor: pointer;}
 #item {position:absolute; right:20px;float:left; padding-top:11px; text-align:center; font-size:13px; width:80px; height:29px;}
 #item a{ color:#1EB0D4;}
 

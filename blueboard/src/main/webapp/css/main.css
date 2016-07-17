@@ -64,6 +64,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 370px;
 	top: 0px;
+	cursor: pointer;
 }
 #subject2 {
 	width: 250px;
@@ -71,6 +72,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	top: 0px;
 	left: 630px;
+	cursor: pointer;
 }
 #subject3 {
 	width: 250px;
@@ -78,6 +80,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 890px;
 	top: 0px;
+	cursor: pointer;
 	}
 #subject4 {
 	width: 250px;
@@ -85,6 +88,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 370px;
 	top:260px;
+	cursor: pointer;
 	}
 #subject5 {
 	width: 250px;
@@ -92,6 +96,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 630px;
 	top: 260px;
+	cursor: pointer;
 }
 #subject6 {
 	width: 250px;
@@ -99,6 +104,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 890px;
 	top: 260px;
+	cursor: pointer;
 }
 #subject7 {
 	width: 250px;
@@ -106,6 +112,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 370px;
 	top: 520px;
+	cursor: pointer;
 }
 #subject8 {
 	width: 250px;
@@ -113,6 +120,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 630px;
 	top: 520px;
+	cursor: pointer;
 }
 #subject9 {
 	width: 250px;
@@ -120,6 +128,7 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 890px;
 	top: 520px;
+	cursor: pointer;
 }
 
 #main_footer

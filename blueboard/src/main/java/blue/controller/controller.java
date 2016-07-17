@@ -51,8 +51,18 @@ public class controller {
 		
 		//지도
 		@RequestMapping(value="/map.do")
-		public ModelAndView map(Map<String, Object> Map)throws Exception {
+		public ModelAndView map(Map<String, Object> Map, HttpServletRequest request)throws Exception {
 			ModelAndView mv = new ModelAndView("map");
+			request.setCharacterEncoding("euc-kr");  //받아올 때 한글설정
+			
+			
+	//		String highDivision =request.getParameter("highDivision"); 
+	//		System.out.println(highDivision);
+			
+		//	map.put("month", month);
+			
+			//List<Map<String, Object>> list = service.selectCalendar(map);
+			//mv.addObject("memoIcon", memoIcon);
 			return mv;
 		}
 		
@@ -77,9 +87,9 @@ public class controller {
 			public ModelAndView firstEdu(Map<String, Object> Map,HttpServletRequest request)throws Exception {
 				ModelAndView mv = new ModelAndView("jsonView");
 				
-				//String currentTemp = request.getParameter("current");
+				String division = request.getParameter("division");
 						
-				//Map.put("current",current);
+				Map.put("division",division);
 										
 				List<Map<String, Object>> list = service.selectFirstEdu(Map);
 				
@@ -97,12 +107,15 @@ public class controller {
 				ModelAndView mv = new ModelAndView("jsonView");
 				
 				String gu = request.getParameter("gu");
+				String division = request.getParameter("division");
+				//System.out.println(gu);
 				
 				String currentTemp = request.getParameter("current");
 				int current = (Integer.parseInt(currentTemp)-1)*10;
 				
 				Map.put("current",current);
 				Map.put("gu",gu);
+				Map.put("division",division);
 								
 				List<Map<String, Object>> list = service.selectEduList(Map);
 				List<Map<String, Object>> count = service.selectCount(Map);
