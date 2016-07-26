@@ -84,9 +84,9 @@ html, body {width: 100%; height: 100%; overflow: hidden; margin:0;}
 #gnb:after { content:""; display:block; clear:both; }
 #gnb { position:absolute; left:0; top:75px; width:100%; background-color:#f3f3f3; border: 1px solid #e7e7e7;  z-index:10; padding-left:20px;}
 #gnb  ul { float:left; box-shadow:0px 2px 4px rgba(0,0,0,0.1); text-align:center;list-style-type: none; margin: 0;}
-#gnb li { float:left;  width:150px; border-right: 1px solid #bbb; height:39px; text-align:center;  margin-right:1px;}
+#gnb li { float:left;  width:150px; border-right: 1px solid #bbb; height:39px; text-align:center;  margin-right:1px; cursor: pointer;}
 #gnb li:first-child {border-left:1px solid #bbb;}
-#gnb li a.mm { float:left; width:150px; height:29px; text-align:center; padding-top:10px; color: #666;  text-decoration: none; }
+#gnb li .mm { float:left; width:150px; height:29px; text-align:center; padding-top:10px; color: #666;  text-decoration: none; }
 #gnb li:hover {background-color: #1EB0D4;}
 #gnb li ul { display:none; position:relative; right:0px; text-align:center; }
 #gnb li ul li { border: solid 1px #C0C0C0; background:#fff;  text-align:center;  padding-top:10px; height:30px;} /*드랍다운 메뉴 CSS*/

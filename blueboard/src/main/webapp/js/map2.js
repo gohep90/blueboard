@@ -1,4 +1,5 @@
 var highDivision='';
+var middleDivision='';
 var gu ='';
 var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
@@ -976,7 +977,6 @@ function displayArea(area) {
     });
 
 
-
     // 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
     // 커스텀 오버레이를 지도에서 제거합니다 
     daum.maps.event.addListener(polygon, 'mouseout', function() {
@@ -990,7 +990,7 @@ function displayArea(area) {
     daum.maps.event.addListener(polygon, 'click', function(mouseEvent) {
     	document.getElementById("keyword").value=area.name;
     	gu=area.name;
-    	gotoPage(1,gu,highDivision);
+    	gotoPage(1);
     	
     	var moveLatLon = area.center;
     	map.panTo(moveLatLon);
@@ -1020,16 +1020,21 @@ var clusterer = new daum.maps.MarkerClusterer({
 });
 
 
-function startData(division) { //초기 조건을 
+function startData(high,middle) { //초기 조건을 
+	//alert(division);
+	
 	var infos = null; //infowindow를 위해서??
-	highDivision=division;
+	highDivision=high;
+	middleDivision=middle;
+	
 	$.ajax({
 		type : "POST",
 		url : "firstEdu.do",
 		async:false,
 		dataType : "json",
 		data : {
-			division : division
+			highDivision : highDivision,
+			middleDivision : middleDivision
 		},
 		error : function(e) {
 			alert("에러났소!");
@@ -1038,7 +1043,8 @@ function startData(division) { //초기 조건을
 		success : function(data) {
 			//noCommend=0;	//추천학원 일반학원 초기화!!
 	    	//bigCommend=0;
-	    	
+			
+			
 			var oinfo = $(data.positions).map(function(i, position) {
 				
 				var small= '<div class="item"><div class="seq"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
@@ -1065,9 +1071,11 @@ function startData(division) { //초기 조건을
 		        });
 		    });
 			infos = oinfo;
+			
 		    // 데이터에서 좌표 값을 가지고 마커를 표시합니다
 		    // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
 		    var markers = $(data.positions).map(function(i, position) {
+		    	
 		    	var imageSrc = 'images/marker.png', // 마커이미지의 주소입니다    
 		        imageSize = new daum.maps.Size(25, 45), // 마커이미지의 크기입니다
 		        imageOption = {offset: new daum.maps.Point(12, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
@@ -1092,7 +1100,7 @@ function startData(division) { //초기 조건을
 		    });
 		    // 클러스터러에 마커들을 추가합니다
 		    clusterer.addMarkers(markers);
-		    gotoPage(1,gu,highDivision);
+		    gotoPage(1);
 		}
 	});
 }
@@ -1186,7 +1194,7 @@ daum.maps.event.addListener(clusterer, 'clusterclick',
 
 
 
-function gotoPage(i,gu,division) { //page 이동할 때
+function gotoPage(i) { //page 이동할 때
 	$.ajax({
 		type : "POST",
 		url : "eduJson.do",
@@ -1195,7 +1203,8 @@ function gotoPage(i,gu,division) { //page 이동할 때
 		data : {
 			current : i,
 			gu	:	gu,
-			division: division
+			highDivision: highDivision,
+			middleDivision : middleDivision
 		},
 		error : function(e) {
 			alert("에러났소!");
@@ -1424,7 +1433,7 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 					} else {
 						el.onclick = (function(i) {
 							return function() {
-								gotoPage(i,gu,highDivision); //ajax함수로 !!
+								gotoPage(i); //ajax함수로 !!
 							}
 						})(i);
 					}
@@ -1458,7 +1467,7 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 					} else {
 						el.onclick = (function(i) {
 							return function() {
-								gotoPage(i,gu,highDivision); //ajax함수로 !!
+								gotoPage(i); //ajax함수로 !!
 							}
 						})(i);
 					}
@@ -1509,7 +1518,7 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 function changePage(i,end){
 		return function() {
 			if(i>=1 && i<=end)
-				gotoPage(i,gu,highDivision); 
+				gotoPage(i); 
 		}
 }
 
@@ -1525,5 +1534,14 @@ function removeAllChildNods(el) {
 
 
 function test(){
-	alert("test");
+	alert("tt");
 }
+
+
+/////////////////////////// 분류 누를때 이동!! //////////////////////////////
+function gotoDivision(high,middle){
+	highDivision=high;
+	middleDivision=middle;
+	window.location="map.do?highDivision="+highDivision+"&middleDivision="+middleDivision;
+}
+

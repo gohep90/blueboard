@@ -10,13 +10,13 @@ $(window).resize(function(){
 	$devWidth=$("body").width();
 })
 
-	$(".gnblist > li > a ").bind("mouseover",function() {
+	$(".gnblist > li > div ").bind("mouseover",function() {
 		  if($devWidth <$limitSize) return false;
 			$(".gnblist ul").hide();
 			$(this).next().show();
 			$(this).css("background-color","#3FF");
 
-			$(".gnblist > li > a").css({
+			$(".gnblist > li > div").css({
 				'height':'29px',
 				'background':'none'
 			});
@@ -29,7 +29,7 @@ $(window).resize(function(){
 	$("#gnb").mouseleave(function(){
 			if($devWidth <$limitSize) return false;
 			$(".gnblist ul").stop().slideUp(50);
-			$(".gnblist > li > a").css({
+			$(".gnblist > li > div").css({
 				'height':'29px',
 				'background':'none'
 			});

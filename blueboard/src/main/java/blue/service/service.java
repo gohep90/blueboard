@@ -32,6 +32,21 @@ public class service {
 		return dao.selectFirstEdu(map);
 	}
 
+	public List<java.util.Map<String, Object>> selectFirstEduDiv(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return  dao.selectFirstEduDiv(map);
+	}
+
+	public List<java.util.Map<String, Object>> selectEduListDiv(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.selectEduListDiv(map);
+	}
+
+	public List<java.util.Map<String, Object>> selectCountDiv(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.selectCountDiv(map);
+	}
+
 	
 
 	

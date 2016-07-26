@@ -87,14 +87,23 @@ public class controller {
 			public ModelAndView firstEdu(Map<String, Object> Map,HttpServletRequest request)throws Exception {
 				ModelAndView mv = new ModelAndView("jsonView");
 				
-				String division = request.getParameter("division");
+				String highDivision = request.getParameter("highDivision");
+				String middleDivision = request.getParameter("middleDivision");
 						
-				Map.put("division",division);
-										
-				List<Map<String, Object>> list = service.selectFirstEdu(Map);
+				//System.out.println("middleDivision = "+middleDivision);
 				
-				mv.addObject("positions", list);
-						
+				Map.put("highDivision",highDivision);
+				Map.put("middleDivision",middleDivision);
+				
+				if(middleDivision==""){
+					List<Map<String, Object>> list = service.selectFirstEdu(Map);
+					mv.addObject("positions", list);
+				}else{
+					List<Map<String, Object>> list = service.selectFirstEduDiv(Map);
+					mv.addObject("positions", list);
+				}
+				
+				
 				return mv;
 			}
 		
@@ -107,7 +116,8 @@ public class controller {
 				ModelAndView mv = new ModelAndView("jsonView");
 				
 				String gu = request.getParameter("gu");
-				String division = request.getParameter("division");
+				String highDivision = request.getParameter("highDivision");
+				String middleDivision = request.getParameter("middleDivision");
 				//System.out.println(gu);
 				
 				String currentTemp = request.getParameter("current");
@@ -115,13 +125,23 @@ public class controller {
 				
 				Map.put("current",current);
 				Map.put("gu",gu);
-				Map.put("division",division);
-								
-				List<Map<String, Object>> list = service.selectEduList(Map);
-				List<Map<String, Object>> count = service.selectCount(Map);
+				Map.put("highDivision",highDivision);
+				Map.put("middleDivision",middleDivision);
 				
-				mv.addObject("pagination", count);
-				mv.addObject("positions", list);
+				if(middleDivision==""){
+					List<Map<String, Object>> list = service.selectEduList(Map);
+					List<Map<String, Object>> count = service.selectCount(Map);
+					
+					mv.addObject("pagination", count);
+					mv.addObject("positions", list);
+				}else{
+					List<Map<String, Object>> list = service.selectEduListDiv(Map);
+					List<Map<String, Object>> count = service.selectCountDiv(Map);
+					
+					mv.addObject("pagination", count);
+					mv.addObject("positions", list);
+				}
+				
 				
 				return mv;
 			}
