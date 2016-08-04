@@ -3,15 +3,13 @@
 a { text-decoration:none; color:#000; }
 
 a:hover {
-	color: #10B9E0;
+	
 }
 
-h1,h2,h3,h4,h5,h6 { font-size:100%; }
+h1,h2,h3,h4,h5,h6 {  }
 address,strong{font-style:normal; font-weight:normal;}
 
 
    @font-face{font-family:'NGothic'; src:url('../font/NanumGothic.woff') format('woff');}
    @font-face{font-family:'NGothicB'; src:url('../font/NanumGothicBold.woff') format('woff');}
    @font-face{font-family:'NGothicEB'; src:url('../font/NanumGothicExtraBold.woff') format('woff');}
-
- body { font:14px "NGothicEB",Gulim; }

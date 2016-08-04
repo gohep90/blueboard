@@ -2,29 +2,37 @@
 
 @media (min-width:1024px) {/* 최소 1024 ~ 최대 ------------------------------------------------------------------------------------------------------- */
 
-header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40; background-color:rgba(204,204,204,0.1); repeat-x;}
-#firstheader h1 {  padding:10px 0 0 20px; height:85px; }
-.util2 {position:absolute; right:330px; top:38px; }
-.util2 a {color:#10B9E0;  font-size:16px; font-weight:bold;}
-.util { position:absolute; right:20px; top:35px; font-size:16px;font-weight:bold; }
-.util li { display:inline; padding-left:30px; }
+header#firstheader { position:relative; width:100%; margin:0 auto; z-index:40; repeat-x;}
+#firstheader h1 {  padding:10px 0 0 35px; height:65px; }
+.util2 {position:absolute; right:328px; top:35.5px;font-size:17px; font-weight:700;}
+.util2 a {color:#FFD719;  }
+.util { position:absolute; right:60px; top:34px; font-size:15px;font-weight:bold; }
+.util li { display:inline; padding-left:20px; }
+.util a{color:white;}
+hr.one{width:97%; border:thin solid rgba(204,204,204,0.2); }
 #main_content {
-	position: relative;
-	width: 1510px;
-	height: 317px;
+	position:relative;
+	width: 100%;
+	height: 950px;
 	margin: 0 auto;
-	background:url("../images/main_background.png")
-	no-repeat;
+	background:url(../images/MAINPAGE/BACKGROUND.jpg);
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+
 }
-#main_background2{ position:absolute; top:90px; left:155px;
+#main_text{
+	margin-left:300px;
+	margin-top:100px;
+}
+#search{
+	height:100px;
 }
 
 #content {
-	position: relative;
-	width: 1510px;
-	background:url(../images/bubble.png) no-repeat; 
-	background-position:center;
-	height: 150px;
+	background-color:#C6AD57;
+	width: 100%;
+	height: 300px;
 	margin: 0 auto;}
 #content h1{margin:auto;padding-top:15px;}
 #letter {
@@ -32,29 +40,20 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	left: 41px;
 	bottom: 132px;
 }
-
-#sform {
-	/*검색부분 배경이미지 넣기*/
-	position: absolute;
-	left: 585px;
-	top:80px;
-	height: 30px;
-	width: 340px;
-		/*border: solid 3px #1EB0D4; border-radius:10px;*/
-
+#search {
+	margin:auto;
 }
+#sform {margin:auto; width:500px; text-align:right; }
 #sform .tbox {
-	position: absolute;
-	left: 1px;
-	height: 30px;
-	width: 260px;
-	border: 3px solid #1EB0D4;
-	border-top-left-radius: 0.5em;
-	border-bottom-left-radius: 0.5em;
-	top: 0px;
-}
+		height:40px; width:350px;
+		border: 4px solid #FFC000;
+		border-top-left-radius: 0.5em;
+		border-bottom-left-radius: 0.5em;
+		}
+		
 
-#sform .sbtn{left: 260px; top: 0px; position: absolute; width: 80px; height: 30px;}
+
+#sform. sbtn{ padding-left:20px;height:80px; width:0px;}
 #content h1{ width:95%; font-size: 20px; font-family:굴림체; text-align:center; padding-top:40px;}
 #content h4{ width:95%; text-align:center;}
 #main_subject{position:relative; width:1510px; height:900px; margin:0 auto; z-index:40;}
@@ -64,7 +63,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 370px;
 	top: 0px;
-	cursor: pointer;
 }
 #subject2 {
 	width: 250px;
@@ -72,7 +70,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	top: 0px;
 	left: 630px;
-	cursor: pointer;
 }
 #subject3 {
 	width: 250px;
@@ -80,7 +77,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 890px;
 	top: 0px;
-	cursor: pointer;
 	}
 #subject4 {
 	width: 250px;
@@ -88,7 +84,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 370px;
 	top:260px;
-	cursor: pointer;
 	}
 #subject5 {
 	width: 250px;
@@ -96,7 +91,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 630px;
 	top: 260px;
-	cursor: pointer;
 }
 #subject6 {
 	width: 250px;
@@ -104,7 +98,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 890px;
 	top: 260px;
-	cursor: pointer;
 }
 #subject7 {
 	width: 250px;
@@ -112,7 +105,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 370px;
 	top: 520px;
-	cursor: pointer;
 }
 #subject8 {
 	width: 250px;
@@ -120,7 +112,6 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 630px;
 	top: 520px;
-	cursor: pointer;
 }
 #subject9 {
 	width: 250px;
@@ -128,12 +119,11 @@ header#firstheader { position:relative; width:1510px; margin:0 auto; z-index:40;
 	position: absolute;
 	left: 890px;
 	top: 520px;
-	cursor: pointer;
 }
 
 #main_footer
 {
-	position:relative; width:1510px; margin:0 auto; padding:40px 0;
+	 width:100%; margin:0 auto; padding:40px 0;
 }
 #main_footer h3{ text-align:center}
 }
@@ -159,8 +149,14 @@ header#firstheader { position:relative; width:95%; margin:0 auto; z-index:40; }
 	#gnb li.m2 ul { left:20%; width:170px; }
 	#gnb li.m3 ul { left:40%; width:280px; }
 	#gnb li.m4 ul { left:60%; width:200px; }
-	#main_content { position:relative; width:95%; height:460px;  z-index:30; margin: 0 auto;
-	background:url("../images/메인이미지.jpg") no-repeat;
+	#main_content {
+	position: relative;
+	width: 95%;
+	height: 460px;
+	z-index: 30;
+	margin: 0 auto;
+	background-image: url(../images/main%20image.png);
+	background-repeat: no-repeat;
 	}
 	#main_content h1{ font-size:20px; color:white; position:absolute; left:20px; 	bottom:5px;}
 	#sform {

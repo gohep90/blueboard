@@ -1047,16 +1047,16 @@ function startData(high,middle) { //초기 조건을
 			
 			var oinfo = $(data.positions).map(function(i, position) {
 				
-				var small= '<div class="item"><div class="seq"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
+				var small= '<div class="item" style="margin:0px;"><div class="seq2"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
 						+position.academyName+'</h5><span>'
-						+position.academyInfo+'</span><span class="gray">'
-						+position.academyAddress+'</span><span class="tel">'
+						+position.academyAddress+'</span><span>'
+						+position.academyInfo+'</span><span class="tel">'
 						+position.academyTel +'</span></div></div>';
 				
-				var big='<div class="item"><div class="seq"><div class="bigbg"></div><div class="bigInfo"><h5>'
+				var big='<div class="item" style="margin:0px;"><div class="seq2"><br><div class="bigbg" ></div><div class="bigInfo"><h5>'
 						+position.academyName+'</h5><span>'
-						+position.academyInfo+'</span><span class="gray">'
-						+position.academyAddress+'</span><span class="tel">'
+						+position.academyAddress+'</span><span>'
+						+position.academyInfo+'</span><span class="tel">'
 						+position.academyTel +'</span></div></div></div>';
 				
 				var temp ="";
@@ -1094,7 +1094,7 @@ function startData(high,middle) { //초기 조건을
 		            infos[i].close();
 		        });
 		        daum.maps.event.addListener(omaker, 'click', function(){
-		        	window.location.href = "academy.do";
+		        	window.open("academy.do?academyId="+position.academyId ,"_blank"); //이동
 		        });
 		        return omaker;
 		    });
@@ -1258,13 +1258,26 @@ function displayPlaces(places) {
 		// 마커와 검색결과 항목에 mouseover 했을때
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// mouseout 했을 때는 인포윈도우를 닫습니다
-		(function(lat, lng, i) {
+		(function(lat, lng, academyId, i) {
 
 			itemEl.onmouseover = function() {
 				//displayInfowindow(places);
 				displayOneMarker(marker, lat, lng);
 				var test = document.getElementById('seq_' + i);
-				test.style.backgroundColor = "#B2CCFF";
+				test.style.backgroundColor = "#FFC000";
+				
+				
+				var name = document.getElementById('name_' + i);
+				name.style.color = "#000000";
+				
+				var address = document.getElementById('address_' + i);
+				address.style.color = "#000000";
+				
+				var info = document.getElementById('info_' + i);
+				info.style.color = "#000000";
+				
+				var recommend = document.getElementById('recommend_' + i);
+				recommend.style.color = "#000000";
 			};
 
 			itemEl.onmouseout = function() {
@@ -1273,15 +1286,27 @@ function displayPlaces(places) {
 				//infowindow.close();
 				removeMarker(marker);
 				var test = document.getElementById('seq_' + i);
-				test.style.backgroundColor = "#ffffff";
+				test.style.backgroundColor = "";
+				
+				var name = document.getElementById('name_' + i);
+				name.style.color = "#FFC000";
+				
+				var address = document.getElementById('address_' + i);
+				address.style.color = "#ffffff";
+				
+				var info = document.getElementById('info_' + i);
+				info.style.color = "#ffffff";
+				
+				var recommend = document.getElementById('recommend_' + i);
+				recommend.style.color = "#ffffff";
 			};
 
 			itemEl.onclick = function() {
 				//window.location.href="academy.do?year="+year+"&month="+temp;
-				window.location.href = "academy.do";
+				window.open("academy.do?academyId="+academyId ,"_blank"); //이동
 			};
 
-		})(places[i].lat, places[i].lng, i);
+		})(places[i].lat, places[i].lng, places[i].academyId, i);
 
 		fragment.appendChild(itemEl);
 	}
@@ -1332,20 +1357,18 @@ function getListItem(index, places) {
 
 	if(noCommend==0){
 		var el = document.createElement('li'), 
-		itemStr ='<div style="margin: 5px;"><img src="images/recommend.png" style="width:15px; height:15px; float:left;"></img><h3 id="recommend" style="margin: 10px 10px 5px 20px;"> 이 지역 주변 학원</h3></div>'
-				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy4.jpg" class="markerbg"></image><div class="info"><h5>'
-				+places.academyName+'</h5><span>'
-				+places.academyInfo+'</span><span class="gray">'
-				+places.academyAddress+'</span><span class="tel">'
-				+places.academyTel +'</span></div></div>';
+		itemStr ='<div style="margin: 5px;"><h3 style="margin: 20px; color:#ffffff; font-size:15px;">이 지역  추천</h3></div>'
+				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy4.jpg" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
+				+places.academyName+'</h5><span id="address_'+(index)+'">'
+				+places.academyAddress+'</span><span id="info_'+(index)+'">'
+				+places.academyInfo+'</span><br></div></div>';
 		
 	}else{
 		var el = document.createElement('li'), 
-		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
-				+places.academyName+'</h5><span>'
-				+places.academyInfo+'</span><span class="gray" >'
-				+places.academyAddress+'</span><span class="tel">'
-				+places.academyTel +'</span></div></div>';
+		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
+				+places.academyName+'</h5><span id="address_'+(index)+'">'
+				+places.academyAddress+'</span><span id="info_'+(index)+'">'
+				+places.academyInfo+'</span><br></div></div>';
 	}
 	el.innerHTML = itemStr;
 	el.className = 'item';
@@ -1358,20 +1381,17 @@ function getBigItem(index,places){
 	
 	if(bigCommend==0){
 		var el	=	document.createElement('li'), 
-		itemStr ='<div style="margin: 5px;"><img src="images/recommend.png" style="width:15px; height:15px; float:left;"></img><h3 id="recommend" style="margin: 10px 10px 5px 20px;"> 이 지역 추천 학원</h3></div>'
-				+'<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5>'
-				+places.academyName+'</h5><span>'
-				+places.academyInfo+'</span><span class="gray">'
-				+places.academyAddress+'</span><span class="tel">'
-				+places.academyTel +'</span></div></div>';
+		itemStr ='<div class="seq" id="seq_'+(index)+'"><div style="margin: 5px;"><h3 id="recommend_'+(index)+'" style="margin: 20px; color:#ffffff; font-size:15px;">스마트 추천</h3></div><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
+				+places.academyName+'</h5><span id="address_'+(index)+'">'
+				+places.academyAddress+'</span><span id="info_'+(index)+'">'
+				+places.academyInfo+'</span></div></div>';
 		
 	}else{
 		var el	=	document.createElement('li'), 
-		itemStr ='<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5>'
-				+places.academyName+'</h5><span>'
-				+places.academyInfo+'</span><span class="gray">'
-				+places.academyAddress+'</span><span class="tel">'
-				+places.academyTel +'</span></div></div>';
+		itemStr ='<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
+				+places.academyName+'</h5><span id="address_'+(index)+'">'
+				+places.academyAddress+'</span><span id="info_'+(index)+'">'
+				+places.academyInfo+'</span></div></div>';
 	}
 	
 	el.innerHTML = itemStr;
@@ -1412,15 +1432,15 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 				
 				if(i==current-5){
 					el.href = "#";
-					el.innerHTML = "< prev";
+					el.innerHTML = "<<";
 					el.onclick = changePage(current-1,length);
 				}else if(i==current+5){
 					el.href = "#";
-					el.innerHTML = "next >";
+					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 				}else if(i>=length+1){
 					el.href = "#";
-					el.innerHTML = "next >";
+					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 					fragment.appendChild(el);
 					break;
@@ -1446,15 +1466,15 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 				
 				if(i==length-9){
 					el.href = "#";
-					el.innerHTML = "< prev";
+					el.innerHTML = "<<";
 					el.onclick = changePage(current-1,length);
 				}else if(i==length+1){
 					el.href = "#";
-					el.innerHTML = "next >";
+					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 				}else if(i>=length+1){
 					el.href = "#";
-					el.innerHTML = "next >";
+					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 					fragment.appendChild(el);
 					break;
@@ -1483,16 +1503,16 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 			
 			if(i==0){
 				el.href = "#";
-				el.innerHTML ="< prev";
+				el.innerHTML ="<<";
 				el.onclick = changePage(current-1,length);
 			}else if(i==10){
 				el.href = "#";
-				el.innerHTML = "next >";
+				el.innerHTML = ">>";
 				el.onclick = changePage(current+1,length);
 
 			}else if(i>=length+1){
 				el.href = "#";
-				el.innerHTML = "next >";
+				el.innerHTML = ">>";
 				el.onclick = changePage(current+1,length);
 				
 				fragment.appendChild(el);
@@ -1545,3 +1565,61 @@ function gotoDivision(high,middle){
 	window.location="map.do?highDivision="+highDivision+"&middleDivision="+middleDivision;
 }
 
+////////////////////////////////test///////////////////////////////////////
+
+$(".mm").click(function(){
+	//highDivision = $(this).text();
+	//middleDivision=middle;
+	
+	var tt=$(this).text();
+	alert(tt);
+});
+
+$(".mmm").click(function(){
+	//highDivision = $(this).text();
+	//middleDivision=middle;
+	
+	var tt=$(this).text();
+	var ttt=$(this).parent().text();
+	alert(ttt);
+});
+
+
+/////////////////////////////tab 구성////////////////////////////////////////////////////////
+
+
+
+/*주메뉴*/
+var $devWidth;
+var $limitSize=768;
+$(document).ready(function() {
+/* 디바이스 사이즈 체크 */
+$devWidth=$("body").width();
+$(window).resize(function(){
+	$devWidth=$("body").width();
+})
+
+	$(".gnblist > li > div ").bind("mouseover",function() {
+		  if($devWidth <$limitSize) return false;
+			$(".gnblist ul").hide();
+			$(this).next().show();
+			$(this).css("background-color","#3FF");
+
+			$(".gnblist > li > div").css({
+				'height':'29px',
+				'background':'none'
+			});
+
+			$(this).css('height','32px');
+			$(this).css('background','url("images/over_icon.gif") no-repeat center bottom');
+	});
+
+	$("#gnb").mouseleave(function(){
+			if($devWidth <$limitSize) return false;
+			$(".gnblist ul").stop().slideUp(50);
+			$(".gnblist > li > div").css({
+				'height':'29px',
+				'background':'none'
+			});
+	})
+});

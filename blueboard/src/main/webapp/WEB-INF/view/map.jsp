@@ -12,7 +12,6 @@
 <title>배우러 가는길 지도</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script type="text/javascript" src="<c:url value='/js/academy.js'/>"></script>
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/map2.css'/>" />
@@ -94,9 +93,9 @@
 					<li onclick="gotoDivision('외국어','스페인어')">스페인어</li>
 					<li onclick="gotoDivision('외국어','기타언어')">기타언어</li>
 				</ul></li>
-			<li class="m m4" ><div class="mm" onclick="gotoDivision('스포츠','')">스포츠</div>
+			<li class="m m4" ><div class="mm">스포츠</div>
 				<ul>
-					<li onclick="gotoDivision('스포츠','피트니스')">피트니스</li>
+					<li class="mmm">피트니스</li>
 					<li onclick="gotoDivision('스포츠','요가')">요가</li>
 					<li onclick="gotoDivision('스포츠','필라테스')">필라테스</li>
 					<li onclick="gotoDivision('스포츠','태권도')">태권도</li>

@@ -1,5 +1,4 @@
 
-
 /*주메뉴*/
 var $devWidth;
 var $limitSize=768;
@@ -9,16 +8,22 @@ $devWidth=$("body").width();
 $(window).resize(function(){
 	$devWidth=$("body").width();
 })
+	
 
-	$(".gnblist > li > div ").bind("mouseover",function() {
+	$(".gnblist > li > a ").bind("mouseover",function() {
 		  if($devWidth <$limitSize) return false;
 			$(".gnblist ul").hide();
 			$(this).next().show();
-			$(this).css("background-color","#3FF");
+			$(this).css("background-color","#0C3");
+			
 
-			$(".gnblist > li > div").css({
+			$(".gnblist > li > a").css({
 				'height':'29px',
-				'background':'none'
+				'background':'none',
+			});
+			$(".gnblist2 > li ").css({
+				'height':'29px',
+				'background-color':'rgba(255,192,0,1.0)'
 			});
 
 			$(this).css('height','32px');
@@ -29,9 +34,10 @@ $(window).resize(function(){
 	$("#gnb").mouseleave(function(){
 			if($devWidth <$limitSize) return false;
 			$(".gnblist ul").stop().slideUp(50);
-			$(".gnblist > li > div").css({
+			$(".gnblist > li > a").css({
 				'height':'29px',
-				'background':'none'
+				'background':'none',
+				
 			});
 	})
 
@@ -66,7 +72,7 @@ $(window).resize(function(){
 
 	
 
-/*click&touch 슬라이드 배너*/
+/*click&touch 슬라이드 배너
 	var $bnnNum=0;
 	
 	$(".prev").click(function(){
@@ -94,5 +100,5 @@ $(window).resize(function(){
 	$(window).bind("orientationchange",function(e){
 			$book_w =$("#recomm_book").width();
 			$("#book_frame").animate({left:-$book_w*$bnnNum},300);
-	});
+	});*/
 });
