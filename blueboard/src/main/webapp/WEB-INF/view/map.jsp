@@ -48,9 +48,9 @@
 
 	<div id="gnb">
 		<ul class="gnblist">
-			<li class="m m1"><div class="mm" onclick="gotoDivision('유아/초등','')">유아/초등</div>
+			<li class="m m1"><div class="high">유아/초등</div>
 				<ul class="gnblist2">
-					<li onclick="gotoDivision('유아/초등','초등')">초등 <!--<ul>
+					<li class="middle">초등 <!--<ul>
                     	<li><a href="#">국어</a></li>
                         <li><a href="#">영어</a></li>
                         <li><a href="#">수학</a></li>
@@ -59,7 +59,7 @@
                         <li><a href="#">논술</a></li>
                         <li><a href="#">예체능</a></li>
                     </ul>--></li>
-					<li onclick="gotoDivision('유아/초등','영재교육')">영재교육 <!--<ul>
+					<li class="middle">영재교육 <!--<ul>
                     	<li><a href="#">국어</a></li>
                         <li><a href="#">영어</a></li>
                         <li><a href="#">수학</a></li>
@@ -68,7 +68,7 @@
                         <li><a href="#">논술</a></li>
                         <li><a href="#">예체능</a></li>
                     </ul>--></li>
-					<li onclick="gotoDivision('유아/초등','유아')">유아 <!-- <ul>
+					<li class="middle">유아 <!-- <ul>
                     	<li><a href="#">국어</a></li>
                         <li><a href="#">영어</a></li>
                         <li><a href="#">수학</a></li>
@@ -79,54 +79,54 @@
                     </ul>--></li>
 				</ul></li>
 
-			<li class="m m2" ><div class="mm" onclick="gotoDivision('내신/입시','')">내신/입시</div>
+			<li class="m m2" ><div class="high">내신/입시</div>
 				<ul class="gnblist2">
-					<li onclick="gotoDivision('내신/입시','고등')">고등</li>
-					<li onclick="gotoDivision('내신/입시','논술')">논술</li>
-					<li onclick="gotoDivision('내신/입시','중등')">중등</li>
+					<li class="middle">고등</li>
+					<li class="middle">논술</li>
+					<li class="middle">중등</li>
 				</ul></li>
-			<li class="m m3" ><div class="mm" onclick="gotoDivision('외국어','')">외국어</div>
+			<li class="m m3" ><div class="high">외국어</div>
 				<ul class="gnblist2">
-					<li onclick="gotoDivision('외국어','영어')">영어</li>
-					<li onclick="gotoDivision('외국어','중국어')">중국어</li>
-					<li onclick="gotoDivision('외국어','일본어')">일본어</li>
-					<li onclick="gotoDivision('외국어','스페인어')">스페인어</li>
-					<li onclick="gotoDivision('외국어','기타언어')">기타언어</li>
+					<li class="middle">영어</li>
+					<li class="middle">중국어</li>
+					<li class="middle">일본어</li>
+					<li class="middle">스페인어</li>
+					<li class="middle">기타언어</li>
 				</ul></li>
-			<li class="m m4" ><div class="mm">스포츠</div>
+			<li class="m m4" ><div class="high">스포츠</div>
 				<ul>
-					<li class="mmm">피트니스</li>
-					<li onclick="gotoDivision('스포츠','요가')">요가</li>
-					<li onclick="gotoDivision('스포츠','필라테스')">필라테스</li>
-					<li onclick="gotoDivision('스포츠','태권도')">태권도</li>
-					<li onclick="gotoDivision('스포츠','수영')">수영</li>
-					<li onclick="gotoDivision('스포츠','댄스/무용')">댄스/무용</li>
-					<li onclick="gotoDivision('스포츠','격투가')">격투기</li>
-					<li onclick="gotoDivision('스포츠','기타')">기타</li>
+					<li class="middle">피트니스</li>
+					<li class="middle">요가</li>
+					<li class="middle">필라테스</li>
+					<li class="middle">태권도</li>
+					<li class="middle">수영</li>
+					<li class="middle">댄스/무용</li>
+					<li class="middle">격투기</li>
+					<li class="middle">기타</li>
 				</ul></li>
-			<li class="m m5" ><div class="mm" onclick="gotoDivision('음악/미술','')">음악/미술</div>
+			<li class="m m5" ><div class="high">음악/미술</div>
 				<ul class="gnblist2">
-					<li onclick="gotoDivision('음악/미술','보컬')">보컬</li>
-					<li onclick="gotoDivision('음악/미술','작곡/작사')">작곡/작사</li>
-					<li onclick="gotoDivision('음악/미술','악기')">악기</li>
-					<li onclick="gotoDivision('음악/미술','미술')">미술</li>
+					<li class="middle">보컬</li>
+					<li class="middle">작곡/작사</li>
+					<li class="middle">악기</li>
+					<li class="middle">미술</li>
 				</ul></li>
-			<li class="m m6" ><div class="mm" onclick="gotoDivision('여가생활','')">여가생활</div>
+			<li class="m m6" ><div class="high">여가생활</div>
 				<ul class="gnblist2">
-					<li onclick="gotoDivision('여가생활','DIY가구')">DIY가구</li>
-					<li onclick="gotoDivision('여가생활','가죽공예')">가죽공예</li>
-					<li onclick="gotoDivision('여가생활','악세사리')">악세사리</li>
-					<li onclick="gotoDivision('여가생활','요리/베이킹')">요리/베이킹</li>
-					<li onclick="gotoDivision('여가생활','기타')">기타</li>
+					<li class="middle">DIY가구</li>
+					<li class="middle">가죽공예</li>
+					<li class="middle">악세사리</li>
+					<li class="middle">요리/베이킹</li>
+					<li class="middle">기타</li>
 				</ul></li>
-			<li class="m m7" ><div class="mm" onclick="gotoDivision('직업교육','')">직업교육</div>
+			<li class="m m7" ><div class="high">직업교육</div>
 				<ul class="gnblist2">
-					<li onclick="gotoDivision('직업교육','공무원시험')">공무원시험</li>
-					<li onclick="gotoDivision('직업교육','컴퓨터')">컴퓨터</li>
-					<li onclick="gotoDivision('직업교육','CPA')">CPA</li>
-					<li onclick="gotoDivision('직업교육','공인중개사')">공인중개사</li>
-					<li onclick="gotoDivision('직업교육','기타')">기타</li>
-					<li onclick="gotoDivision('직업교육','방송')">방송</li>
+					<li class="middle">공무원시험</li>
+					<li class="middle">컴퓨터</li>
+					<li class="middle">CPA</li>
+					<li class="middle">공인중개사</li>
+					<li class="middle">기타</li>
+					<li class="middle">방송</li>
 				</ul></li>
 			<div id="item">
 				<a class="mm" href="#">관심항목</a>

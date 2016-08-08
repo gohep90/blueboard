@@ -1559,31 +1559,19 @@ function test(){
 
 
 /////////////////////////// 분류 누를때 이동!! //////////////////////////////
-function gotoDivision(high,middle){
-	highDivision=high;
-	middleDivision=middle;
+
+$(".high").click(function(){
+	highDivision = $(this).text();
+	middleDivision='';
 	window.location="map.do?highDivision="+highDivision+"&middleDivision="+middleDivision;
-}
-
-////////////////////////////////test///////////////////////////////////////
-
-$(".mm").click(function(){
-	//highDivision = $(this).text();
-	//middleDivision=middle;
-	
-	var tt=$(this).text();
-	alert(tt);
 });
 
-$(".mmm").click(function(){
-	//highDivision = $(this).text();
-	//middleDivision=middle;
+$(".middle").click(function(){
+	highDivision = $(this).parent().parent().children('div').text();
+	middleDivision=$(this).text();
 	
-	var tt=$(this).text();
-	var ttt=$(this).parent().text();
-	alert(ttt);
+	window.location="map.do?highDivision="+highDivision+"&middleDivision="+middleDivision;
 });
-
 
 /////////////////////////////tab 구성////////////////////////////////////////////////////////
 

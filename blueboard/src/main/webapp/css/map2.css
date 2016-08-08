@@ -88,12 +88,12 @@ html, body {width: 100%; height: 100%; overflow: hidden; margin:0;}
 #gnb  ul { float:left; box-shadow:0px 2px 4px rgba(0,0,0,0.1); text-align:center;list-style-type: none; margin: 0;}
 #gnb li { float:left;  width:150px; border-right: 1px solid #818181; height:39px; text-align:center;  margin-right:1px; cursor: pointer;}
 #gnb li:first-child {border-left:1px solid #818181;}
-#gnb li .mm { float:left; width:150px; height:29px; text-align:center; padding-top:10px; color: #ffffff;  text-decoration: none; }
+#gnb li .high { float:left; width:150px; height:29px; text-align:center; font-weight:bold; padding-top:10px; color: #ffffff;  text-decoration: none; }
 #gnb li:hover {background-color: #FFC000;}
 #gnb li ul { display:none; position:relative; right:0px; text-align:center; }
 #gnb li ul li { border: solid 1px #818181; background:#fff;  text-align:center;  padding-top:10px; height:30px;} /*드랍다운 메뉴 CSS*/
 /*네비게이션 바 누를시 나오는것*/
-#gnb li ul li:hover {color:#ffffff; cursor: pointer;}
+#gnb li ul li:hover {color:#ffffff; cursor: pointer; font-weight:bold;}
 #item {position:absolute; right:20px;float:left; padding-top:11px; text-align:center; font-size:13px; width:80px; height:29px;}
 #item a{ color:#ffffff;}
 
