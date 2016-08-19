@@ -6,10 +6,12 @@
 	<select id="selectFirstEdu" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			 	a.*, u.userLike
 			FROM
-			    academy
+			    academy a,user u
 			WHERE
+				a.userId = u.Id
+			AND
 				highDivision1=#{highDivision}
 			ORDER BY big desc
 		]]>
@@ -18,10 +20,12 @@
 	<select id="selectFirstEduDiv" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+				 a.*, u.userLike
 			FROM
-			    academy
+			    academy a,user u
 			WHERE
+				a.userId = u.Id
+			AND
 				highDivision1=#{highDivision}
 			AND
 				middleDivision1 =#{middleDivision}
@@ -32,10 +36,12 @@
 	<select id="selectEduList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			   a.*, u.userLike
 			FROM
-			    academy
+			    academy a,user u
 			WHERE
+				a.userId = u.Id
+			AND
 				highDivision1=#{highDivision}
 			AND
 				academyAddress like concat('%',#{gu},'%')

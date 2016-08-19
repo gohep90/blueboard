@@ -4,6 +4,8 @@ var gu ='';
 var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
 
+var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
+var maxLike=0;
 
 // 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
 var areas = [
@@ -1041,9 +1043,22 @@ function startData(high,middle) { //초기 조건을
 			alert(e);
 		},
 		success : function(data) {
-			//noCommend=0;	//추천학원 일반학원 초기화!!
-	    	//bigCommend=0;
-			
+
+			////////////faceBook 추천///////////////////////////
+			var list=data['positions'];
+	    	var aaa=0;
+	    		
+	   		for(var i=0;i<list.length;i++){
+	    		var temp=compare(myLike,list[i].userLike);
+	    		if(maxLike<temp){
+	    			maxLike=temp;
+	    			aa=list[i].academyId;
+	    		}
+	    	}
+	    	
+	    	alert('max = '+maxLike);
+	    	alert('academyId = '+aa);
+			////////////////////////////////////////////////////
 			
 			var oinfo = $(data.positions).map(function(i, position) {
 				
@@ -1105,78 +1120,24 @@ function startData(high,middle) { //초기 조건을
 	});
 }
 
-
-
-
-
-
-// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-//var infowindow = new daum.maps.InfoWindow({zIndex:1});
-
-/*
-function startData(division){
-	alert(division);
-var infos = null; //infowindow를 위해서??
-//데이터를 가져오기 위해 jQuery를 사용합니다
-//데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-$.get("firstEdu.do", function(data) {
-	var oinfo = $(data.positions).map(function(i, position) {
-		
-		var small= '<div class="item"><div class="seq"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
-				+position.academyName+'</h5><span>'
-				+position.academyInfo+'</span><span class="gray">'
-				+position.academyAddress+'</span><span class="tel">'
-				+position.academyTel +'</span></div></div>';
-		
-		var big='<div class="item"><div class="seq"><div class="bigbg"></div><div class="bigInfo"><h5>'
-				+position.academyName+'</h5><span>'
-				+position.academyInfo+'</span><span class="gray">'
-				+position.academyAddress+'</span><span class="tel">'
-				+position.academyTel +'</span></div></div></div>';
-		
-		var temp ="";
-		if(position.big==1)
-			temp=big;
-		else
-			temp=small;
-        
-		return new daum.maps.InfoWindow({
-            position : new daum.maps.LatLng(position.lat, position.lng),
-            content : temp
-        });
-    });
-	infos = oinfo;
-    // 데이터에서 좌표 값을 가지고 마커를 표시합니다
-    // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-    var markers = $(data.positions).map(function(i, position) {
-    	var imageSrc = 'images/marker.png', // 마커이미지의 주소입니다    
-        imageSize = new daum.maps.Size(25, 45), // 마커이미지의 크기입니다
-        imageOption = {offset: new daum.maps.Point(12, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-          
-    	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    	var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
-
-        var omaker = new daum.maps.Marker({
-            position : new daum.maps.LatLng(position.lat, position.lng),
-            image:markerImage
-        });
-        daum.maps.event.addListener(omaker, 'mouseover', function(){
-            infos[i].open(map, omaker );
-        });
-        daum.maps.event.addListener(omaker, 'mouseout', function(){
-            infos[i].close();
-        });
-        return omaker;
-    });
-    // 클러스터러에 마커들을 추가합니다
-    clusterer.addMarkers(markers);
-    gotoPage(1,gu);
-},'json');
-
-
+//좋아요 비교
+function compare(my,teather){
+	var count=0;
+	var strArray = my.split(',');
+	var teatherArray = teather.split(',');
+	
+	for(var i=0;i<strArray.length-1;i++){
+		for(var j=0;j<teatherArray.length-1;j++){
+			if(strArray[i]==teatherArray[j]){
+				count++;
+			}
+		}
+	}
+	//alert('count = '+count);
+	return count;
 }
 
-*/
+
 
 // 확대했을때 이벤트처리를 하기 위해
 // 마커 클러스터러에 클릭이벤트를 등록합니다 
@@ -1214,11 +1175,14 @@ function gotoPage(i) { //page 이동할 때
 			noCommend=0;	//추천학원 일반학원 초기화!!
 	    	bigCommend=0;
 	    	
+	    	
 			displayPlaces(data['positions']); //리스트 출력
 			displayPagination(data['pagination'], i); //리스트 순번
 		}
 	});
 }
+
+
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
