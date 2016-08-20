@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import blue.absolute.dao.abDAO;
 
 @SuppressWarnings("unchecked")
-@Service("service")
+@Service("MapService")
 public class MapService extends abDAO {
 	
 
