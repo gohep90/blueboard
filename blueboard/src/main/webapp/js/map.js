@@ -1321,7 +1321,7 @@ function getListItem(index, places) {
 
 	if(noCommend==0){
 		var el = document.createElement('li'), 
-		itemStr ='<div style="margin: 5px;"><h3 style="margin: 20px; color:#ffffff; font-size:15px;">이 지역  추천</h3></div>'
+		itemStr ='<div style="margin: 5px;"><h3 style="margin: 20px; color:#ffffff; font-size:15px;">이 지역  추천</h3><hr></div> '
 				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy4.jpg" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
@@ -1345,7 +1345,7 @@ function getBigItem(index,places){
 	
 	if(bigCommend==0){
 		var el	=	document.createElement('li'), 
-		itemStr ='<div class="seq" id="seq_'+(index)+'"><div style="margin: 5px;"><h3 id="recommend_'+(index)+'" style="margin: 20px; color:#ffffff; font-size:15px;">스마트 추천</h3></div><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
+		itemStr ='<div class="seq" id="seq_'+(index)+'"><div style="margin: 5px;"><h3 id="recommend_'+(index)+'" style=" margin-bottom:10px; margin-left:20px; color:#ffffff; font-size:15px;">스마트 추천</h3></div><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
 				+places.academyInfo+'</span></div></div>';

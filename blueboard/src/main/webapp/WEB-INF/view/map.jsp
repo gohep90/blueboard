@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/map2.css'/>" />
+	href="<c:url value='/css/map.css'/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/reset.css'/>" />
 <link rel="stylesheet" type="text/css"
@@ -154,7 +154,7 @@
 	</div>
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=7a6be21565c5c8e58c1ab67fb77914cf&libraries=clusterer"></script>
-	<script type="text/javascript" src="<c:url value='/js/map2.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/map.js'/>"></script>
 
 </body>
 </html>
