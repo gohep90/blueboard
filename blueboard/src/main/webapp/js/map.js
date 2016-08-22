@@ -5,7 +5,10 @@ var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
 
 var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
-var maxLike=0;
+var maxLike= new Array(5); //5개 행 만들기
+for(var i=0;i<maxLike.length;i++){
+	maxLike[i] = new Array(2); //각 행에 2개의 열을 만든다
+}
 
 // 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
 var areas = [
@@ -1046,18 +1049,41 @@ function startData(high,middle) { //초기 조건을
 
 			////////////faceBook 추천///////////////////////////
 			var list=data['positions'];
-	    	var aaa=0;
+	    	
+	    	var min=new Array(2); //min={비교값,academyId}
+	    	var tempJ=0;
 	    		
-	   		for(var i=0;i<list.length;i++){
+	   		for(var i=0;i<list.length;i++){ //facebook 추천 상위 5개 추출
 	    		var temp=compare(myLike,list[i].userLike);
-	    		if(maxLike<temp){
-	    			maxLike=temp;
-	    			aa=list[i].academyId;
+	    		if(i<5){
+	    			maxLike[i][0]=temp;
+	    			maxLike[i][1]=list[i].academyId;
+	    		}else{
+	    			min[0]=maxLike[0][0];
+	    			min[1]=maxLike[0][1];
+	    			for(var j=1;j<5;j++){
+	    				if(min[0]>maxLike[j][0]){
+	    					min[0]=maxLike[j][0];
+	    	    			min[1]=maxLike[j][1];
+	    	    			tempJ=j;
+	    				}
+		    		}
+	    			if(min[0]<temp){
+	    				maxLike[tempJ][0]=temp;
+	    				maxLike[tempJ][1]=list[i].academyId;;
+	    			}
 	    		}
 	    	}
+	   		
+	   		maxLike.sort(function(a1,a2){ //5개 내림차순으르 정렬
+	   			a1=parseInt(a1);
+	   			a2=parseInt(a2);
+	   		
+	   			return (a1>a2)? -1:((a1<a2)? 1:0);
+	   		});
 	    	
-	    	alert('max = '+maxLike);
-	    	alert('academyId = '+aa);
+	   		
+	    	alert('maxLike = '+maxLike);
 			////////////////////////////////////////////////////
 			
 			var oinfo = $(data.positions).map(function(i, position) {
@@ -1198,6 +1224,78 @@ function displayPlaces(places) {
 	// 검색 결과 목록에 추가된 항목들을 제거합니다
 	removeAllChildNods(listEl);
 	
+	//큰거 먼저 출력하기 위해서!!
+	for (var i = 0; i < places.length; i++) {
+
+		// 마커를 생성하고 지도에 표시합니다
+		//var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
+		//    marker = addMarker(placePosition, i), 
+		var itemEl2='';
+		
+		if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
+			itemEl2=getBigItem(i,places[i]);
+			bigCommend=1;
+		}else{
+			continue;
+		}
+
+		// 마커와 검색결과 항목에 mouseover 했을때
+		// 해당 장소에 인포윈도우에 장소명을 표시합니다
+		// mouseout 했을 때는 인포윈도우를 닫습니다
+		(function(lat, lng, academyId, i) {
+
+			itemEl2.onmouseover = function() {
+				//displayInfowindow(places);
+				displayOneMarker(marker, lat, lng);
+				var test = document.getElementById('seq_' + i);
+				test.style.backgroundColor = "#FFC000";
+				
+				
+				var name = document.getElementById('name_' + i);
+				name.style.color = "#000000";
+				
+				var address = document.getElementById('address_' + i);
+				address.style.color = "#000000";
+				
+				var info = document.getElementById('info_' + i);
+				info.style.color = "#000000";
+				
+			//	var recommend = document.getElementById('recommend_' + i);
+			//	recommend.style.color = "#000000";
+			};
+
+			itemEl2.onmouseout = function() {
+				
+				// 아래 코드는 인포윈도우를 지도에서 제거합니다
+				//infowindow.close();
+				removeMarker(marker);
+				var test = document.getElementById('seq_' + i);
+				test.style.backgroundColor = "";
+				
+				var name = document.getElementById('name_' + i);
+				name.style.color = "#FFC000";
+				
+				var address = document.getElementById('address_' + i);
+				address.style.color = "#ffffff";
+				
+				var info = document.getElementById('info_' + i);
+				info.style.color = "#ffffff";
+				
+			//	var recommend = document.getElementById('recommend_' + i);
+			//	recommend.style.color = "#ffffff";
+			};
+
+			itemEl2.onclick = function() {
+				//window.location.href="academy.do?year="+year+"&month="+temp;
+				window.open("academy.do?academyId="+academyId ,"_blank"); //이동
+			};
+
+		})(places[i].lat, places[i].lng, places[i].academyId, i);
+
+		fragment.appendChild(itemEl2);
+	}
+	
+	
 	
 	
 	for (var i = 0; i < places.length; i++) {
@@ -1207,17 +1305,13 @@ function displayPlaces(places) {
 		//    marker = addMarker(placePosition, i), 
 		var itemEl='';
 		
-		if(places[i].big==1){
-			itemEl=getBigItem(i,places[i]);
-			bigCommend=1;
+		if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
+			continue;
 		}else{
 			itemEl=getListItem(i,places[i]); // 검색 결과 항목 Element를 생성합니다
 			noCommend=1;
 		}
 
-		// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-		// LatLngBounds 객체에 좌표를 추가합니다
-		// bounds.extend(placePosition);
 
 		// 마커와 검색결과 항목에 mouseover 했을때
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
@@ -1240,8 +1334,6 @@ function displayPlaces(places) {
 				var info = document.getElementById('info_' + i);
 				info.style.color = "#000000";
 				
-				var recommend = document.getElementById('recommend_' + i);
-				recommend.style.color = "#000000";
 			};
 
 			itemEl.onmouseout = function() {
@@ -1261,8 +1353,6 @@ function displayPlaces(places) {
 				var info = document.getElementById('info_' + i);
 				info.style.color = "#ffffff";
 				
-				var recommend = document.getElementById('recommend_' + i);
-				recommend.style.color = "#ffffff";
 			};
 
 			itemEl.onclick = function() {
@@ -1274,6 +1364,9 @@ function displayPlaces(places) {
 
 		fragment.appendChild(itemEl);
 	}
+
+	
+	
 
 	// 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
 	listEl.appendChild(fragment);
@@ -1345,7 +1438,8 @@ function getBigItem(index,places){
 	
 	if(bigCommend==0){
 		var el	=	document.createElement('li'), 
-		itemStr ='<div class="seq" id="seq_'+(index)+'"><div style="margin: 5px;"><h3 id="recommend_'+(index)+'" style=" margin-bottom:10px; margin-left:20px; color:#ffffff; font-size:15px;">스마트 추천</h3></div><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
+		itemStr ='<div style="margin:5px;"><h3 style=" margin-bottom:8px; margin-left:20px; color:#ffffff; font-size:15px;">스마트 추천</h3></div>'
+				+'<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
 				+places.academyInfo+'</span></div></div>';
