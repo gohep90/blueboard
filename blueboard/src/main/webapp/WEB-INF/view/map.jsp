@@ -39,10 +39,8 @@
 		<a href="main.do"><img src="images/logo.png" alt="푸른 칠판" /></a>
 
 		<ul class="util">
-			<li><a href="#">JOIN</a></li>
 			<li><a href="#">LOGIN</a></li>
-			<li><a href="#">SITEMAP</a></li>
-			<li><a href="#">ABOUT US</a></li>
+			<li><a href="#">MY PAGE</a></li>
 		</ul>
 	</div>
 

@@ -3,6 +3,128 @@
 
 <mapper namespace="map">
 
+<select id="selectFirstEdu" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			 	a.*, u.userLike
+			FROM
+			    academy a,user u
+			WHERE
+				a.userId = u.Id
+			AND
+				highDivision1=#{highDivision}
+			ORDER BY big desc
+		]]>
+	</select>
+	
+	<select id="selectFirstEduDiv" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				 a.*, u.userLike
+			FROM
+			    academy a,user u
+			WHERE
+				a.userId = u.Id
+			AND
+				highDivision1=#{highDivision}
+			AND
+				middleDivision1 =#{middleDivision}
+			ORDER BY big desc
+		]]>
+	</select>
+	
+	<select id="selectEduList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy 
+			WHERE
+				highDivision1=#{highDivision}
+			AND
+				academyAddress like concat('%',#{gu},'%')
+			ORDER BY big desc
+			LIMIT
+				#{current},10
+		]]>
+	</select>
+	
+	<select id="selectFirstEduList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy
+			WHERE
+				highDivision1=#{highDivision}
+			AND
+				academyAddress like concat('%',#{gu},'%')
+			ORDER BY big desc
+		]]>
+	</select>
+	
+	<select id="selectEduListDiv" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy
+			WHERE
+				highDivision1=#{highDivision}
+			AND
+				middleDivision1 =#{middleDivision}
+			AND
+				academyAddress like concat('%',#{gu},'%')
+			ORDER BY big desc
+			LIMIT
+				#{current},10
+		]]>
+	</select>
+	
+	<select id="selectFirstEduListDiv" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy
+			WHERE
+				highDivision1=#{highDivision}
+			AND
+				middleDivision1 =#{middleDivision}
+			AND
+				academyAddress like concat('%',#{gu},'%')
+			ORDER BY big desc
+		]]>
+	</select>
+	
+	
+	<select id="selectCount" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   count(*) as last
+			FROM
+			    academy
+			WHERE
+				highDivision1=#{highDivision}
+			AND
+				academyAddress like concat('%',#{gu},'%')
+		]]>
+	</select>
+	
+	<select id="selectCountDiv" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   count(*) as last
+			FROM
+			    academy
+			WHERE
+				highDivision1=#{highDivision}
+			AND
+				middleDivision1 =#{middleDivision}
+			AND
+				academyAddress like concat('%',#{gu},'%')
+		]]>
+	</select>
 	
 	
 	

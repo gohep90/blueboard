@@ -1117,9 +1117,9 @@ function startData(high,middle) { //초기 조건을
 		    // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
 		    var markers = $(data.positions).map(function(i, position) {
 		    	
-		    	var imageSrc = 'images/marker.png', // 마커이미지의 주소입니다    
-		        imageSize = new daum.maps.Size(25, 45), // 마커이미지의 크기입니다
-		        imageOption = {offset: new daum.maps.Point(12, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		    	var imageSrc = 'images/skyblue_marker.png', // 마커이미지의 주소입니다    
+		        imageSize = new daum.maps.Size(35, 50), // 마커이미지의 크기입니다
+		        imageOption = {offset: new daum.maps.Point(17, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		          
 		    	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 		    	var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
@@ -1182,6 +1182,7 @@ daum.maps.event.addListener(clusterer, 'clusterclick',
 
 
 function gotoPage(i) { //page 이동할 때
+
 	$.ajax({
 		type : "POST",
 		url : "eduJson.do",
@@ -1201,17 +1202,17 @@ function gotoPage(i) { //page 이동할 때
 			noCommend=0;	//추천학원 일반학원 초기화!!
 	    	bigCommend=0;
 	    	
-	    	
-			displayPlaces(data['positions']); //리스트 출력
+			displayPlaces(data['positions'],i); //리스트 출력
 			displayPagination(data['pagination'], i); //리스트 순번
 		}
 	});
+	
 }
 
 
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
-function displayPlaces(places) {
+function displayPlaces(places,current) {
 
 	var listEl = document.getElementById('placesList'), 
 		menuEl = document.getElementById('menu_wrap'), 
@@ -1224,150 +1225,214 @@ function displayPlaces(places) {
 	// 검색 결과 목록에 추가된 항목들을 제거합니다
 	removeAllChildNods(listEl);
 	
-	//큰거 먼저 출력하기 위해서!!
-	for (var i = 0; i < places.length; i++) {
-
-		// 마커를 생성하고 지도에 표시합니다
-		//var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
-		//    marker = addMarker(placePosition, i), 
-		var itemEl2='';
-		
-		if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
-			itemEl2=getBigItem(i,places[i]);
-			bigCommend=1;
-		}else{
-			continue;
+	if(current==1){ //첫번째 페이지에서 큰거 작은거 구분
+		//큰거 먼저 출력하기 위해서!!
+		for (var i = 0; i < places.length; i++) {
+	
+			// 마커를 생성하고 지도에 표시합니다
+			//var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
+			//    marker = addMarker(placePosition, i), 
+			var itemEl='';
+			
+			if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
+				itemEl=getBigItem(i,places[i]);
+				bigCommend=1;
+			}else{
+				continue;
+			}
+	
+			// 마커와 검색결과 항목에 mouseover 했을때
+			// 해당 장소에 인포윈도우에 장소명을 표시합니다
+			// mouseout 했을 때는 인포윈도우를 닫습니다
+			(function(lat, lng, academyId, i) {
+	
+				itemEl.onmouseover = function() {
+					//displayInfowindow(places);
+					displayOneMarker(marker, lat, lng);
+					var test = document.getElementById('seq_' + i);
+					test.style.backgroundColor = "#FFC000";
+					
+					
+					var name = document.getElementById('name_' + i);
+					name.style.color = "#000000";
+					
+					var address = document.getElementById('address_' + i);
+					address.style.color = "#000000";
+					
+					var info = document.getElementById('info_' + i);
+					info.style.color = "#000000";
+					
+				//	var recommend = document.getElementById('recommend_' + i);
+				//	recommend.style.color = "#000000";
+				};
+	
+				itemEl.onmouseout = function() {
+					
+					// 아래 코드는 인포윈도우를 지도에서 제거합니다
+					//infowindow.close();
+					removeMarker(marker);
+					var test = document.getElementById('seq_' + i);
+					test.style.backgroundColor = "";
+					
+					var name = document.getElementById('name_' + i);
+					name.style.color = "#FFC000";
+					
+					var address = document.getElementById('address_' + i);
+					address.style.color = "#ffffff";
+					
+					var info = document.getElementById('info_' + i);
+					info.style.color = "#ffffff";
+					
+				//	var recommend = document.getElementById('recommend_' + i);
+				//	recommend.style.color = "#ffffff";
+				};
+	
+				itemEl.onclick = function() {
+					//window.location.href="academy.do?year="+year+"&month="+temp;
+					window.open("academy.do?academyId="+academyId ,"_blank"); //이동
+				};
+	
+			})(places[i].lat, places[i].lng, places[i].academyId, i);
+	
+			fragment.appendChild(itemEl);
 		}
+		
+		var count=10;
+		if(places.length<10)
+			count=places.length;
+		
+		//작은거 나머지 출력!!
+		for (var i = 0; i < count; i++) {
+			// 마커를 생성하고 지도에 표시합니다
+			//var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
+			//    marker = addMarker(placePosition, i), 
+			var itemEl='';
+			
+			if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
+				continue;
+			}else{
+				itemEl=getListItem(i,places[i]); // 검색 결과 항목 Element를 생성합니다
+				noCommend=1;
+			}
+			// 마커와 검색결과 항목에 mouseover 했을때
+			// 해당 장소에 인포윈도우에 장소명을 표시합니다
+			// mouseout 했을 때는 인포윈도우를 닫습니다
+			(function(lat, lng, academyId, i) {
+	
+				itemEl.onmouseover = function() {
+					//displayInfowindow(places);
+					displayOneMarker(marker, lat, lng);
+					var test = document.getElementById('seq_' + i);
+					test.style.backgroundColor = "#FFC000";
+					
+					
+					var name = document.getElementById('name_' + i);
+					name.style.color = "#000000";
+					
+					var address = document.getElementById('address_' + i);
+					address.style.color = "#000000";
+					
+					var info = document.getElementById('info_' + i);
+					info.style.color = "#000000";
+				};
+	
+				itemEl.onmouseout = function() {
+					
+					// 아래 코드는 인포윈도우를 지도에서 제거합니다
+					//infowindow.close();
+					removeMarker(marker);
+					var test = document.getElementById('seq_' + i);
+					test.style.backgroundColor = "";
+					
+					var name = document.getElementById('name_' + i);
+					name.style.color = "#FFC000";
+					
+					var address = document.getElementById('address_' + i);
+					address.style.color = "#ffffff";
+					
+					var info = document.getElementById('info_' + i);
+					info.style.color = "#ffffff";
+					
+				};
+	
+				itemEl.onclick = function() {
+					//window.location.href="academy.do?year="+year+"&month="+temp;
+					window.open("academy.do?academyId="+academyId ,"_blank"); //이동
+				};
+	
+			})(places[i].lat, places[i].lng, places[i].academyId, i);
+	
+			fragment.appendChild(itemEl);
+		}
+	}else{ //2번째 이후 페이지부터 작은거만 
+		
+		//작은거 나머지 출력!!
+		for (var i = 0; i < places.length; i++) {
+			// 마커를 생성하고 지도에 표시합니다
+			//var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
+			//    marker = addMarker(placePosition, i), 
+			var itemEl='';
+			
+			if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
+				continue;
+			}else{
+				itemEl=getListItem(i,places[i]); // 검색 결과 항목 Element를 생성합니다
+				noCommend=1;
+			}
+			// 마커와 검색결과 항목에 mouseover 했을때
+			// 해당 장소에 인포윈도우에 장소명을 표시합니다
+			// mouseout 했을 때는 인포윈도우를 닫습니다
+			(function(lat, lng, academyId, i) {
 
-		// 마커와 검색결과 항목에 mouseover 했을때
-		// 해당 장소에 인포윈도우에 장소명을 표시합니다
-		// mouseout 했을 때는 인포윈도우를 닫습니다
-		(function(lat, lng, academyId, i) {
+				itemEl.onmouseover = function() {
+					//displayInfowindow(places);
+					displayOneMarker(marker, lat, lng);
+					var test = document.getElementById('seq_' + i);
+					test.style.backgroundColor = "#FFC000";
+					
+					
+					var name = document.getElementById('name_' + i);
+					name.style.color = "#000000";
+					
+					var address = document.getElementById('address_' + i);
+					address.style.color = "#000000";
+					
+					var info = document.getElementById('info_' + i);
+					info.style.color = "#000000";
+				};
 
-			itemEl2.onmouseover = function() {
-				//displayInfowindow(places);
-				displayOneMarker(marker, lat, lng);
-				var test = document.getElementById('seq_' + i);
-				test.style.backgroundColor = "#FFC000";
-				
-				
-				var name = document.getElementById('name_' + i);
-				name.style.color = "#000000";
-				
-				var address = document.getElementById('address_' + i);
-				address.style.color = "#000000";
-				
-				var info = document.getElementById('info_' + i);
-				info.style.color = "#000000";
-				
-			//	var recommend = document.getElementById('recommend_' + i);
-			//	recommend.style.color = "#000000";
-			};
+				itemEl.onmouseout = function() {
+					
+					// 아래 코드는 인포윈도우를 지도에서 제거합니다
+					//infowindow.close();
+					removeMarker(marker);
+					var test = document.getElementById('seq_' + i);
+					test.style.backgroundColor = "";
+					
+					var name = document.getElementById('name_' + i);
+					name.style.color = "#FFC000";
+					
+					var address = document.getElementById('address_' + i);
+					address.style.color = "#ffffff";
+					
+					var info = document.getElementById('info_' + i);
+					info.style.color = "#ffffff";
+					
+				};
 
-			itemEl2.onmouseout = function() {
-				
-				// 아래 코드는 인포윈도우를 지도에서 제거합니다
-				//infowindow.close();
-				removeMarker(marker);
-				var test = document.getElementById('seq_' + i);
-				test.style.backgroundColor = "";
-				
-				var name = document.getElementById('name_' + i);
-				name.style.color = "#FFC000";
-				
-				var address = document.getElementById('address_' + i);
-				address.style.color = "#ffffff";
-				
-				var info = document.getElementById('info_' + i);
-				info.style.color = "#ffffff";
-				
-			//	var recommend = document.getElementById('recommend_' + i);
-			//	recommend.style.color = "#ffffff";
-			};
+				itemEl.onclick = function() {
+					//window.location.href="academy.do?year="+year+"&month="+temp;
+					window.open("academy.do?academyId="+academyId ,"_blank"); //이동
+				};
 
-			itemEl2.onclick = function() {
-				//window.location.href="academy.do?year="+year+"&month="+temp;
-				window.open("academy.do?academyId="+academyId ,"_blank"); //이동
-			};
+			})(places[i].lat, places[i].lng, places[i].academyId, i);
 
-		})(places[i].lat, places[i].lng, places[i].academyId, i);
-
-		fragment.appendChild(itemEl2);
+			fragment.appendChild(itemEl);
+		}
 	}
 	
-	
-	
-	
-	for (var i = 0; i < places.length; i++) {
-
-		// 마커를 생성하고 지도에 표시합니다
-		//var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
-		//    marker = addMarker(placePosition, i), 
-		var itemEl='';
-		
-		if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
-			continue;
-		}else{
-			itemEl=getListItem(i,places[i]); // 검색 결과 항목 Element를 생성합니다
-			noCommend=1;
-		}
-
-
-		// 마커와 검색결과 항목에 mouseover 했을때
-		// 해당 장소에 인포윈도우에 장소명을 표시합니다
-		// mouseout 했을 때는 인포윈도우를 닫습니다
-		(function(lat, lng, academyId, i) {
-
-			itemEl.onmouseover = function() {
-				//displayInfowindow(places);
-				displayOneMarker(marker, lat, lng);
-				var test = document.getElementById('seq_' + i);
-				test.style.backgroundColor = "#FFC000";
-				
-				
-				var name = document.getElementById('name_' + i);
-				name.style.color = "#000000";
-				
-				var address = document.getElementById('address_' + i);
-				address.style.color = "#000000";
-				
-				var info = document.getElementById('info_' + i);
-				info.style.color = "#000000";
-				
-			};
-
-			itemEl.onmouseout = function() {
-				
-				// 아래 코드는 인포윈도우를 지도에서 제거합니다
-				//infowindow.close();
-				removeMarker(marker);
-				var test = document.getElementById('seq_' + i);
-				test.style.backgroundColor = "";
-				
-				var name = document.getElementById('name_' + i);
-				name.style.color = "#FFC000";
-				
-				var address = document.getElementById('address_' + i);
-				address.style.color = "#ffffff";
-				
-				var info = document.getElementById('info_' + i);
-				info.style.color = "#ffffff";
-				
-			};
-
-			itemEl.onclick = function() {
-				//window.location.href="academy.do?year="+year+"&month="+temp;
-				window.open("academy.do?academyId="+academyId ,"_blank"); //이동
-			};
-
-		})(places[i].lat, places[i].lng, places[i].academyId, i);
-
-		fragment.appendChild(itemEl);
-	}
 
 	
-	
-
 	// 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
 	listEl.appendChild(fragment);
 	menuEl.scrollTop = 0;
@@ -1382,10 +1447,10 @@ function displayPlaces(places) {
 // map에 마커를 표시합니다
 function displayOneMarker(maker, lat, lng) {
 	///////////////////////////////////////클릭시 위치 알려주기!!////////////////////////////////////////////////
-	var imageSrc = 'http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-	imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
+	var imageSrc = 'images/yello_marker.png', // 마커이미지의 주소입니다    
+	imageSize = new daum.maps.Size(35, 50), // 마커이미지의 크기입니다
 	imageOption = {
-		offset : new daum.maps.Point(27, 69)
+		offset : new daum.maps.Point(17, 45)
 	}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
