@@ -16,8 +16,6 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/map.css'/>" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/reset.css'/>" />
-<link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/base.css'/>" />
 
 </head>
@@ -36,54 +34,31 @@
 <body onload="startData('<%=highDivision%>','<%=middleDivision%>')">
 
 	<div class="logo">
-		<a href="main.do"><img src="images/logo.png" alt="푸른 칠판" /></a>
-
+		<a href="main.do"><img src="images/logo.png"/></a>
 		<ul class="util">
-			<li><a href="#">LOGIN</a></li>
+			<li><a href="login.do">LOGIN</a></li>
 			<li><a href="#">MY PAGE</a></li>
 		</ul>
+		<hr>
+		<a class="interest">관심 항목</a>
 	</div>
-
+	
 	<div id="gnb">
 		<ul class="gnblist">
-			<li class="m m1"><div class="high">유아/초등</div>
+			<li class="highLi"><div class="high">유아/초등</div>
 				<ul class="gnblist2">
-					<li class="middle">초등 <!--<ul>
-                    	<li><a href="#">국어</a></li>
-                        <li><a href="#">영어</a></li>
-                        <li><a href="#">수학</a></li>
-                        <li><a href="#">사회/과학</a></li>
-                        <li><a href="#">제2외국어</a></li>
-                        <li><a href="#">논술</a></li>
-                        <li><a href="#">예체능</a></li>
-                    </ul>--></li>
-					<li class="middle">영재교육 <!--<ul>
-                    	<li><a href="#">국어</a></li>
-                        <li><a href="#">영어</a></li>
-                        <li><a href="#">수학</a></li>
-                        <li><a href="#">사회/과학</a></li>
-                        <li><a href="#">제2외국어</a></li>
-                        <li><a href="#">논술</a></li>
-                        <li><a href="#">예체능</a></li>
-                    </ul>--></li>
-					<li class="middle">유아 <!-- <ul>
-                    	<li><a href="#">국어</a></li>
-                        <li><a href="#">영어</a></li>
-                        <li><a href="#">수학</a></li>
-                        <li><a href="#">사회/과학</a></li>
-                        <li><a href="#">제2외국어</a></li>
-                        <li><a href="#">논술</a></li>
-                        <li><a href="#">예체능</a></li>
-                    </ul>--></li>
+					<li class="middle">초등 </li>
+					<li class="middle">영재교육 </li>
+					<li class="middle">유아 </li>
 				</ul></li>
 
-			<li class="m m2" ><div class="high">내신/입시</div>
+			<li class="highLi" ><div class="high">내신/입시</div>
 				<ul class="gnblist2">
 					<li class="middle">고등</li>
 					<li class="middle">논술</li>
 					<li class="middle">중등</li>
 				</ul></li>
-			<li class="m m3" ><div class="high">외국어</div>
+			<li class="highLi" ><div class="high">외국어</div>
 				<ul class="gnblist2">
 					<li class="middle">영어</li>
 					<li class="middle">중국어</li>
@@ -91,7 +66,7 @@
 					<li class="middle">스페인어</li>
 					<li class="middle">기타언어</li>
 				</ul></li>
-			<li class="m m4" ><div class="high">스포츠</div>
+			<li class="highLi" ><div class="high">스포츠</div>
 				<ul>
 					<li class="middle">피트니스</li>
 					<li class="middle">요가</li>
@@ -102,14 +77,14 @@
 					<li class="middle">격투기</li>
 					<li class="middle">기타</li>
 				</ul></li>
-			<li class="m m5" ><div class="high">음악/미술</div>
+			<li class="highLi" ><div class="high">음악/미술</div>
 				<ul class="gnblist2">
 					<li class="middle">보컬</li>
 					<li class="middle">작곡/작사</li>
 					<li class="middle">악기</li>
 					<li class="middle">미술</li>
 				</ul></li>
-			<li class="m m6" ><div class="high">여가생활</div>
+			<li class="highLi" ><div class="high">여가생활</div>
 				<ul class="gnblist2">
 					<li class="middle">DIY가구</li>
 					<li class="middle">가죽공예</li>
@@ -117,7 +92,7 @@
 					<li class="middle">요리/베이킹</li>
 					<li class="middle">기타</li>
 				</ul></li>
-			<li class="m m7" ><div class="high">직업교육</div>
+			<li class="highLi" ><div class="high">직업교육</div>
 				<ul class="gnblist2">
 					<li class="middle">공무원시험</li>
 					<li class="middle">컴퓨터</li>
@@ -126,9 +101,6 @@
 					<li class="middle">기타</li>
 					<li class="middle">방송</li>
 				</ul></li>
-			<div id="item">
-				<a class="mm" href="#">관심항목</a>
-			</div>
 		</ul>
 	</div>
 

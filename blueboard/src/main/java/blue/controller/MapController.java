@@ -63,8 +63,6 @@ public class MapController {
 			}
 			
 			
-			
-			
 			//json eduList
 			@RequestMapping(value="/eduJson.do")
 			public ModelAndView eduJson(Map<String, Object> Map,HttpServletRequest request)throws Exception {

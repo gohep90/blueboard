@@ -1,11 +1,18 @@
 @charset "utf-8";
 
-html, body {width: 100%; height: 100%; overflow: hidden; margin:0;}
+html, body {width: 100%; height: 100%; overflow: hidden; margin:0; padding:0; font-family:'NGothic';}
+
+/* 지도위 구 표시 */
 .area {position: absolute; background: #fff; border: 1px solid #888; border-radius: 3px; font-size: 12px; top: -5px; left: 15px; padding:2px;}
 
+
 /* 상단 바   */
-.logo{position:relative; width:100%; height:70px; padding:5px 0px 0px 20px; background-color:#595959;}
-.util { position:absolute; right:70px; top:35px; font-size:15px;font-weight:bold; }
+.logo{position:relative; width:100%; height:90px; background-color:#595959;}
+.logo img{margin:10px 0px 0px 20px; height:50px;}
+.logo hr { border: dotted 1px white; margin:6px 20px 0px 20px;}
+.logo .interest {position:absolute; right:35px; top:85px; color:#ffffff; font-size:13px;font-weight:bold; z-index:11; }
+.logo .interest:hover{color:#FFC000;}
+.util { position:absolute; right:50px; top:30px; font-size:15px;font-weight:bold; }
 .util a{color:#ffffff;}
 .util a:hover{color:#FFC000;}
 .util li { display:inline; padding-left:40px; }
@@ -84,17 +91,16 @@ html, body {width: 100%; height: 100%; overflow: hidden; margin:0;}
 
 
 #gnb:after { content:""; display:block; clear:both; }
-#gnb { position:absolute; left:0; top:75px; width:100%; background-color:#595959; border: 1px solid #818181;  z-index:10; padding-left:20px;}
-#gnb  ul { float:left; box-shadow:0px 2px 4px rgba(0,0,0,0.1); text-align:center;list-style-type: none; margin: 0;}
-#gnb li { float:left;  width:150px; border-right: 1px solid #818181; height:39px; text-align:center;  margin-right:1px; cursor: pointer;}
-#gnb li:first-child {border-left:1px solid #818181;}
+#gnb { position:absolute; top:75px; width:100%; background-color:#595959; z-index:10; box-shadow:0px 2px 4px rgba(0,0,0,0.3); padding-left:30px;}
+#gnb  ul { float:left;  text-align:center;list-style-type: none; margin: 0;}
+#gnb li { float:left;  width:150px;  height:39px; text-align:center; cursor: pointer;}
 #gnb li .high { float:left; width:150px; height:29px; text-align:center; font-weight:bold; padding-top:10px; color: #ffffff;  text-decoration: none; }
-#gnb li:hover {background-color: #FFC000;}
+#gnb .highLi:hover {background-color: #A6A6A6;}
 #gnb li ul { display:none; position:relative; right:0px; text-align:center; }
-#gnb li ul li { border: solid 1px #818181; background:#fff;  text-align:center;  padding-top:10px; height:30px;} /*드랍다운 메뉴 CSS*/
+#gnb li ul li { border-bottom:2px solid #818181;  background:#FFC000;  text-align:center;  padding-top:10px; height:30px;} /*드랍다운 메뉴 CSS*/
 /*네비게이션 바 누를시 나오는것*/
 #gnb li ul li:hover {color:#ffffff; cursor: pointer; font-weight:bold;}
-#item {position:absolute; right:40px;float:left; padding-top:11px; text-align:center; font-size:13px; width:80px; height:29px;}
+#item {position:absolute; right:15px;float:left; padding-top:11px; text-align:center; font-size:13px; width:80px; height:29px;}
 #item a{ color:#ffffff; font-weight:bold;}
 
 
@@ -102,7 +108,7 @@ html, body {width: 100%; height: 100%; overflow: hidden; margin:0;}
 /* 맵 구성 */
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:13px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:absolute; top:115px; left:0; bottom:0; right:0; z-index: 1;}
+.map_wrap {position:absolute; top:114px; left:0; bottom:0; right:0; z-index: 1;}
 #menu_wrap {position:absolute;top:70px;right:0;bottom:30px;width:400px;margin:10px 5px 0 10px;padding:5px;overflow-y:auto;background:rgba(0, 0, 0, 0.7);z-index: 1;font-size:12px;}
 .bg_white {background:#ffffff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}

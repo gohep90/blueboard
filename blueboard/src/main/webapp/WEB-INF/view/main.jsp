@@ -28,11 +28,8 @@
 <header id="firstheader">
 	<h1><a href="map.do"><img src="images/MAINPAGE/minimal_LOGO.png" alt="Çª¸¥ Ä¥ÆÇ" /></a></h1>
   <hr class="one">
-  <ul class="util2">
-    <li ><a href="#">JOIN</a></li>
-  </ul>
   <ul class="util">
-	<li><a href="#">LOGIN</a></li>
+	<li><a href="login.do">LOGIN</a></li>
 	<li><a href="#">SITEMAP</a></li>
 	<li><a href="#">ABOUT US</a></li>
   </ul>	
