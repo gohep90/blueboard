@@ -19,18 +19,17 @@
 </head>
 <body>
 	<div class="logo">
-		<a href="main.do"><img src="images/logo.png"/></a>
-
-		<ul class="util">
-			<li><a href="#">LOGIN</a></li>
-			<li><a href="#">MY PAGE</a></li>
-		</ul>
-		<hr>
-		<a class="interest">관심 항목</a>
+		<img src="images/register_logo.png">
 	</div>
-
 	<div class="container">
+		<form action="login.do" method="post">
+			<textarea class="tos">이용약관</textarea>
+			<div class="tos_form"><label class="tos_text" for="ch1">상기 이용 약관을 확인하였으며, 이에 동의합니다.</label><input id="ch1" class="ch" type="checkbox"/></div>
+			<textarea class="tos">개인정보 이용 동의</textarea>
+			<div class="tos_form"><label class="tos_text" for="ch2">상기 이용 동의 내용을 확인하였으며, 이에 동의합니다.</label><input id="ch2" class="ch" type="checkbox"/></div>
 		
+			<img class="next" src="images/next.png">
+		</form>
 	</div>
 </body>
 </html>
