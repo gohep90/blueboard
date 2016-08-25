@@ -11,7 +11,7 @@
 <title>배우러 가는길 회원가입</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/register.css'/>" />
+	href="<c:url value='/css/agreement.css'/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/base.css'/>" />
 

@@ -29,9 +29,9 @@ public class LoginController {
 	}
 	
 	// 회원가입 화면
-	@RequestMapping(value = "/register.do")
+	@RequestMapping(value = "/agreement.do")
 	public ModelAndView homepage(Map<String, Object> Map) throws Exception {
-		ModelAndView mv = new ModelAndView("register");
+		ModelAndView mv = new ModelAndView("agreement");
 		return mv;
 	}
 
