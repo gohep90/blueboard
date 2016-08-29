@@ -8,8 +8,3 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 /* 메인 내용 */
 .container{position:relative; top:60px; width:800px; margin:auto; text-align:center;}
-.tos{ height:250px; width:800px;}
-.tos_text{font-size:18px; font-family:'NGothicEB'; color:#595959; margin-right:10px;}
-.tos_form{margin:15px 00px 15px 0px; text-align:right;}
-.ch{height:22px; width:22px; vertical-align:sub;}
-.next{width: 400px; margin:40px 0px 30px 0px; cursor: pointer;}

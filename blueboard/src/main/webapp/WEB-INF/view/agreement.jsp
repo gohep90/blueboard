@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -7,9 +7,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>╧Х©Л╥╞ ╟║╢б╠Ф х╦©Ь╟║ют</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>К╟╟Й╟─ : М ▄Л⌡░Й╟─Л·┘</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="<c:url value='/js/agreement.js'/>"></script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/agreement.css'/>" />
 <link rel="stylesheet" type="text/css"
@@ -19,17 +20,15 @@
 </head>
 <body>
 	<div class="logo">
-		<img src="images/register_logo.png">
+		<img class="logo_img" src="images/register_logo.png"/>
 	</div>
 	<div class="container">
-		<form action="login.do" method="post">
-			<textarea class="tos">юл©К╬Ю╟Э</textarea>
-			<div class="tos_form"><label class="tos_text" for="ch1">╩С╠Б юл©К ╬Ю╟Эю╩ х╝юнго©╢ю╦╦Г, юл©║ ╣©юггу╢о╢ы.</label><input id="ch1" class="ch" type="checkbox"/></div>
-			<textarea class="tos">╟Ёюна╓╨╦ юл©К ╣©юг</textarea>
-			<div class="tos_form"><label class="tos_text" for="ch2">╩С╠Б юл©К ╣©юг Ё╩©Кю╩ х╝юнго©╢ю╦╦Г, юл©║ ╣©юггу╢о╢ы.</label><input id="ch2" class="ch" type="checkbox"/></div>
+		<textarea class="tos">Л²╢Л ╘Л∙╫Й╢─</textarea>
+		<div class="tos_form"><label class="tos_text" for="ch1">Л┐│Й╦╟ Л²╢Л ╘ Л∙╫Й╢─Л²└ М≥∙Л²╦М∙≤Л≤─Л°╪К╘╟, Л²╢Л≈░ К▐≥Л²≤М∙╘К▀┬К▀╓.</label><input id="ch1" class="ch" type="checkbox"/></div>
+		<textarea class="tos">Й╟°Л²╦Л═∙КЁ╢ Л²╢Л ╘ К▐≥Л²≤</textarea>
+		<div class="tos_form"><label class="tos_text" for="ch2">Л┐│Й╦╟ Л²╢Л ╘ К▐≥Л²≤ К┌╢Л ╘Л²└ М≥∙Л²╦М∙≤Л≤─Л°╪К╘╟, Л²╢Л≈░ К▐≥Л²≤М∙╘К▀┬К▀╓.</label><input id="ch2" class="ch" type="checkbox"/></div>
 		
-			<img class="next" src="images/next.png">
-		</form>
+		<input type="image" class="next" src="images/next.png">
 	</div>
 </body>
 </html>

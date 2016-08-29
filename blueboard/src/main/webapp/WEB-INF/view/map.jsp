@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>배우러 가는길 지도</title>
+<title>배가 : 지도</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 

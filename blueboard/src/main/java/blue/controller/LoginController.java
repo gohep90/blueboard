@@ -28,11 +28,17 @@ public class LoginController {
 		return mv;
 	}
 	
-	// 회원가입 화면
+	// 이용약관 화면
 	@RequestMapping(value = "/agreement.do")
-	public ModelAndView homepage(Map<String, Object> Map) throws Exception {
+	public ModelAndView agreement(Map<String, Object> Map) throws Exception {
 		ModelAndView mv = new ModelAndView("agreement");
 		return mv;
 	}
-
+	
+	// 회원가입 화면
+	@RequestMapping(value = "/register.do")
+	public ModelAndView register(Map<String, Object> Map) throws Exception {
+		ModelAndView mv = new ModelAndView("register");
+		return mv;
+	}	
 }
