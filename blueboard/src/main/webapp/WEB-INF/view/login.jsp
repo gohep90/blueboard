@@ -25,9 +25,9 @@
 		<ul class="util">
 			<li><a href="#">LOGIN</a></li>
 			<li><a href="#">MY PAGE</a></li>
+			<li><a href="#">FAVORITE</a></li>
 		</ul>
 		<hr>
-		<a class="interest">관심 항목</a>
 	</div>
 
 	<div class="container">

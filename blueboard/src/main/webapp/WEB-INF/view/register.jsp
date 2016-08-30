@@ -263,14 +263,13 @@ function reCaptcha() {
 											id="emailLb" for="email" class="lbl">비상연락용 이메일</label>
 											<button type="button" disabled="" title="delete" class="wrg">삭제</button>
 										</span>
-										<div id="emailMsg" class="error" style="display: none">필수
-											정보입니다.</div>
-										<span class="btn_join"><input type="image"
-											src="images/next.png"
-											onClick="clickcr(this, 'sup.signup', '', '', event);"
-											title="회원가입" alt="회원가입" value="가입하기" class="int_join"></span>
+										<div id="emailMsg" class="error" style="display: none">필수 정보입니다.</div>
 									</div>
 								</div>
+								<span class="btn_join">
+									<input type="image" src="images/next.png" onClick="clickcr(this, 'sup.signup', '', '', event);"
+											title="회원가입" alt="회원가입" value="가입하기" class="int_join">
+								</span>
 							</fieldset>
 						</form>
 					</div>

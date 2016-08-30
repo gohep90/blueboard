@@ -44,10 +44,17 @@
 		// This function is called when someone finishes with the Login
 		// Button.  See the onlogin handler attached to it in the sample
 		// code below.
-		function checkLoginState() {
+/*		function checkLoginState() {
 			FB.getLoginStatus(function(response) {
 				statusChangeCallback(response);
 			});
+		}
+*/		
+		
+		function facebookLogin() {
+			FB.login(function(response) {
+				statusChangeCallback(response);
+			},{scope: 'public_profile,email,user_likes'});
 		}
 		
 
@@ -139,11 +146,15 @@
   Below we include the Login Button social plugin. This button uses
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
--->
+
 
 	
 	<fb:login-button scope="public_profile,email,user_likes"onlogin="checkLoginState();">
 	</fb:login-button>
+-->
+	<div onclick="facebookLogin()" style="cursor:pointer;">
+		<image src="images/login_facebook.png">
+	</div>
 
 	<div id="status"></div>
 
