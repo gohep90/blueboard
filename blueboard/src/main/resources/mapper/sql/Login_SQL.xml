@@ -3,6 +3,57 @@
 
 <mapper namespace="login">
 
+	<!-- 로그인 확인-->
+	<select id="selectCheckLogin" parameterType="hashmap" resultType="String">
+		<![CDATA[
+			SELECT
+			    userId
+			FROM
+			    user
+			WHERE
+				userId=#{userId}
+			AND
+				userPw=#{userPw}
+		]]>
+	</select>
+	
+
+	<!-- 아이디 중복 확인-->
+	<select id="selectCheckId" parameterType="hashmap" resultType="String">
+		<![CDATA[
+			SELECT
+			    userId
+			FROM
+			    user
+			WHERE
+				userId=#{userId}
+		]]>
+	</select>
+	
+	<!-- 회원가입-->
+	<insert id="insertUser" parameterType="hashmap">
+		<![CDATA[
+			INSERT
+				INTO user(
+			    	userId,
+			    	userPw,
+			    	userName,
+			    	userSex,
+			    	userEmail,
+			    	userBirthday,
+			    	userCode
+			    	)
+				VALUES(
+					#{userId},
+					#{userPw},
+					#{userName},
+					#{userSex},
+					#{userEmail},
+					#{userBirthday},
+			    	1
+			    )
+		]]>
+	</insert>	
 	
 	
 </mapper>

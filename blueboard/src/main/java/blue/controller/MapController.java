@@ -39,73 +39,74 @@ public class MapController {
 	
 	
 	//json eduList
-			@RequestMapping(value="/firstEdu.do")
-			public ModelAndView firstEdu(Map<String, Object> Map,HttpServletRequest request)throws Exception {
-				ModelAndView mv = new ModelAndView("jsonView");
-				List<Map<String, Object>> list = null;
+	@RequestMapping(value="/firstEdu.do")
+	public ModelAndView firstEdu(Map<String, Object> Map,HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+		List<Map<String, Object>> list = null;
 					
-				String highDivision = request.getParameter("highDivision");
-				String middleDivision = request.getParameter("middleDivision");
+		String highDivision = request.getParameter("highDivision");
+		String middleDivision = request.getParameter("middleDivision");
 							
-				//System.out.println("middleDivision = "+middleDivision);
-				
-				Map.put("highDivision",highDivision);
-				Map.put("middleDivision",middleDivision);
-					
-				if(middleDivision==""){
-					list = service.selectFirstEdu(Map);
-				}else{
-					list = service.selectFirstEduDiv(Map);
-				}
-				mv.addObject("positions", list);
-					
-				return mv;
+		//System.out.println("middleDivision = "+middleDivision);
+			
+		try{
+			Map.put("highDivision",highDivision);
+			Map.put("middleDivision",middleDivision);
+						
+			if(middleDivision==""){
+				list = service.selectFirstEdu(Map);
+			}else{
+				list = service.selectFirstEduDiv(Map);
 			}
+			mv.addObject("positions", list);
+		}catch(Exception e){}
+		
+		return mv;
+	}
 			
 			
-			//json eduList
-			@RequestMapping(value="/eduJson.do")
-			public ModelAndView eduJson(Map<String, Object> Map,HttpServletRequest request)throws Exception {
-				ModelAndView mv = new ModelAndView("jsonView");
-					
-				List<Map<String, Object>> list = null;
-				List<Map<String, Object>> count = null;
-				
-				String gu = request.getParameter("gu");
-				String highDivision = request.getParameter("highDivision");
-				String middleDivision = request.getParameter("middleDivision");
-				//System.out.println(like);
-					
-				String currentTemp = request.getParameter("current");
-				int current = (Integer.parseInt(currentTemp)-1)*10;
-					
-				Map.put("current",current);
-				Map.put("gu",gu);
-				Map.put("highDivision",highDivision);
-				Map.put("middleDivision",middleDivision);
-					
-				if(middleDivision==""){
-					if(current==0){
-						list = service.selectFirstEduList(Map);
-					}else{
-						list = service.selectEduList(Map);
-					}
-					count = service.selectCount(Map);
-					
+	//json eduList
+	@RequestMapping(value="/eduJson.do")
+	public ModelAndView eduJson(Map<String, Object> Map,HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+			
+		List<Map<String, Object>> list = null;
+		List<Map<String, Object>> count = null;
+		
+		String gu = request.getParameter("gu");
+		String highDivision = request.getParameter("highDivision");
+		String middleDivision = request.getParameter("middleDivision");
+		String currentTemp = request.getParameter("current");
+		int current = (Integer.parseInt(currentTemp)-1)*10;
+			
+		try{
+			Map.put("current",current);
+			Map.put("gu",gu);
+			Map.put("highDivision",highDivision);
+			Map.put("middleDivision",middleDivision);
+						
+			if(middleDivision==""){
+				if(current==0){
+					list = service.selectFirstEduList(Map);
 				}else{
-					if(current==0){
-						list = service.selectFirstEduListDiv(Map);
-						//System.out.println("list = "+list);
-					}else{
-						list = service.selectEduListDiv(Map);
-					}
-					count = service.selectCountDiv(Map);
+					list = service.selectEduList(Map);
 				}
-					
-				mv.addObject("pagination", count);
-				mv.addObject("positions", list);
-					
-				return mv;
+				count = service.selectCount(Map);
+				
+			}else{
+				if(current==0){
+					list = service.selectFirstEduListDiv(Map);
+					//System.out.println("list = "+list);
+				}else{
+					list = service.selectEduListDiv(Map);
+				}
+				count = service.selectCountDiv(Map);
 			}
-
+				
+			mv.addObject("pagination", count);
+			mv.addObject("positions", list);
+		}catch(Exception e){}
+		
+		return mv;
+	}
 }

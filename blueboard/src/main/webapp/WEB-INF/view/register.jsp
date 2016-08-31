@@ -99,7 +99,7 @@ function reCaptcha() {
 					<div class="join_form">
 
 						<form id="join_form" method="post"
-							action="/user2/join.nhn?m=check" onSubmit="return mainSubmit(0);">
+							action="insertUser.do" onSubmit="return mainSubmit(0);">
 							<input type="hidden" id="birthday" name="birthday" value="">
 							<input type="hidden" id="token_sjoin" name="token_sjoin"
 								value="jmMaboDNOiAJqFZ2"> <input type="hidden"
@@ -266,11 +266,13 @@ function reCaptcha() {
 										<div id="emailMsg" class="error" style="display: none">필수 정보입니다.</div>
 									</div>
 								</div>
-								<span class="btn_join">
-									<input type="image" src="images/next.png" onClick="clickcr(this, 'sup.signup', '', '', event);"
-											title="회원가입" alt="회원가입" value="가입하기" class="int_join">
-								</span>
 							</fieldset>
+							
+							<div class="error_ch"><span id="joinMsg" class="error" style="display:none">가입정보를 확인해주세요.</span></div>		
+							<span class="btn_join">
+								<input type="submit" onClick="clickcr(this, 'sup.signup', '', '', event);"
+										title="회원가입" alt="회원가입" value="가입하기" class="int_join">
+							</span>
 						</form>
 					</div>
 				</div>

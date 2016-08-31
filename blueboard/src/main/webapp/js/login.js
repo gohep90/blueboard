@@ -11,6 +11,12 @@ $(function(){
 	});
 });
 
+$(function(){
+	$(".login_img").click(function(){
+		document.getElementById('login_form').submit();
+	});
+});
+
 //////////////////페이스북 로그인??///////////////////////////
 
 var accessToken='';
@@ -131,4 +137,11 @@ function testAPI() {
 			
 		}
 	});
+}
+
+//////////////////   일반 로그인    ///////////////////////////
+
+function loginSubmit(){
+	
+	
 }

@@ -40,5 +40,100 @@ public class LoginController {
 	public ModelAndView register(Map<String, Object> Map) throws Exception {
 		ModelAndView mv = new ModelAndView("register");
 		return mv;
-	}	
+	}
+	
+	
+	// 로그인
+	@RequestMapping(value="/checkLogin.do")
+	public ModelAndView checkLogin(HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Map<String, Object>> list =null;
+		
+		String userId = request.getParameter("userId");
+		String userPw = request.getParameter("userPw");
+		
+		System.out.println("userId = "+userId);
+		System.out.println("userPw = "+userPw);
+		
+		try{
+			map.put("userId", userId);
+			map.put("userPw", userPw);
+			
+			list = service.selectCheckLogin(map);
+			
+			mv.addObject("checkLogin", list);
+		
+			System.out.println("checkLogin 성공");
+			return mv;
+					
+		}catch(Exception e){
+			System.out.println("checkLogin 실패");
+			return null;
+		}
+	}
+	
+	
+	
+	// 아이디 중복확인
+	@RequestMapping("/checkId.do")
+	public ModelAndView checkId(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		String userId = request.getParameter("userId");
+		String result ="";
+		
+		try{	
+			map.put("userId", userId);
+	
+			//String aa = service.checkId(map);
+			//System.out.println("aa = "+aa);
+			
+			//아이디가 없는경우
+			if(service.checkId(map) == null) {
+				result="Y";
+			}
+			//있는경우
+			else {
+				result="N";
+			}
+			mv.addObject("result",result);
+		}catch(Exception e){}
+		
+		return mv;
+	}
+	
+	
+	
+	// 회원가입 완료
+	@RequestMapping("/insertUser.do")
+	public void insertUser(HttpServletRequest request) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Map<String, Object>> list = null;
+		
+		String userId = request.getParameter("id");
+		String userPw = request.getParameter("pswd1");
+		String userName = request.getParameter("nm");
+		String userSex = request.getParameter("sex");
+		String userBirth = request.getParameter("birthday");
+		String userEmail = request.getParameter("email");
+		
+		try{
+			
+			map.put("userId", userId);
+			map.put("userPw", userPw);
+			map.put("userName", userName);
+			map.put("userSex", userSex);
+			map.put("userBirth", userBirth);
+			map.put("userEmail", userEmail);
+			
+			service.insertUser(map);
+			
+		}catch(Exception e){
+			
+		}
+		
+	}
+	
 }

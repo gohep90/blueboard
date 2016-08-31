@@ -1,4 +1,9 @@
 
+$(document).ready(function(){
+  $("#id").focus();
+});
+
+
 
 var isCapslock = false;
 
@@ -274,10 +279,11 @@ function checkId(event) {
 	//아이디 중복검사   중복확인을 하면 가능!!
 	try {
 		var xmlhttp = getXmlHttp();
-		xmlhttp.open("GET", "/user2/joinAjax.nhn?m=checkId&id=" + id);
+		xmlhttp.open("GET", "checkId.do?userId=" + id);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4) {
-				var result = xmlhttp.responseText.substr(4, 999);
+				var result = xmlhttp.responseText.substr(11, 1);
+				//alert(result);
 				if (result == "Y") {
 					if (event == "first") {
 						oMsg.style.display = "block";
@@ -422,10 +428,11 @@ function checkPswd1(event) {
 	var oMsg = document.getElementById("pswd1Msg");
 	var oImg = document.getElementById("pswd1Img");
 
+		
+	
 	if (pw == "") {
 		oImg.className = "ps_box int_pass";
 		oMsg.style.display = "block";
-		oMsg.className = "error";
 		oMsg.innerHTML = "필수 정보입니다.";
 		lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_PSWD1_REQUIRED, document.getElementById("token_sjoin").value, true,'');
 		return false;
@@ -433,7 +440,6 @@ function checkPswd1(event) {
 	if (isValidPasswd(pw) != true) {
 		oImg.className = "ps_box int_pass_step1";
 		oMsg.style.display = "block";
-		oMsg.className = "error e_info";
 		oMsg.innerHTML = "6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
 		lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_FORMAT_PSWD1, document.getElementById("token_sjoin").value, true,'');
 		return false;
@@ -449,14 +455,12 @@ function checkPswd1(event) {
 				if (result == 1) {
 					oImg.className = "ps_box int_pass_step1";
 					oMsg.style.display = "block";
-					oMsg.className = "error e_info";
 					oMsg.innerHTML = "6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
 					lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_FORMAT_PSWD1, document.getElementById("token_sjoin").value, true,'');
 					return false;
 				} else if (result == 2) {
 					oImg.className = "ps_box int_pass_step2";
 					oMsg.style.display = "block";
-					oMsg.className = "error e_info";
 					oMsg.innerHTML = "6~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
 					lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_FORMAT_PSWD1, document.getElementById("token_sjoin").value, true,'');
 				} else if (result == 3) {
@@ -479,7 +483,7 @@ function checkPswd1(event) {
 			throw e;
 		}
 	}
-
+	
 	return true;
 }
 
@@ -493,7 +497,7 @@ function checkPswd2(event) {
 		oImg.className = "ps_box int_pass_check";
 		oMsg.style.display = "block";
 		oMsg.innerHTML = "필수 정보입니다.";
-//		lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_PSWD2_REQUIRED, document.getElementById("token_sjoin").value, true,'');
+		//lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_PSWD2_REQUIRED, document.getElementById("token_sjoin").value, true,'');
 		return false;
 	}
 	if (pswd1 != pswd2) {
@@ -706,13 +710,14 @@ function checkBirthday(event) {
 	}  else {
 		oMsg.style.display = "none";
 
-		viewUnrealMobileTab();
+		//viewUnrealMobileTab();
 		return true;
 	}
 
 	return true;
 }
 
+//필수정보로 바꿈
 function checkEmail(event) {
 	toggleLabel('emailLb', 'email', 'out');
 
@@ -721,8 +726,11 @@ function checkEmail(event) {
 	var oMsg = document.getElementById("emailMsg");
 
 	if (email == "") {
-		oMsg.style.display = "none";
-		return true;
+		oMsg.style.display = "block";
+		oMsg.innerHTML = "필수 정보입니다.";
+		return false;
+		//oMsg.style.display = "none";
+		//return true;
 	}
 
 	var isEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -740,11 +748,12 @@ function checkEmail(event) {
 		lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_FORMAT_EMAIL, document.getElementById("token_sjoin").value, true,'');
 		return false;
 	}
-
+/*
 	if (true) {
 		oMsg.style.display = "none";
 		return true;
 	}
+*/
 	return true;
 }
 
@@ -757,7 +766,7 @@ function setNationNo(obj) {
 
 	return true;
 }
-
+/*
 function checkMobno(event) {
 	toggleLabel('mobnoLb', 'mobno', 'out');
 
@@ -794,7 +803,7 @@ function checkMobno(event) {
 
 	return true;
 }
-
+*/
 	
 
 function sendSmsButton() {
@@ -932,6 +941,7 @@ function checkPrtsSex(event) {
 		oMsg.style.display = "none";
 		return true;
 	}
+	
 	return true;
 }
 
@@ -1492,9 +1502,12 @@ function checkCaptcha(event) {
 function mainSubmit(cnt) {
 
 	var res = true;
-	var mode = document.getElementById("platform").value;	
-	var agentType = document.getElementById("agentType").value;
+	
+	//필요 없을듯??
+	//var mode = document.getElementById("platform").value;	
+	//var agentType = document.getElementById("agentType").value;
 
+	
 	cnt++;
 	if (cnt > 10) {
 		return false;
@@ -1513,84 +1526,21 @@ function mainSubmit(cnt) {
 		if (checkName('check') != true) {
 			res = false;
 		}
-		if(agentType != "iOS_App") {
-			if (checkSex('check') != true) {
-				res = false;
-			}
-			if (checkBirthday('check') != true) {
-				res = false;
-			}			
+		if (checkSex('check') != true) {
+			res = false;
 		}
-		
+		if (checkBirthday('check') != true) {
+			res = false;
+		}			
 		if (checkEmail('check') != true) {
 			res = false;
 		}
-
-		var joinMode = document.getElementById("joinMode").value;
-
-		if (joinMode == "unreal") {
-			viewUnrealMobileTab();
-			if (checkMobno('check') != true) {
-				res = false;
-			}
-			if (checkAuthno('check') != true) {
-				res = false;
-			}
-		}
-		if (joinMode == "juniverMobile") {
-			viewJuniverMobileTab();
-			if (checkPrtsAgree('check') != true) {
-				res = false;
-			}
-			if (checkPrtsName('check') != true) {
-				res = false;
-			}
-			if (checkPrtsSex('check') != true) {
-				res = false;
-			}
-			if (checkPrtsBirthday('check') != true) {
-				res = false;
-			}
-			if (checkPrtsTelecom() != true) {
-				res = false;
-			}			
-			if (checkPrtsMobno('check') != true) {
-				res = false;
-			}
-			if (checkPrtsAuthno('check') != true) {
-				res = false;
-			}			
-		}
-		if (joinMode == "juniverIpin") {
-			viewJuniverIpinTab();
-
-			if (mode != "M") {
-				if (checkIpinAuth('check') != true) {
-					res = false;
-				}
-			} else {
-				if (checkIpinAuthM('check') != true) {
-					res = false;
-				}
-			}
-
-			if (checkIpinMobno('check') != true) {
-				res = false;
-			}
-			if (checkIpinAuthno('check') != true) {
-				res = false;
-			}
-		}
 	}
-	
-	var captchaMode = document.getElementById("captchaMode").value;
-	if(captchaMode == "Y") {
-		if (checkCaptcha('check') != true) {
-			res = false;
-		}
-	}
-
+		
+		
 	var oMsg = document.getElementById("joinMsg");
+	
+	
 	if (res == false) {
 		oMsg.style.display = "block";
 		oMsg.innerHTML = "입력하신 정보를 다시 확인해주세요.";
@@ -1609,8 +1559,6 @@ function mainSubmit(cnt) {
 		} else 
 		{
 			oMsg.style.display = "none";
-			document.getElementById("pswd1").value = "";
-			document.getElementById("pswd2").value = "";
 
 			if (cnt > 1) {
 				lua_do('join_kr'+document.getElementById("platform").value,'',SUCCESS_JOIN_SUBMIT, document.getElementById("token_sjoin").value, true, document.getElementById("id").value);
@@ -1620,14 +1568,14 @@ function mainSubmit(cnt) {
 				}
 				
 				document.getElementById('join_form').submit();
+				
+				document.getElementById("pswd1").value = "";
+				document.getElementById("pswd2").value = "";
 			} else {
 				return true;
 			}
-		}
-		;
-	}
-	;
-
+		};
+	};
 };
 
 function checkShiftDownJoin(e) {

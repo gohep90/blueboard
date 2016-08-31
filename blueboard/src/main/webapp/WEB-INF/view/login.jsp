@@ -33,12 +33,12 @@
 	<div class="container">
 		<p class="login">LOGIN</p>
 		
-		<div class="login_form" >
-			<form action="#" method="post">
+		<div class="login_div" >
+			<form id="login_form" action="checkLogin.do" method="post">
 				<div class="input_box">
-					<input type="text"  class="login_id" placeholder=" 아이디" />
+					<input type="text" name="userId" class="login_id" placeholder=" 아이디" />
 					<hr>
-					<input type="password"  class="login_pw" placeholder=" 비밀번호" />
+					<input type="password" name="userPw" class="login_pw" placeholder=" 비밀번호" />
 				</div>
 				<img class="login_img" src="images/login.png"/>
 			</form>
