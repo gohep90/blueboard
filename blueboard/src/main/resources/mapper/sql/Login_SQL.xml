@@ -55,5 +55,30 @@
 		]]>
 	</insert>	
 	
+	<!-- 회원가입-->
+	<insert id="insertFacebook" parameterType="hashmap">
+		<![CDATA[
+			INSERT
+				INTO user(
+			    	userId,
+			    	userName,
+			    	userSex,
+			    	userEmail,
+			    	userBirthday,
+			    	userLike,
+			    	userCode
+			    	)
+				VALUES(
+					#{userId},
+					#{userName},
+					#{userSex},
+					#{userEmail},
+					#{userBirthday},
+					#{userLike},
+			    	1
+			    )
+		]]>
+	</insert>	
+	
 	
 </mapper>

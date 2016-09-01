@@ -13,30 +13,49 @@ $(function(){
 
 $(function(){
 	$(".login_img").click(function(){
-		document.getElementById('login_form').submit();
+		checkLogin();
 	});
 });
 
+//////////////////    form 데이터 전송      ///////////////////////////
+
+function post_to_url(path,params){
+	method="post";
+	var form = document.createElement("form");
+	form.setAttribute("method",method);
+	form.setAttribute("action",path);
+	 for(var key in params) {
+	        var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", key);
+	        hiddenField.setAttribute("value", params[key]);
+	        form.appendChild(hiddenField);
+	    }
+	    document.body.appendChild(form);
+	    form.submit();
+}
+
+
 //////////////////페이스북 로그인??///////////////////////////
 
-var accessToken='';
 var likes='';
 var teather='아는 형님,인사동,나랑놀자,응답하라 노원,맨즈룩,Dingo Life,우리끼리,싫으면 싫은거지,망할 민미경,EA Sports FIFA 온라인 3,사랑합니까?,니가 웃으면 나도 좋아,축구싶냐?,';
-//var userId='';
-// This is called with the results from from FB.getLoginStatus().
+
+var userId="";
+var userName="";
+var userSex="";
+var userEmail="";
+var userBirthday="";
+var userLike="";
+
 
 function statusChangeCallback(response) {
 	console.log('statusChangeCallback');
 	console.log(response);
-	// The response object is returned with a status field that lets the
-	// app know the current login status of the person.
-	// Full docs on the response object can be found in the documentation
-	// for FB.getLoginStatus().
 	if (response.status === 'connected') {
-		// Logged into your app and Facebook.
-		accessToken = response.authResponse.accessToken;
-		//userId = response.authResponse.userID;
-		testAPI();
+		//accessToken = response.authResponse.accessToken;
+		
+		
 		
 		//로그인 인증 후 페이지 이동 
 		//window.location="agreement.do";
@@ -55,8 +74,32 @@ function statusChangeCallback(response) {
 
 function facebookLogin() {
 	FB.login(function(response) {
-		statusChangeCallback(response);
-	},{scope: 'public_profile,email,user_likes'});
+		FB.api('/me?fields=id,name,email,birthday,gender,likes.limit(100)&locale=ko_KR',function(user){
+			//$(".login_id").val(JSON.stringify(user));
+
+			userId=user.id;
+			userName=user.name;
+			userSex=user.gender;
+			userEmail=user.email;
+			userBirthday=user.birthday;
+			
+			var list=user.likes['data'];
+			
+			for(var i=0;i<list.length;i++){
+				userLike+=list[i].name+",";
+			}
+			
+			//form 형식으로 데이터 전송
+			post_to_url('checkFacebook.do',{'userId': userId,
+											'userName': userName,
+											'userSex': userSex,
+											'userEmail': userEmail,
+											'userBirthday': userBirthday,
+											'userLike' : userLike});
+		});
+		
+		//statusChangeCallback(response);
+	},{scope: 'public_profile,email,user_birthday,user_likes'});
 }
 
 
@@ -112,6 +155,9 @@ function compare(){
 	alert(count);
 }
 
+
+
+/*
 function testAPI() {
 	$.ajax({
 		type:"GET",
@@ -131,17 +177,45 @@ function testAPI() {
 				}
 			});
 			alert(likes);
-			$('#status').text(likes);
-			compare();
+			//$('#status').text(likes);
+			//compare();
 			
 			
 		}
 	});
 }
-
+*/
 //////////////////   일반 로그인    ///////////////////////////
 
-function loginSubmit(){
+function checkLogin(){
+	var userId = $(".login_id").val();
+	var userPw = $(".login_pw").val();
 	
-	
+	$.ajax({
+		type : "POST",
+		url : "checkLogin.do",
+		dataType : "json",
+		data : {
+			userId : userId,
+			userPw	:	userPw
+		},
+		error : function(e) {
+			alert("에러났소!");
+			alert(e);
+		},
+		success : function(data) {
+			var list = data['checkLogin'];
+			var EMsg = document.getElementById("loginMsg");
+			
+			//로그인이 안됐을 때
+			if(list==""){
+				EMsg.style.display = "block";
+				$(".login_pw").val("");
+			}else{
+				//로그인이 됐을 때  
+				EMsg.style.display = "none";
+				document.getElementById('login_form').submit()
+			}
+		}
+	});
 }

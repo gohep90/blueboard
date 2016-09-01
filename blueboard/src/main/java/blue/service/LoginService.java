@@ -23,6 +23,10 @@ public class LoginService extends abDAO {
 	public List<Map<String, Object>> selectCheckLogin(Map<String, Object> map) {
 		return (List<Map<String,Object>>)selectList("login.selectCheckLogin", map);
 	}
+
+	public void insertFacebook(Map<String, Object> map) {
+		insert("login.insertFacebook", map);
+	}
 	
 
 

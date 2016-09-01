@@ -62,6 +62,7 @@ public class LoginController {
 			
 			list = service.selectCheckLogin(map);
 			
+			System.out.println("list = "+list);
 			mv.addObject("checkLogin", list);
 		
 			System.out.println("checkLogin 성공");
@@ -72,8 +73,6 @@ public class LoginController {
 			return null;
 		}
 	}
-	
-	
 	
 	// 아이디 중복확인
 	@RequestMapping("/checkId.do")
@@ -87,9 +86,6 @@ public class LoginController {
 		try{	
 			map.put("userId", userId);
 	
-			//String aa = service.checkId(map);
-			//System.out.println("aa = "+aa);
-			
 			//아이디가 없는경우
 			if(service.checkId(map) == null) {
 				result="Y";
@@ -105,12 +101,12 @@ public class LoginController {
 	}
 	
 	
-	
 	// 회원가입 완료
 	@RequestMapping("/insertUser.do")
-	public void insertUser(HttpServletRequest request) throws Exception {
+	public ModelAndView insertUser(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("main");
 		Map<String, Object> map = new HashMap<String, Object>();
-		List<Map<String, Object>> list = null;
+		//List<Map<String, Object>> list = null;
 		
 		String userId = request.getParameter("id");
 		String userPw = request.getParameter("pswd1");
@@ -119,8 +115,13 @@ public class LoginController {
 		String userBirth = request.getParameter("birthday");
 		String userEmail = request.getParameter("email");
 		
+		if(userSex.equals("0")){
+			userSex="남성";
+		}else{
+			userSex="여성";
+		}
+		
 		try{
-			
 			map.put("userId", userId);
 			map.put("userPw", userPw);
 			map.put("userName", userName);
@@ -133,7 +134,50 @@ public class LoginController {
 		}catch(Exception e){
 			
 		}
-		
+		return mv;
 	}
+	
+	
+	
+	// 페이스북 회원가입 
+	@RequestMapping("/checkFacebook.do")
+	public ModelAndView checkFacebook(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("main");
+		Map<String, Object> map = new HashMap<String, Object>();
+		//List<Map<String, Object>> list = null;
+		
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String userSex = request.getParameter("userSex");
+		String userBirthday = request.getParameter("userBirthday");
+		String userEmail = request.getParameter("userEmail");
+		String userLike = request.getParameter("userLike");
+		
+		
+		System.out.println("==============================");
+		System.out.println("userId = "+userId);
+		System.out.println("userName = "+userName);
+		System.out.println("userSex = "+userSex);
+		System.out.println("userBirthday = "+userBirthday);
+		System.out.println("userEmail = "+userEmail);
+		System.out.println("userLike = "+userLike);
+		
+		try{
+			map.put("userId", userId);
+			map.put("userName", userName);
+			map.put("userSex", userSex);
+			map.put("userBirthday", userBirthday);
+			map.put("userEmail", userEmail);
+			map.put("userLike", userLike);
+			
+			service.insertFacebook(map);
+			
+		}catch(Exception e){
+			
+		}
+		return mv;
+	}
+	
+	
 	
 }

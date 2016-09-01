@@ -10,7 +10,7 @@
 			FROM
 			    academy a,user u
 			WHERE
-				a.userId = u.Id
+				a.userId = u.userId
 			AND
 				highDivision1=#{highDivision}
 			ORDER BY big desc
@@ -24,7 +24,7 @@
 			FROM
 			    academy a,user u
 			WHERE
-				a.userId = u.Id
+				a.userId = u.userId
 			AND
 				highDivision1=#{highDivision}
 			AND
