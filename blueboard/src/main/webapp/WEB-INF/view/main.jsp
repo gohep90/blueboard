@@ -8,64 +8,66 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>배우러 가는길</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="<c:url value='/js/main.js'/>"></script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/main.css'/>" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/reset.css'/>" />
-<link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/base.css'/>" />
-<!--[if lte IE 9]>
-<link rel="stylesheet" type="text/css" href="css/main_ie.css" />
-<![endif]-->
-
-<script type="text/javascript" src="<c:url value='/js/main.js'/>"></script>
 
 </head>
 
 <body>
-	
-<div id="main_content">
-<header id="firstheader">
-	<h1><a href="map.do"><img src="images/MAINPAGE/minimal_LOGO.png" alt="푸른 칠판" /></a></h1>
-  <hr class="one">
-  <ul class="util">
-	<li><a href="login.do">LOGIN</a></li>
-	<li><a href="#">SITEMAP</a></li>
-	<li><a href="#">ABOUT US</a></li>
-  </ul>	
-   
-</header>
-<img src="images/MAINPAGE/LOGO(Main)_Wh.png" witdh="350px" height="360px"id="main_logo"alt="배우러가는길" style="margin-left: auto; margin-right: auto; margin-top:100px; display: block;"/>
-<img src="images/MAINPAGE/text.png" id="main_text"width="600px"alt="당신을 위한 69,000개의 교육이 여기, 당신을 기다리고 있습니다" style="margin-left: auto; margin-right: auto; margin-top:100px; display: block;"/>
-<div id="search">
-<form name="sform" action="#" method="get" id="sform">
-	  <fieldset>
-		<input type="search" id="sbox" class="tbox" placeholder="통합 검색어 입력" />
-        <input type="image" class="sbtn" src="images/MAINPAGE/SEARCH_BUTTON(Main)_Wh&Ye.png" alt="검색" />
-    </fieldset>	
-  </form>
-</div>
-</div>
-<div id="content">	
-  
-  
-    
-</div>
-<!--<div id="main_subject">
-<div id="subject1"><a href='지도홈페이지.html'><img src="images/sq_01.png" alt="푸른 칠판" /></a></div>
-<div id="subject2"></div>
-<div id="subject3"><a href="#"><img src="images/sq_03.png" alt="푸른 칠판" /></a></div>
-<div id="subject4"><a href="#"><img src="images/sq_04.png" alt="푸른 칠판" /></a></div>
-<div id="subject5"><a href='지도홈페이지.html'><img src="images/sq_05.png" alt="푸른 칠판" /></a></div>
-<div id="subject6"><a href='지도홈페이지.html'><img src="images/sq_06.png" alt="푸른 칠판" /></a></div>
-<div id="subject7"><a href='지도홈페이지.html'><img src="images/sq_07.png" alt="푸른 칠판" /></a></div>
-<div id="subject8"><a href='지도홈페이지.html'><img src="images/sq_08.png" alt="푸른 칠판" /></a></div>
-<div id="subject9"><a href='지도홈페이지.html'><img src="images/sq_09.png" alt="푸른 칠판" /></a></div>
-</div>-->
-<footer id="main_footer">
-  <h3>(주)푸른 칠판<br/>대표이사:장지웅<br/>최고가 되자<br/>
-		<small class="copy">Copyright &copy; 2016 Icox Education</small>
-	</h3></footer>
+	<div class="main_content">
+		<div class="logo">
+			<a href="main.do"><img src="images/logo.png" /></a>
+
+			<ul class="util">
+				<li><a href="login.do">LOGIN</a></li>
+				<li><a href="#">MY PAGE</a></li>
+				<li><a href="#">FAVORITE</a></li>
+			</ul>
+			<hr>
+		</div>
+
+		<div class="logo_content">
+			<div class="content">
+				<img class="content_logo" src="images/MAINPAGE/LOGO(Main)_Wh.png" />
+				<img class="content_text" src="images/MAINPAGE/text.png"/>
+			</div>
+			<div class="content_search">
+				<form name="sform" action="#" method="get" id="sform">
+					<input type="search" id="keyword" class="tbox" placeholder="무엇을 배우러 갈까요?" />
+					<input type="image" class="sbtn" src="images/search2.png" alt="검색" />
+				</form>
+			</div>
+		</div>
+
+	</div>
+	<div class="category_div">
+		<img class="category_img" src="images/MAINPAGE/favorite.png" /> <img
+			class="category_img" src="images/MAINPAGE/favorite.png" /> <img
+			class="category_img" src="images/MAINPAGE/favorite.png" /> <img
+			class="category_img" src="images/MAINPAGE/favorite.png" /> <img
+			class="category_img" src="images/MAINPAGE/favorite.png" />
+	</div>
+
+	<div class="info_div">
+		<div class="info_bottom">
+			<div class="info_logo">배우러가는길</div>
+			<div class="info-address">
+				<p class="info_text">대표 : 정지웅</p>
+				<p class="info_text">주소 : 서울시 성동구 왕십리로 222 한양대학교 정책대학교 704호</p>
+				<p class="info_text"><span>전화 : 02-234-5678 </span><span class="fax"> 팩스 :
+						02-554-9774</span></p>
+			</div>
+			<div class="info-address">
+				<p class="info_text">사업자 번호 : 220-88-59156</p>
+				<p class="info_text">문의메일 : biz@station3.co.kr</p>
+				<p class="info_text">2016/07/28 ® All rights reserved by BAEGA.</p>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

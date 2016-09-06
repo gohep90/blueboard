@@ -3,11 +3,12 @@
 html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic'; background-color:#E2E2E2;}
 
 /* 로그인 로고 부분 */
-.logo{position:relative; top:30px; margin:auto; text-align:center;}
+.logo{position:relative; top:30px; width:800px; margin:auto; text-align:center;}
 .logo_img{width:100px;}
 
 /* 메인 내용 */
 .container{position:relative; top:60px; width:800px; margin:auto; text-align:center;}
 .container .login_facebook {width: 400px; margin-top:15px; cursor: pointer;}
-.intro{color:#595959;  margin-top:20px;}
+.container .intro{color:#595959;  margin-top:20px;}
 .container .complete {width: 400px; margin-top:20px; cursor: pointer;}
+.container .copyright {width: 400px; margin-top:60px;}

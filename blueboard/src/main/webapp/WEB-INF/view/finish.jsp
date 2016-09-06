@@ -10,9 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>배가 : 회원가입</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="<c:url value='/js/complete.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/finish.js'/>"></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/complete.css'/>" />
+	href="<c:url value='/css/finish.css'/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/base.css'/>" />
 
@@ -23,9 +23,22 @@
 		<img class="logo_img" src="images/register_logo.png"/>
 	</div>
 	<div class="container">
-		<img class="login_facebook" src="images/complete_facebook.png"/>
-		<p class="intro">배우러 가는길에서는 페이스북 인증을 통해서 맞춤형 선생님을 추천받으실 수 있습니다.</p>
-		<img class="complete" src="images/complete.png"/>
+		<p class="intro">축하합니다! 회원가입을 모두 마쳤습니다.</p>
+		<p class="intro">배우러 가는 길. 함께 가볼까요?</p>
+	</div>
+	
+	<div class="content">
+		<div class="service_image">
+			<img class="start_icon" src="images/serviceStart.png"/>
+			<img class="start_icon" src="images/enrollAcademy.png"/>
+		</div>
+		<div class="service_text">
+			<img class="start_text" src="images/serviceStartText.png"/>
+			<img class="start_text" src="images/enrollAcademyText.png"/>
+		</div>
+	</div>
+	
+	<div class="copyright_div">
 		<img class="copyright" src="images/copyright.png"/>
 	</div>
 	

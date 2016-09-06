@@ -48,7 +48,12 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("complete");
 		return mv;
 	}
-	
+	// 회원가입 화면
+	@RequestMapping(value = "/finish.do")
+	public ModelAndView finish(Map<String, Object> Map) throws Exception {
+		ModelAndView mv = new ModelAndView("finish");
+		return mv;
+	}	
 	
 	// 로그인
 	@RequestMapping(value="/checkLogin.do")

@@ -17,7 +17,8 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 /* header */
 #header,#container{margin:auto;}
-#header{position:relative; top:30px; margin:auto; text-align:center;}
+#header{position:relative; top:30px; width:800px; margin:auto; text-align:center;}
+#container{width:800px;}
 #header .h_logo{width:100px;}
 #header .lang{position:absolute;top:14px;right:0;*width:95px}
 #header .lang .sel{padding:5px 10px 5px 7px;padding:5px 8px 6px 7px\9;border:1px solid #ccc;font-size:12px;font-weight:normal;color:#333;height:30px;min-width:95px}
@@ -25,6 +26,8 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 /* content */
 #content {position:relative; top:60px; width:460px; margin:auto; }
+.copyright_div {text-align:center;}
+.copyright {width: 400px; margin:60px 0px 30px 0px;}
 
 .row_group {margin-bottom:20px; padding:1px; border:1px solid #595959; background:#ffffff;}
 
@@ -190,7 +193,7 @@ ul.terms_list li{list-style-type:circle;padding-left:10px}
 .global .jender,.global .jender input,.global .jender label{font-size:15px;color:#969696}
 .global .jender label.on{color:#2eaa08}
 
-/* 해상도에 따른 css */
+/* 해상도에 따른 css 
 @media only screen and (min-width:1024px){
 	#header,#container{width:900px;margin:0 auto !important}
 	.join_content{width:460px;margin:0 auto}
@@ -202,21 +205,21 @@ ul.terms_list li{list-style-type:circle;padding-left:10px}
 	#header,#container{margin:0 10px}
 	.join_content{width:460px;margin:0 auto}
 	.join_mobile .int_mobile{width:193px}
-	/* .int_join{background:#1fbc02 url(https://static.nid.naver.com/images/join/pc/ico_btn_join2_2x.gif) 181px  50% no-repeat;background-size:21px 16px;-webkit-background-size:21px 16px} */
+	/* .int_join{background:#1fbc02 url(https://static.nid.naver.com/images/join/pc/ico_btn_join2_2x.gif) 181px  50% no-repeat;background-size:21px 16px;-webkit-background-size:21px 16px} 
 	.ipin_certify_txt{line-height:27px}
 	.global .terms_chk_all{display:block;padding:12px 15px 13px}
 	.global .terms_chk_all .input_chk{height:50px}
 	.global .terms_chk_all .input_chk label{height:24px;line-height:24px;top:0}
-	/* 중국어 번체 이용약관 */
+	 중국어 번체 이용약관 
 	.global.ch_b .terms_chk_all{display:block;padding:15px}
 	.global.ch_b .terms_chk_all .input_chk{height:58px}
 	.global.ch_b .terms_chk_all .input_chk label{display:table;height:38px;line-height:20px;top:-1px}
-	/* 중국어 간체 이용약관 */
+	 중국어 간체 이용약관 
 	.global.ch_g .terms_chk_all{display:block;padding:15px}
 	.global.ch_g .terms_chk_all .input_chk{height:58px}
 	.global.ch_g .terms_chk_all .input_chk label{display:table;height:38px;line-height:20px;top:-1px}
 	}
-
+*/
 /* 가입완료 */
 .join_success h3{margin:110px auto 36px;width:339px;height:68px;background:url(https://static.nid.naver.com/images/join/pc/img_end_2x.gif) no-repeat;background-size:341px 242px;-webkit-background-size:341px 242px;text-indent:-999em}
 .join_success p{font-size:14px;font-weight:bold;line-height:23px;color:#333;text-align:center}

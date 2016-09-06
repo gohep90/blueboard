@@ -274,6 +274,9 @@ function reCaptcha() {
 										title="회원가입" alt="회원가입" value="가입하기" class="int_join">
 							</span>
 						</form>
+						<div class="copyright_div">
+							<img class="copyright" src="images/copyright.png"/>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic'; background-color:#ffffff;}
+
+/* 로그인 로고 부분 */
+.logo{position:relative; top:30px; width:1000px; margin:auto; text-align:center;}
+.logo_img{width:100px;}
+
+/* 메인 내용 */
+.container{position:relative; top:60px; width:1000px; margin:auto; text-align:center;}
+.container .intro{color:#595959; font-size:20px; font-family:'NGothicEB';}
+
+/* 가운데 내용 */
+.content{position:relative; top:100px; width:100%; min-width:1000px;  background-color:#E2E2E2;}
+.content .service_image{margin:auto; width:1000px; text-align:center;}
+.content .service_image .start_icon{width:300px; margin:50px 80px 20px 80px;}
+.content .service_text{margin:auto; width:1000px; text-align:center;}
+.content .service_text .start_text{width:250px; margin:20px 110px 30px 110px;}
+
+.copyright_div {position:relative; width:1000px; margin:auto; text-align:center;}
+.copyright {width: 400px; margin:150px 0px 30px 0px;}

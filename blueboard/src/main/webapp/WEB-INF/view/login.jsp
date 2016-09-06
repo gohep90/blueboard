@@ -31,8 +31,9 @@
 	</div>
 
 	<div class="container">
-		<p class="login">LOGIN</p>
-		
+		<div class="login_logo">
+			<p class="login">LOGIN</p>
+		</div>
 		<div class="login_div" >
 			<form id="login_form" action="main.do" method="post">
 				<div class="input_box">
