@@ -116,7 +116,7 @@ public class LoginController {
 	// 회원가입 완료
 	@RequestMapping("/insertUser.do")
 	public ModelAndView insertUser(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("main");
+		ModelAndView mv = new ModelAndView("complete");
 		Map<String, Object> map = new HashMap<String, Object>();
 		//List<Map<String, Object>> list = null;
 		

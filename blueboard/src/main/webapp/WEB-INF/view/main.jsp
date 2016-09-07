@@ -24,7 +24,7 @@
 
 			<ul class="util">
 				<li><a href="login.do">LOGIN</a></li>
-				<li><a href="#">MY PAGE</a></li>
+				<li><a href="mypage.do">MY PAGE</a></li>
 				<li><a href="#">FAVORITE</a></li>
 			</ul>
 			<hr>
@@ -45,11 +45,11 @@
 
 	</div>
 	<div class="category_div">
-		<img class="category_img" src="images/MAINPAGE/favorite.png" /> <img
-			class="category_img" src="images/MAINPAGE/favorite.png" /> <img
-			class="category_img" src="images/MAINPAGE/favorite.png" /> <img
-			class="category_img" src="images/MAINPAGE/favorite.png" /> <img
-			class="category_img" src="images/MAINPAGE/favorite.png" />
+		<a href="map.do"><img class="category_img" src="images/MAINPAGE/sport.png" /></a>
+		<a href="map.do"><img class="category_img" src="images/MAINPAGE/language.png" /></a>
+		<a href="map.do"><img class="category_img" src="images/MAINPAGE/favorite.png" /> </a>
+		<a href="map.do"><img class="category_img" src="images/MAINPAGE/music.png" /> </a>
+		<a href="map.do"><img class="category_img" src="images/MAINPAGE/job.png" /></a>
 	</div>
 
 	<div class="info_div">

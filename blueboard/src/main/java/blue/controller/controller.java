@@ -34,6 +34,14 @@ public class controller {
 		ModelAndView mv = new ModelAndView("academy");
 		return mv;
 	}
+	
+	
+	//mypage
+	@RequestMapping(value = "/mypage.do")
+	public ModelAndView mypage(Map<String, Object> Map) throws Exception {
+		ModelAndView mv = new ModelAndView("mypage");
+		return mv;
+	}
 
 	
 

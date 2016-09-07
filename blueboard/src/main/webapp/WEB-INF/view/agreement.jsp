@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="logo">
-		<img class="logo_img" src="images/register_logo.png"/>
+		<a href="main.do"><img class="logo_img" src="images/register_logo.png"/></a>
 	</div>
 	<div class="container">
 		<textarea class="tos">이용약관</textarea>

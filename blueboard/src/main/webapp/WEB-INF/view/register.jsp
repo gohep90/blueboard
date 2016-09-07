@@ -85,7 +85,7 @@ function reCaptcha() {
 		<!-- PC-ko_KR -->
 		<!-- header -->
 		<div id="header">
-			<img class="h_logo" src="images/register_logo.png" />
+			<a href="main.do"><img class="h_logo" src="images/register_logo.png" /></a>
 		</div>
 		<!-- //header -->
 

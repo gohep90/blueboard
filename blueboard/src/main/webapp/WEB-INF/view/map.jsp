@@ -37,7 +37,7 @@
 		<a href="main.do"><img src="images/logo.png"/></a>
 		<ul class="util">
 			<li><a href="login.do">LOGIN</a></li>
-			<li><a href="#">MY PAGE</a></li>
+			<li><a href="mypage.do">MY PAGE</a></li>
 			<li><a href="#">FAVORITE</a></li>
 		</ul>
 		<hr>

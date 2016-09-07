@@ -21,9 +21,9 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 .logo_content .content_text{height:80px; margin:40px 0px 40px 0px;}
 
 /*검색 부분*/
-.logo_content .content_search{width:450px; height: 37px; margin:auto; text-align:center;border: solid 3px #FFC000; border-radius:10px;}
-#sform .tbox {position:relative; left:36px; top:-1px; height: 30px; width: 311px; border: 1px solid #ccc; border-top-left-radius: 0.5em; border-bottom-left-radius: 0.5em;}
-#sform .sbtn{ position:relative; left:36px; top:-1px; height: 45px;}
+.logo_content .content_search{width:350px; height: 37px; margin:auto;}
+#sform .tbox {position:absolute; left:465px; bottom:2px;height: 39px; width: 316px; border: solid 4px #FFC000; border-top-left-radius: 0.5em; border-bottom-left-radius: 0.5em;}
+#sform .sbtn{position:absolute; right:466px; bottom:-2px; height: 43px;}
 
 
 

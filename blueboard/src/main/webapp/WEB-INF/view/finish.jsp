@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="logo">
-		<img class="logo_img" src="images/register_logo.png"/>
+		<a href="main.do"><img class="logo_img" src="images/register_logo.png"/></a>
 	</div>
 	<div class="container">
 		<p class="intro">축하합니다! 회원가입을 모두 마쳤습니다.</p>
@@ -29,7 +29,7 @@
 	
 	<div class="content">
 		<div class="service_image">
-			<img class="start_icon" src="images/serviceStart.png"/>
+			<a href="main.do"><img class="start_icon" src="images/serviceStart.png"/></a>
 			<img class="start_icon" src="images/enrollAcademy.png"/>
 		</div>
 		<div class="service_text">

@@ -1082,8 +1082,8 @@ function startData(high,middle) { //초기 조건을
 	   			return (a1>a2)? -1:((a1<a2)? 1:0);
 	   		});
 	    	
-	   		
-	    	alert('maxLike = '+maxLike);
+	   		//페이스북 비교값
+	    	//alert('maxLike = '+maxLike);
 			////////////////////////////////////////////////////
 			
 			var oinfo = $(data.positions).map(function(i, position) {

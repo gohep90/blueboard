@@ -20,12 +20,12 @@
 </head>
 <body>
 	<div class="logo">
-		<img class="logo_img" src="images/register_logo.png"/>
+		<a href="main.do"><img class="logo_img" src="images/register_logo.png"/></a>
 	</div>
 	<div class="container">
 		<img class="login_facebook" src="images/complete_facebook.png"/>
 		<p class="intro">배우러 가는길에서는 페이스북 인증을 통해서 맞춤형 선생님을 추천받으실 수 있습니다.</p>
-		<img class="complete" src="images/complete.png"/>
+		<a href="finish.do"><img class="complete" src="images/complete.png"/></a>
 		<img class="copyright" src="images/copyright.png"/>
 	</div>
 	
