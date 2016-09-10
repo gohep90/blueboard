@@ -133,7 +133,7 @@ global .join_name .name_cell:last-child{padding-left:12px;padding-right:4px}
 .global  .ps_box.int_pass_step4{background-position:100% -841px}
 
 .btn_join{display:block;height:61px;}
-.btn_join input{width:100%;height:61px;text-indent:-999em;-webkit-appearance:none; background:url(http://localhost:8080/learnway/images/next.png) no-repeat; background-size:100%; cursor: pointer;}
+.btn_join input{width:100%;height:61px;text-indent:-999em;-webkit-appearance:none; background:url(http://182.162.22.148:8080/learnway/images/next.png) no-repeat; background-size:100%; cursor: pointer;}
 .global .btn_join input{background-position:50% -63px}
 .btn_join input.int_home{padding:0;*padding-left:900px;background-position:50% -189px;cursor:pointer}
 .global .btn_join input.int_home{padding:0;*padding-left:900px;background-position:50% -126px}

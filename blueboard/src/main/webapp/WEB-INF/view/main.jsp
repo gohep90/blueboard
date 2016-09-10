@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ko">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>��췯 ���±�</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>배우러 가는길</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="<c:url value='/js/main.js'/>"></script>
 <link rel="stylesheet" type="text/css"
@@ -37,34 +37,34 @@
 			</div>
 			<div class="content_search">
 				<form name="sform" action="#" method="get" id="sform">
-					<input type="search" id="keyword" class="tbox" placeholder="������ ��췯 �����?" />
-					<input type="image" class="sbtn" src="images/search2.png" alt="�˻�" />
+					<input type="search" id="keyword" class="tbox" placeholder="무엇을 배우러 갈까요?" />
+					<input type="image" class="sbtn" src="images/search2.png" alt="검색" />
 				</form>
 			</div>
 		</div>
 
 	</div>
 	<div class="category_div">
-		<a href="map.do"><img class="category_img" src="images/MAINPAGE/sport.png" /></a>
-		<a href="map.do"><img class="category_img" src="images/MAINPAGE/language.png" /></a>
-		<a href="map.do"><img class="category_img" src="images/MAINPAGE/favorite.png" /> </a>
-		<a href="map.do"><img class="category_img" src="images/MAINPAGE/music.png" /> </a>
-		<a href="map.do"><img class="category_img" src="images/MAINPAGE/job.png" /></a>
+		<a href="map.do?highDivision=스포츠"><img class="category_img" src="images/MAINPAGE/sport.png" /></a>
+		<a href="map.do?highDivision=외국어"><img class="category_img" src="images/MAINPAGE/language.png" /></a>
+		<a href="map.do?highDivision=취미"><img class="category_img" src="images/MAINPAGE/favorite.png" /> </a>
+		<a href="map.do?highDivision=음악/미술"><img class="category_img" src="images/MAINPAGE/music.png" /> </a>
+		<a href="map.do?highDivision=직업교육"><img class="category_img" src="images/MAINPAGE/job.png" /></a>
 	</div>
 
 	<div class="info_div">
 		<div class="info_bottom">
-			<div class="info_logo">��췯���±�</div>
+			<div class="info_logo">배우러가는길</div>
 			<div class="info-address">
-				<p class="info_text">��ǥ : ������</p>
-				<p class="info_text">�ּ� : ����� ������ �սʸ��� 222 �Ѿ���б� ��å���б� 704ȣ</p>
-				<p class="info_text"><span>��ȭ : 02-234-5678 </span><span class="fax"> �ѽ� :
+				<p class="info_text">대표 : 정지웅</p>
+				<p class="info_text">주소 : 서울시 성동구 왕십리로 222 한양대학교 정책대학교 704호</p>
+				<p class="info_text"><span>전화 : 02-234-5678 </span><span class="fax"> 팩스 :
 						02-554-9774</span></p>
 			</div>
 			<div class="info-address">
-				<p class="info_text">����� ��ȣ : 220-88-59156</p>
-				<p class="info_text">���Ǹ��� : biz@station3.co.kr</p>
-				<p class="info_text">2016/07/28 �� All rights reserved by BAEGA.</p>
+				<p class="info_text">사업자 번호 : 220-88-59156</p>
+				<p class="info_text">문의메일 : biz@station3.co.kr</p>
+				<p class="info_text">2016/07/28 ® All rights reserved by BAEGA.</p>
 			</div>
 		</div>
 	</div>
