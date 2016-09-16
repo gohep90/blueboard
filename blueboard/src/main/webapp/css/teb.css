@@ -1,65 +1,54 @@
-#css_tabs {
-    font-family:'nanumgothic', '나눔고딕', 'malgun gothic', '맑은 고딕', 'dotum', '돋움', sans-serif
+.comm_tba1{
+	font-family:'nanumgothic', '나눔고딕', 'malgun gothic', '맑은 고딕', 'dotum', '돋움', sans-serif;
+	
 }
 
-/* 탭 선택 시 표시할 요소(div) 정의(1번 탭 선택 시 첫 번째 div 요소 표시) */
-#css_tabs input:nth-of-type(1), #css_tabs input:nth-of-type(1) ~ div:nth-of-type(1),
-#css_tabs input:nth-of-type(2), #css_tabs input:nth-of-type(2) ~ div:nth-of-type(2),
-#css_tabs input:nth-of-type(3), #css_tabs input:nth-of-type(3) ~ div:nth-of-type(3),
-#css_tabs input:nth-of-type(4), #css_tabs input:nth-of-type(4) ~ div:nth-of-type(4)  {
-    display:none
-}
-#css_tabs input:nth-of-type(1):checked ~ div:nth-of-type(1),
-#css_tabs input:nth-of-type(2):checked ~ div:nth-of-type(2),
-#css_tabs input:nth-of-type(3):checked ~ div:nth-of-type(3),
-#css_tabs input:nth-of-type(4):checked ~ div:nth-of-type(4) {
-    display:block
-}
-
-/* 라벨 기본 스타일 지정 */
-#css_tabs > label {
-    display:inline-block;
+.comm_tab1>.tab_menu>li{
+	border-left-radius: 2em 0.5em;
+	display:inline-block;
     font-variant:small-caps;
-    padding:24px;
+    padding:30px;
     text-align:center;
-    width:20%;
-    line-height:1.7em;
-    font-weight:600;
+    width:19%;
+    line-height:2.3em;
+    font-weight:bold;
     background:#eee;
     color:#777;
-   
+	cursor:pointer;
+	height:55px;
+	margin-left:2px;
 }
-#css_tabs > label:hover {
-    cursor:pointer
+#first{
+	margin-left: 30px;
+	
 }
-#css_tabs label[for=tab1] {
-    margin-left:2.5em
+.comm_tab1>.tab_menu>li a{
+	line-height:1em;
+	font-size:24px;
+	text-align:center;
 }
-
-/* 선택된 라벨, 커서를 올린 라벨 스타일 지정 */
-#css_tabs input:nth-of-type(1):checked ~ label:nth-of-type(1), #css_tabs > label[for=tab1]:hover {
-    background:#FFD757;
-    color:#4D4D4D;
+.comm_tab1>.tab_menu>li p{
+	line-height:1em;
+	font-size:20px;
+	text-align:center;
 }
-#css_tabs input:nth-of-type(2):checked ~ label:nth-of-type(2), #css_tabs > label[for=tab2]:hover {
-    background:#FFD757;
-    color:#4D4D4D;
+.comm_tab1>.tab_menu .on  {height:55px;background-color:#00e1d3;background-color:#FFD757;}
+.comm_tab1>.tab_cont>.cont {margin-top:20px;padding:20px;}
+.comm_tab2>.tab_menu>li {display:inline-block;
+    font-variant:small-caps;
+    padding:24px;
+    text-align:left;
+    width:18%;
+    line-height:0.8em;
+    font-weight:bold;
+    background:#7D7D7D;
+    color:#777;
+	cursor:pointer;
+	height:10px;}
+.comm_tab2>.tab_menu .on  {height:10px;background-color:#424242;}
+.comm_tab2>.tab_menu>li a {
+	font-family:"맑은 고딕";
+	font-size:18px;
+	color:white;
 }
-#css_tabs input:nth-of-type(3):checked ~ label:nth-of-type(3), #css_tabs > label[for=tab3]:hover {
-    background:#FFD757;
-    color:#4D4D4D;
-}
-#css_tabs input:nth-of-type(4):checked ~ label:nth-of-type(4), #css_tabs > label[for=tab4]:hover {
-    background:#FFD757;
-    color:#4D4D4D;
-}
-
-/* 실제 내용이 담긴 div 요소 스타일 지정 */
-#css_tabs .tab1_content, #css_tabs .tab2_content, #css_tabs .tab3_content, #css_tabs .tab4_content {
-    margin-top:10px;
-	margin-left:100px;
-	padding:2em;
-    border:1px solid #ddd;
-    width:70%;
-    height:100%;
-}
+a {color:#777;text-decoration:none;}

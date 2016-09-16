@@ -4,6 +4,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String userId=request.getParameter("userId");
+	String userName=request.getParameter("userName");
+	
+	if(userName!=null && !userName.equals("")){
+	session.setAttribute("userId", userId);
+	session.setAttribute("userName", userName);
+	userName+=" 님";
+	response.sendRedirect("main.do");
+	}else{
+		userName="LOGIN";
+	}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +39,7 @@
 		<a href="main.do"><img src="images/logo.png"/></a>
 
 		<ul class="util">
-			<li><a href="login.do">LOGIN</a></li>
+			<li><a id="login_page" href="login.do" >LOGIN</a></li>
 			<li><a href="mypage.do">MY PAGE</a></li>
 			<li><a href="#">FAVORITE</a></li>
 		</ul>
@@ -35,7 +51,9 @@
 			<p class="login">LOGIN</p>
 		</div>
 		<div class="login_div" >
-			<form id="login_form" action="main.do" method="post">
+			<form id="login_form" action="login.do" method="post">
+				<input type="hidden" id="userId" name="userId" value="">
+				<input type="hidden" id="userName" name="userName" value="">
 				<div class="input_box">
 					<input type="text" name="userId" class="login_id" placeholder=" 아이디" />
 					<hr>

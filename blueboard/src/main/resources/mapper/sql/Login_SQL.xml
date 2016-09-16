@@ -4,10 +4,10 @@
 <mapper namespace="login">
 
 	<!-- 로그인 확인-->
-	<select id="selectCheckLogin" parameterType="hashmap" resultType="String">
+	<select id="selectCheckLogin" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			    userId
+			    userId, userName
 			FROM
 			    user
 			WHERE

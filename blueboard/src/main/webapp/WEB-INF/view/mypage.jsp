@@ -4,11 +4,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String userId=(String)session.getAttribute("userId");
+	String userName=(String)session.getAttribute("userName");
+	System.out.println("main : "+userName);
+	if(userName!=null && !userName.equals("")){
+	userName+=" 님";
+	//response.sendRedirect("HighLevelUI.html");
+	}else{
+		userName="LOGIN";
+	}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>배가 : 로그인</title>
+<title>배가 : 마이페이지</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="<c:url value='/js/mypage.js'/>"></script>
 <link rel="stylesheet" type="text/css"
@@ -23,7 +37,7 @@
 		<a href="main.do"><img src="images/logo.png"/></a>
 
 		<ul class="util">
-			<li><a href="login.do">LOGIN</a></li>
+			<li><a href="login.do"><%=userName%></a></li>
 			<li><a href="mypage.do">MY PAGE</a></li>
 			<li><a href="#">FAVORITE</a></li>
 		</ul>

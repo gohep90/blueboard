@@ -190,6 +190,7 @@ function testAPI() {
 function checkLogin(){
 	var userId = $(".login_id").val();
 	var userPw = $(".login_pw").val();
+	var login_page = 
 	
 	$.ajax({
 		type : "POST",
@@ -214,6 +215,9 @@ function checkLogin(){
 			}else{
 				//로그인이 됐을 때  
 				EMsg.style.display = "none";
+				$("#userId").val(list[0].userId);
+				$("#userName").val(list[0].userName);
+				//alert($("#userName").val(list[0].userName));
 				document.getElementById('login_form').submit()
 			}
 		}

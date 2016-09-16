@@ -4,6 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String userId=(String)session.getAttribute("userId");
+	String userName=(String)session.getAttribute("userName");
+	
+	if(userName!=null && !userName.equals("")){
+	userName+=" 님";
+	}else{
+		userName="LOGIN";
+	}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -36,7 +48,7 @@
 	<div class="logo">
 		<a href="main.do"><img src="images/logo.png"/></a>
 		<ul class="util">
-			<li><a href="login.do">LOGIN</a></li>
+			<li><a href="login.do"><%=userName%></a></li>
 			<li><a href="mypage.do">MY PAGE</a></li>
 			<li><a href="#">FAVORITE</a></li>
 		</ul>

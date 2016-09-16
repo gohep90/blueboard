@@ -3,6 +3,21 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String userId=(String)session.getAttribute("userId");
+	String userName=(String)session.getAttribute("userName");
+	System.out.println("main : "+userName);
+	if(userName!=null && !userName.equals("")){
+	userName+=" 님";
+	//response.sendRedirect("HighLevelUI.html");
+	}else{
+		userName="LOGIN";
+	}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +38,7 @@
 			<a href="main.do"><img src="images/logo.png" /></a>
 
 			<ul class="util">
-				<li><a href="login.do">LOGIN</a></li>
+				<li><a href="login.do"><%=userName%></a></li>
 				<li><a href="mypage.do">MY PAGE</a></li>
 				<li><a href="#">FAVORITE</a></li>
 			</ul>
@@ -56,7 +71,7 @@
 		<div class="info_bottom">
 			<div class="info_logo">배우러가는길</div>
 			<div class="info-address">
-				<p class="info_text">대표 : 정지웅</p>
+				<p class="info_text">대표 : 장지웅</p>
 				<p class="info_text">주소 : 서울시 성동구 왕십리로 222 한양대학교 정책대학교 704호</p>
 				<p class="info_text"><span>전화 : 02-234-5678 </span><span class="fax"> 팩스 :
 						02-554-9774</span></p>
