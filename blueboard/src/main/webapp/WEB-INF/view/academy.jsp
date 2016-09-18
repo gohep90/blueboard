@@ -6,14 +6,14 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String userId=(String)session.getAttribute("userId");
-	String userName=(String)session.getAttribute("userName");
-	System.out.println("main : "+userName);
-	if(userName!=null && !userName.equals("")){
-	userName+=" 님";
-	//response.sendRedirect("HighLevelUI.html");
-	}else{
-		userName="LOGIN";
+	String userId = (String) session.getAttribute("userId");
+	String userName = (String) session.getAttribute("userName");
+	System.out.println("main : " + userName);
+	if (userName != null && !userName.equals("")) {
+		userName += " 님";
+		//response.sendRedirect("HighLevelUI.html");
+	} else {
+		userName = "LOGIN";
 	}
 %>
 
@@ -39,39 +39,48 @@
 	src="<c:url value='/js/jquery.slidertron-1.1.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/academy.js'/>"></script>
 <script>
-$(document).ready (function () {
-	//탭(ul) onoff
-	$('.jq_tabonoff>.jq_cont').children().css('display', 'none');
-	$('.jq_tabonoff>.jq_cont div:first-child').css('display', 'block');
-	$('.jq_tabonoff>.jq_tab li:first-child').addClass('on');
-	$('.jq_tabonoff').delegate('.jq_tab>li', 'click', function() {
-		var index = $(this).parent().children().index(this);
-		$(this).siblings().removeClass();
-		$(this).addClass('on');
-		$(this).parent().next('.jq_cont').children().hide().eq(index).show();
-	});
-});
+	$(document)
+			.ready(
+					function() {
+						//탭(ul) onoff
+						$('.jq_tabonoff>.jq_cont').children().css('display',
+								'none');
+						$('.jq_tabonoff>.jq_cont div:first-child').css(
+								'display', 'block');
+						$('.jq_tabonoff>.jq_tab li:first-child').addClass('on');
+						$('.jq_tabonoff')
+								.delegate(
+										'.jq_tab>li',
+										'click',
+										function() {
+											var index = $(this).parent()
+													.children().index(this);
+											$(this).siblings().removeClass();
+											$(this).addClass('on');
+											$(this).parent().next('.jq_cont')
+													.children().hide()
+													.eq(index).show();
+										});
+					});
 </script>
 
 <!-- div 동적 추가 함수 지금 5개생성-->
 
 <script type="text/javascript">
 <!--
-    function add_item(){
-        // pre_set 에 있는 내용을 읽어와서 처리..
-		for( var i = 0; i<5 ; i++)
-		{
-        var div = document.createElement('div');
-        div.innerHTML = document.getElementById('pre_set').innerHTML;
-        document.getElementById('field').appendChild(div);
+	function add_item() {
+		// pre_set 에 있는 내용을 읽어와서 처리..
+		for (var i = 0; i < 5; i++) {
+			var div = document.createElement('div');
+			div.innerHTML = document.getElementById('pre_set').innerHTML;
+			document.getElementById('field').appendChild(div);
 		}
-    }
- //div동적 삭제 -->
-    function remove_item(obj){
-        // obj.parentNode 를 이용하여 삭제
-        document.getElementById('field').removeChild(obj.parentNode);
-    }
-
+	}
+	//div동적 삭제 -->
+	function remove_item(obj) {
+		// obj.parentNode 를 이용하여 삭제
+		document.getElementById('field').removeChild(obj.parentNode);
+	}
 </script>
 
 
@@ -79,7 +88,7 @@ $(document).ready (function () {
 
 <body onload="add_item();">
 	<div class="logo">
-		<a href="main.do"><img src="images/logo.png"/></a>
+		<a href="main.do"><img src="images/logo.png" /></a>
 
 		<ul class="util">
 			<li><a href="login.do"><%=userName%></a></li>
@@ -90,33 +99,34 @@ $(document).ready (function () {
 	</div>
 
 	<div id="main_content">
-		<img id="interest" src="images/PLUS.png" / width="230">
-		<div id="academy_name">학원이름</div>
-		<img src="images/BAR.png" alt="바" id="bar" />
+		<div class="academy_name">
+			<u class="academy_p">학원이름</u> <img id="interest"
+				src="images/PLUS.png">
+		</div>
 
 
 		<div id="teb">
 			<div class="jq_tabonoff comm_tab1">
 				<ul class="jq_tab tab_menu">
 					<li id="first"><a href="javascript:;" class="tit">강사정보</a>
-					<p>Information</p></li>
+						<p>Information</p></li>
 					<li><a href="javascript:;" class="tit">강의정보</a>
-					<p>Contents</p></li>
+						<p>Contents</p></li>
 					<li><a href="javascript:;" class="tit">강의장소</a>
-					<p>Place</p></li>
+						<p>Place</p></li>
 					<li><a href="javascript:;" class="tit">수강후기</a>
-					<p>Comment</p></li>
+						<p>Comment</p></li>
 				</ul>
 				<div class="jq_cont tab_cont">
 					<!-- //탭1 -->
 
 					<div id="information" class="cont">
-						<img id="Title2" src="images/SUBPAGE/TITLE1.png" width="320">
-						<br> <br> <br>
+						<img id="Title2" src="images/SUBPAGE/TITLE1.png" width="270">
+						<br>
 
 						<div id="name">
 							<div id="name_name">
-								<h2>이 름</h2>
+								<h2>이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</h2>
 							</div>
 							<div id="name_content">
 								<h2>권민혁</h2>
@@ -125,29 +135,23 @@ $(document).ready (function () {
 
 						<div id="career">
 							<div id="career_name">
-								<h2>연 락 처</h2>
+								<h2>연&nbsp;&nbsp;&nbsp;락&nbsp;&nbsp;&nbsp;처</h2>
 							</div>
 							<div id="career_content">
-								<h2>창경초</h2>
-								<br>
-								<h2>창경초</h2>
-								<br>
-								<h2>창경초</h2>
-								<br>
+								<h2>010-1234-5678</h2>
 							</div>
 						</div>
 
 						<div id="book">
 							<div id="book_name">
-								<h2>경 력</h2>
+								<h2>경 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;력</h2>
 							</div>
 							<div id="book_content">
-								<h2>책</h2>
-								<br>
-								<h2>책</h2>
-								<br>
-								<h2>책</h2>
-								<br>
+								<h2>
+									現 한양대학교 실내건축디자인학과 겸임교수<br> 現 HY Magazine 마케팅 전략팀 자문<br>
+									前 경희대학교 인테리어디자인학과 겸임교수<br> 前 연세대학교 디자인대학원 석사 졸업<br> 前
+									연세대학교 생활디자인학과 졸업
+								</h2>
 							</div>
 						</div>
 
@@ -156,18 +160,8 @@ $(document).ready (function () {
 								<h2>강 사 소 개</h2>
 							</div>
 							<div id="etc_content">
-								<h2>사이드</h2>
-								<br>
-								<h2>사이드</h2>
-								<br>
-								<h2>사이드</h2>
-								<br>
-								<h2>사이드</h2>
-								<br>
-								<h2>사이드</h2>
-								<br>
-								<h2>사이드</h2>
-								<br>
+								<h2>동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람
+									대한으로 길이 보전하세</h2>
 							</div>
 						</div>
 					</div>
@@ -175,7 +169,7 @@ $(document).ready (function () {
 
 					<!-- //탭2 -->
 					<div class="cont">
-						<img id="Title1" src="images/SUBPAGE/TITLE2.png" width="290"
+						<img id="Title1" src="images/SUBPAGE/TITLE2.png" width="240"
 							style="margin-bottom: 20px">
 
 						<div class="jq_tabonoff comm_tab2" style="margin-top: 0px">
@@ -188,12 +182,10 @@ $(document).ready (function () {
 								<!-- //탭2-1 -->
 
 								<div id="information" class="cont">
-
-									<br> <br> <br>
-
+									<br> 
 									<div id="period">
 										<div id="period_name">
-											<h2>기 간</h2>
+											<h2>기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;간</h2>
 										</div>
 										<div id="period_content">
 											<h2>1주일 클래스</h2>
@@ -202,7 +194,7 @@ $(document).ready (function () {
 
 									<div id="day">
 										<div id="day_name">
-											<h2>요 일</h2>
+											<h2>요&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일</h2>
 										</div>
 										<div id="day_content">
 											<h2>월,수,금</h2>
@@ -211,7 +203,7 @@ $(document).ready (function () {
 
 									<div id="time">
 										<div id="time_name">
-											<h2>시 간</h2>
+											<h2>시&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 간</h2>
 										</div>
 										<div id="time_content">
 											<h2>19:00 - 20:30</h2>
@@ -220,7 +212,7 @@ $(document).ready (function () {
 
 									<div id="money">
 										<div id="money_name">
-											<h2>금 액</h2>
+											<h2>금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 액</h2>
 										</div>
 										<div id="money_content">
 											<h2>200,000</h2>
@@ -270,12 +262,8 @@ $(document).ready (function () {
 											<h2>카 테 고 리</h2>
 										</div>
 										<div id="category_content">
-
 											<div id="large">대분류</div>
 											<div id="small">중분류</div>
-
-
-
 										</div>
 									</div>
 								</div>
@@ -295,74 +283,52 @@ $(document).ready (function () {
 												<li>5</li>
 											</ul>
 										</div>
+										
 										<div class="viewer">
-
 											<div class="reel">
 												<div class="slide">
 													<a class="link" href="#">Full story ...</a> <img
-														src="images/지도예시이미지.png" alt="" />
+														src="images/academy1.jpg" alt="" />
 												</div>
 												<div class="slide">
 													<a class="link" href="#">Full story ...</a> <img
-														src="images/sq_01.png" alt="" />
+														src="images/academy2.jpg" alt="" />
 												</div>
 												<div class="slide">
 													<a class="link" href="#">Full story ...</a> <img
-														src="images/지도예시이미지.png" alt="" />
+														src="images/academy3.jpg" alt="" />
 												</div>
 												<div class="slide">
 													<a class="link" href="#">Full story ...</a> <img
-														src="images/지도예시이미지.png" alt="" />
+														src="images/academy4.jpg" alt="" />
 												</div>
 												<div class="slide">
 													<a class="link" href="#">Full story ...</a> <img
-														src="images/지도예시이미지.png" alt="" />
+														src="images/eximg.jpg" alt="" />
 												</div>
 											</div>
-
 										</div>
-
-
-
-
 									</div>
 									<!-- 탭2-2// -->
-
-
-
-
-
 								</div>
 								<!-- //탭2-3 -->
 
 								<div class="cont">
-
 									<div id="class_video">
-
 										<iframe id="video"
 											src="https://www.youtube.com/embed/GSkRnMJ7WaE"
 											frameborder="0" allowfullscreen></iframe>
-
-
-
 									</div>
-
 								</div>
-
 								<!-- 탭2-3// -->
 							</div>
 						</div>
 						<!-- 탭2// -->
 
-
-
-
-
-
 						<!-- 탭3 -->
 					</div>
 					<div class="cont">
-						<img id="Title3" src="images/SUBPAGE/TITLE3.png" width="320">
+						<img id="Title3" src="images/SUBPAGE/TITLE3.png" width="270">
 						<div id="place">
 							<img src="images/지도예시이미지.png" alt=""
 								style="border: 1px solid black;" />
@@ -383,31 +349,51 @@ $(document).ready (function () {
 					<div class="cont">탭4</div>
 					<!--탭4//-->
 				</div>
-
 			</div>
-
 		</div>
-		<script type="text/javascript">
-		$('#slider').slidertron({
-			viewerSelector: '.viewer',
-			reelSelector: '.viewer .reel',
-			slidesSelector: '.viewer .reel .slide',
-			advanceDelay: 3000,
-			speed: 'slow',
-			navPreviousSelector: '.previous-button',
-			navNextSelector: '.next-button',
-			indicatorSelector: '.indicator ul li',
-			slideLinkSelector: '.link'
-		});
-	</script>
-		<script type="text/javascript">
-	$(function(){
-		$("#selectmenu").selectmenu();
-	})
-	</script>
 	</div>
+	
+	<!-- 하단바 -->
+	<div class="info_div">
+		<div class="info_bottom">
+			<div class="info_logo">배우러가는길</div>
+			<div class="info-address">
+				<p class="info_text">대표 : 장지웅</p>
+				<p class="info_text">주소 : 서울시 성동구 왕십리로 222 한양대학교 정책대학교 704호</p>
+				<p class="info_text">
+					<span>전화 : 02-234-5678 </span><span class="fax"> 팩스 :
+						02-554-9774</span>
+				</p>
+			</div>
+			<div class="info-address">
+				<p class="info_text">사업자 번호 : 220-88-59156</p>
+				<p class="info_text">문의메일 : biz@station3.co.kr</p>
+				<p class="info_text">2016/07/28 ® All rights reserved by BAEGA.</p>
+			</div>
+		</div>
 	</div>
 
-	<blockquote>&nbsp;</blockquote>
+
+	<script type="text/javascript">
+			$('#slider').slidertron({
+				viewerSelector : '.viewer',
+				reelSelector : '.viewer .reel',
+				slidesSelector : '.viewer .reel .slide',
+				advanceDelay : 3000,
+				speed : 'slow',
+				navPreviousSelector : '.previous-button',
+				navNextSelector : '.next-button',
+				indicatorSelector : '.indicator ul li',
+				slideLinkSelector : '.link'
+			});
+		</script>
+	<script type="text/javascript">
+			$(function() {
+				$("#selectmenu").selectmenu();
+			})
+		</script>
+
+
+
 </body>
 </html>

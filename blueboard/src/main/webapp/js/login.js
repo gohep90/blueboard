@@ -17,6 +17,15 @@ $(function(){
 	});
 });
 
+
+//enter event
+$(document).ready(function(){
+    $('body').keypress(function(e){
+    if(e.keyCode==13) checkLogin();
+    });
+});
+
+
 //////////////////    form 데이터 전송      ///////////////////////////
 
 function post_to_url(path,params){

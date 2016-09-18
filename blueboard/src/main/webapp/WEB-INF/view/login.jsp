@@ -57,7 +57,7 @@
 				<div class="input_box">
 					<input type="text" name="userId" class="login_id" placeholder=" 아이디" />
 					<hr>
-					<input type="password" name="userPw" class="login_pw" placeholder=" 비밀번호" />
+					<input type="password" name="userPw" id="login_pw" class="login_pw" placeholder=" 비밀번호" />
 				</div>
 				<div id="loginMsg" class="error" style="display: none">아이디 또는 비밀번호를 다시 확인하세요.</div>
 				<img class="login_img" src="images/login.png"/>

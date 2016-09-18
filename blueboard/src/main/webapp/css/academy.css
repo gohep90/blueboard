@@ -1,9 +1,9 @@
 @charset "utf-8";
 
-html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic'; background-color:#E2E2E2;}
+html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic'; background-color:#ffffff;}
 
 /* 상단 바   */
-.logo{position:relative; width:100%; min-width:800px; height:114px; background-color:#595959; box-shadow:0px 2px 4px rgba(0,0,0,0.3);}
+.logo{position:relative; width:100%; min-width:1000px; height:114px; background-color:#595959; box-shadow:0px 2px 4px rgba(0,0,0,0.3);}
 .logo img{margin:10px 0px 0px 20px; height:50px;}
 .logo hr { border: dotted 1px white; margin:10px 20px 0px 20px;}
 .util { position:absolute; right:50px; top:30px; font-size:15px;font-weight:bold; }
@@ -11,20 +11,14 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 .util a:hover{color:#FFC000;}
 .util li { display:inline; padding-left:40px; }
 
-#main_content {
-	position: relative;
-	width: 100%;
-	height: auto;
-	margin: 0 auto;
-	no-repeat;
-}
-#teb{
-	position: absolute;
-	top: 220px;
-	width: 100%;
-	height: auto;
-}
-#academy_name{position:aboslute; width:300px; height:50px; margin-left:100px; padding-top:100px;text-align:center;font-size:50px}
+
+#main_content {position:relative; top:70px; width: 1000px; margin: auto;}
+#main_content .academy_name{position:relative; height:60px;}
+#main_content .academy_name .academy_p{font-size:35px; font-family:'NGothicEB'; color:#000000; letter-spacing:20px; float:left; margin-left:10px;}
+#main_content .academy_name #interest{height:40px; float:right;margin-right:18px;}
+
+#teb{position:relative; top:20px; width: 1000px; margin:auto;}
+
 #class_info{
 	position: absolute;
 	width: 720px;
@@ -59,21 +53,19 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 }
 #name {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #name_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #name_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;
 }
 #name_content h2{
 	font-weight:inherit;
@@ -102,42 +94,38 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	color:#676767;
 }
 #career {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #career_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #career_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;
 }
 #career_content h2{
 	font-weight:inherit;
 	color:#676767;
 }
 #book {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #book_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #book_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;
 }
 #book_content h2{
 	font-weight:inherit;
@@ -145,63 +133,57 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 
 #etc {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #etc_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #etc_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;
 }
 #etc_content h2{
 	font-weight:inherit;
 	color:#676767;
 }
 #period {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #period_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #period_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;
 }
 #period_content h2{
 	font-weight:inherit;
 	color:#676767;
 }
 #day {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #day_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #day_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;	
 }
 #day_content h2{
 	font-weight:inherit;
@@ -209,21 +191,19 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 
 #time {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #time_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #time_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;	
 }
 #time_content h2{
 	font-weight:inherit;
@@ -231,21 +211,19 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 
 #money {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #money_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #money_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;	
 }
 #money_content h2{
 	font-weight:inherit;
@@ -253,21 +231,19 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 
 #introduce {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #introduce_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #introduce_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;
 }
 #introduce_content h2{
 	font-weight:inherit;
@@ -275,8 +251,6 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 
 #curriculum {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 	height:auto;
 }
@@ -284,14 +258,13 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 #curriculum_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #curriculum_content {
 	order: 2;
 	width: 85%;
-	height:auto;
-	
+	padding: 50px 0px 0px 30px;
 }
 #curriculum_content h2{
 	font-weight:inherit;
@@ -299,8 +272,6 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #cat{
 	text-align: left;
-	margin-bottom: 20px;
-	width: auto;
 }
 #cat h3{
 	font-size:16px;
@@ -323,21 +294,19 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 
 #category {
-	margin-left:5px;
-	margin-top:10px;
  	display: flex;
 }
 
 #category_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
 #category_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;	
 }
 #category_content h2{
 	font-weight:inherit;
@@ -354,7 +323,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 {
 	margin-bottom:0px;
 	margin-left:60px;
-	width:auto%;
+	width:auto;
 	height:auto;
 }
 #category_content div
@@ -374,11 +343,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 
 
-#interest{
-	position: absolute;
-	right:60px;
-	top: 110px;
-}
+
 #GRAY_BAR{
 	position: absolute;
 	width: 10px;
@@ -491,6 +456,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	height: 3px;
 	
 }
+/* slider */
 #slider .button
 {
 	display: inline-block;
@@ -517,18 +483,17 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	overflow: hidden;
 	padding-top:40px;
 	margin:auto;
-	margin-bottom:150px;
-	width: 1250px;
-	height:1250px;
+	width: 1000px;
+	height:700px;
 
 }
 
 #slider .viewer
 {
 	position:relative;
-	width: 1250px;
-	height:1250px;
-	margin: 0 auto;
+	width: 1000px;
+	height:500px;
+	margin: auto;
 	overflow: hidden;
 }
 
@@ -540,15 +505,19 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 #slider .viewer .reel .slide
 {
 	position: relative;
-	
-	text-align: center;
-	width: 1250px;
+	text-align: left;
+	width: 1000px;
+	height:500px;
+	overflow: hidden;
 	
 	
 }
 #slider .viewer .reel .slide img
-{
-	width: 100%;
+{  				/*//비효율적이다*/
+
+	width: 700px;
+	height:auto;
+	
 }
 
 #slider .viewer .reel h2
@@ -592,10 +561,12 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 #slider .indicator ul
 {
+	position:absolute;
+	right:50%;
+	z-index:10;
 	list-style: none;
 	padding: 0;
-	margin: 0;
-	text-align: center;
+	margin: 10px;
 }
 
 #slider .indicator ul li
@@ -616,3 +587,13 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	background: #FFD757;
 	
 }
+
+
+
+
+/* info div */
+.info_div{width:100%; min-width:1000px; background-color:#A6A6A6; margin-top:300px; }
+.info_div .info_bottom{position:relative; width:1300px; height:200px; margin:auto; }
+.info_div .info_bottom .info_logo{padding:50px 0px 0px 100px; color:#ffffff; font-family:'NGothicEB';}
+.info_div .info_bottom .info-address{ float:left; width:500px;  margin:0px 30px 30px 90px; color:#ffffff;}
+.info_div .info_bottom .info_text{margin:10px;}
