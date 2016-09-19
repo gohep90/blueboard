@@ -69,11 +69,9 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #name_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 #address {
-	margin-left: 5px;
-	margin-top: 30px;
 	display: flex;
 	margin-bottom: 75px;
 }
@@ -81,17 +79,22 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 #address_name {
   order: 1;
   width: 15%;
-  padding: 2em;
+  padding: 50px 0px 0px 30px;
 
 }
+#address_name h2{
+	font-size:20px;
+}
+
 #address_content {
 	order: 2;
 	width: 85%;
-	padding: 2em;	
+	padding: 50px 0px 0px 30px;	
 }
 #address_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
+	font-size:20px;
 }
 #career {
  	display: flex;
@@ -110,7 +113,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #career_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 #book {
  	display: flex;
@@ -129,7 +132,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #book_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 
 #etc {
@@ -149,7 +152,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #etc_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 #period {
  	display: flex;
@@ -168,7 +171,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #period_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 #day {
  	display: flex;
@@ -187,7 +190,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #day_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 
 #time {
@@ -207,7 +210,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #time_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 
 #money {
@@ -227,7 +230,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #money_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 
 #introduce {
@@ -247,7 +250,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #introduce_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 
 #curriculum {
@@ -268,7 +271,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #curriculum_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 #cat{
 	text-align: left;
@@ -310,7 +313,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #category_content h2{
 	font-weight:inherit;
-	color:#676767;
+	color:#595959;
 }
 #large
 {
@@ -334,12 +337,12 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 #large h2
 {
 	font-weight:inherit;
-	color:#676767
+	color:#595959
 }
 #small h2
 {
 	font-weight:inherit;
-	color:#676767
+	color:#595959
 }
 
 
@@ -409,14 +412,13 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	height: 605px;
 }
 
-#place
+#map
 {
+	width: 950px;
+	height:500px;
+	border:1px solid #000000;
+	margin: 20px auto;
 	overflow: hidden;
-	width: auto;
-	height: auto;
-	text-align: center;
-	margin-top: 40px;
-	
 }
 
 #video{
@@ -505,7 +507,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 #slider .viewer .reel .slide
 {
 	position: relative;
-	text-align: left;
+	text-align: center;
 	width: 1000px;
 	height:500px;
 	overflow: hidden;

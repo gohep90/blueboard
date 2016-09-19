@@ -3,7 +3,7 @@
 
 <mapper namespace="map">
 
-<select id="selectFirstEdu" parameterType="hashmap" resultType="hashmap">
+	<select id="selectFirstEdu" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
 			 	a.*, u.userLike
@@ -12,8 +12,7 @@
 			WHERE
 				a.userId = u.userId
 			AND
-				highDivision1=#{highDivision}
-			ORDER BY big desc
+				lCategory=#{lCategory}
 		]]>
 	</select>
 	
@@ -26,10 +25,9 @@
 			WHERE
 				a.userId = u.userId
 			AND
-				highDivision1=#{highDivision}
+				lCategory=#{lCategory}
 			AND
-				middleDivision1 =#{middleDivision}
-			ORDER BY big desc
+				sCategory =#{sCategory}
 		]]>
 	</select>
 	
@@ -40,10 +38,9 @@
 			FROM
 			    academy 
 			WHERE
-				highDivision1=#{highDivision}
+				lCategory=#{lCategory}
 			AND
 				academyAddress like concat('%',#{gu},'%')
-			ORDER BY big desc
 			LIMIT
 				#{current},10
 		]]>
@@ -56,10 +53,9 @@
 			FROM
 			    academy
 			WHERE
-				highDivision1=#{highDivision}
+				lCategory=#{lCategory}
 			AND
 				academyAddress like concat('%',#{gu},'%')
-			ORDER BY big desc
 		]]>
 	</select>
 	
@@ -70,12 +66,11 @@
 			FROM
 			    academy
 			WHERE
-				highDivision1=#{highDivision}
+				lCategory=#{lCategory}
 			AND
-				middleDivision1 =#{middleDivision}
+				sCategory =#{sCategory}
 			AND
 				academyAddress like concat('%',#{gu},'%')
-			ORDER BY big desc
 			LIMIT
 				#{current},10
 		]]>
@@ -88,12 +83,11 @@
 			FROM
 			    academy
 			WHERE
-				highDivision1=#{highDivision}
+				lCategory=#{lCategory}
 			AND
-				middleDivision1 =#{middleDivision}
+				sCategory =#{sCategory}
 			AND
 				academyAddress like concat('%',#{gu},'%')
-			ORDER BY big desc
 		]]>
 	</select>
 	
@@ -105,7 +99,7 @@
 			FROM
 			    academy
 			WHERE
-				highDivision1=#{highDivision}
+				lCategory=#{lCategory}
 			AND
 				academyAddress like concat('%',#{gu},'%')
 		]]>
@@ -118,9 +112,9 @@
 			FROM
 			    academy
 			WHERE
-				highDivision1=#{highDivision}
+				lCategory=#{lCategory}
 			AND
-				middleDivision1 =#{middleDivision}
+				sCategory =#{sCategory}
 			AND
 				academyAddress like concat('%',#{gu},'%')
 		]]>

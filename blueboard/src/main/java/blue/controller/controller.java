@@ -30,8 +30,21 @@ public class controller {
 
 	// 강좌 상세정보
 	@RequestMapping(value = "/academy.do")
-	public ModelAndView academy(Map<String, Object> Map) throws Exception {
+	public ModelAndView academy(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("academy");
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Map<String, Object>> list =null;
+		
+		String academyId = request.getParameter("academyId");
+		
+		try{
+			map.put("academyId",academyId);
+			
+			list = service.selectAcademyData(map);
+			
+			mv.addObject("academy", list);
+		}catch(Exception e){}
+		
 		return mv;
 	}
 	

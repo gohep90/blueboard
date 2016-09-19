@@ -33,17 +33,17 @@
 </head>
 
 <%	
-	String highDivision =request.getParameter("highDivision");//대분류
-	System.out.println(highDivision);
+	String lCategory =request.getParameter("lCategory");//대분류
+	System.out.println(lCategory);
 	
-	String middleDivision =request.getParameter("middleDivision");//중분류
-	if(middleDivision==null)
-		middleDivision="";
-	System.out.println(middleDivision);
+	String sCategory =request.getParameter("sCategory");//중분류
+	if(sCategory==null)
+		sCategory="";
+	System.out.println(sCategory);
 	
 %>
 
-<body onload="startData('<%=highDivision%>','<%=middleDivision%>')">
+<body onload="startData('<%=lCategory%>','<%=sCategory%>')">
 
 	<div class="logo">
 		<a href="main.do"><img src="images/logo.png"/></a>

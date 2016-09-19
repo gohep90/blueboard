@@ -97,10 +97,17 @@
 		</ul>
 		<hr>
 	</div>
-
+	
+	<c:choose>
+	<c:when test="${fn:length(academy)>0}">	
+	<c:forEach items="${academy}" var="row">
+	
+	<p id="lat" style="display: none">${row.lat}</p>
+	<p id="lng" style="display: none">${row.lng}</p>
+	
 	<div id="main_content">
 		<div class="academy_name">
-			<u class="academy_p">학원이름</u> <img id="interest"
+			<u class="academy_p">${row.academyName}</u> <img id="interest"
 				src="images/PLUS.png">
 		</div>
 
@@ -129,7 +136,7 @@
 								<h2>이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</h2>
 							</div>
 							<div id="name_content">
-								<h2>권민혁</h2>
+								<h2>${row.teacherName}</h2>
 							</div>
 						</div>
 
@@ -138,7 +145,7 @@
 								<h2>연&nbsp;&nbsp;&nbsp;락&nbsp;&nbsp;&nbsp;처</h2>
 							</div>
 							<div id="career_content">
-								<h2>010-1234-5678</h2>
+								<h2>${row.teacherTel}</h2>
 							</div>
 						</div>
 
@@ -148,9 +155,11 @@
 							</div>
 							<div id="book_content">
 								<h2>
-									現 한양대학교 실내건축디자인학과 겸임교수<br> 現 HY Magazine 마케팅 전략팀 자문<br>
+									<!-- 現 한양대학교 실내건축디자인학과 겸임교수<br> 現 HY Magazine 마케팅 전략팀 자문<br>
 									前 경희대학교 인테리어디자인학과 겸임교수<br> 前 연세대학교 디자인대학원 석사 졸업<br> 前
 									연세대학교 생활디자인학과 졸업
+									 -->
+									 ${row.teacherCareer}
 								</h2>
 							</div>
 						</div>
@@ -160,8 +169,7 @@
 								<h2>강 사 소 개</h2>
 							</div>
 							<div id="etc_content">
-								<h2>동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람
-									대한으로 길이 보전하세</h2>
+								<h2>${row.teacherIntro}</h2>
 							</div>
 						</div>
 					</div>
@@ -188,7 +196,7 @@
 											<h2>기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;간</h2>
 										</div>
 										<div id="period_content">
-											<h2>1주일 클래스</h2>
+											<h2>${row.academyTerm}</h2>
 										</div>
 									</div>
 
@@ -197,7 +205,7 @@
 											<h2>요&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일</h2>
 										</div>
 										<div id="day_content">
-											<h2>월,수,금</h2>
+											<h2>${row.academyWeek}</h2>
 										</div>
 									</div>
 
@@ -206,7 +214,7 @@
 											<h2>시&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 간</h2>
 										</div>
 										<div id="time_content">
-											<h2>19:00 - 20:30</h2>
+											<h2>${row.academyTime}</h2>
 										</div>
 									</div>
 
@@ -215,7 +223,7 @@
 											<h2>금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 액</h2>
 										</div>
 										<div id="money_content">
-											<h2>200,000</h2>
+											<h2>${row.academyPay}</h2>
 										</div>
 									</div>
 
@@ -224,7 +232,7 @@
 											<h2>강 좌 소 개</h2>
 										</div>
 										<div id="introduce_content">
-											<h2>19:00 - 20:30</h2>
+											<h2>${row.academyIntro}</h2>
 										</div>
 									</div>
 									<!--커리큘럼-->
@@ -329,17 +337,13 @@
 					</div>
 					<div class="cont">
 						<img id="Title3" src="images/SUBPAGE/TITLE3.png" width="270">
-						<div id="place">
-							<img src="images/지도예시이미지.png" alt=""
-								style="border: 1px solid black;" />
-
-						</div>
+						<div id="map"></div>
 						<div id="address">
 							<div id="address_name">
 								<h2>상 세 주 소</h2>
 							</div>
 							<div id="address_content">
-								<h2>서울시 성동구 왕리</h2>
+								<h2>${row.academyAddress}</h2>
 							</div>
 						</div>
 					</div>
@@ -352,6 +356,9 @@
 			</div>
 		</div>
 	</div>
+	</c:forEach>
+	</c:when>
+	</c:choose>
 	
 	<!-- 하단바 -->
 	<div class="info_div">
@@ -392,7 +399,57 @@
 				$("#selectmenu").selectmenu();
 			})
 		</script>
+<script type="text/javascript"
+		src="//apis.daum.net/maps/maps3.js?apikey=7a6be21565c5c8e58c1ab67fb77914cf&libraries=clusterer"></script>
 
+<script>
+var lat=$('#lat').text();
+var lng=$('#lng').text();
+var academyName = $('.academy_p').text();
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new daum.maps.LatLng(lat, lng), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+var imageSrc = 'images/academyMarker.png', // 마커이미지의 주소입니다    
+imageSize = new daum.maps.Size(30, 55), // 마커이미지의 크기입니다
+imageOption = {offset: new daum.maps.Point(15, 45)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+  
+//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption),
+markerPosition = new daum.maps.LatLng(lat, lng); // 마커가 표시될 위치입니다
+
+//마커를 생성합니다
+var marker = new daum.maps.Marker({
+position: markerPosition, 
+image: markerImage // 마커이미지 설정 
+});
+
+//마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);  
+
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+
+// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var iwContent = '<div style="padding:5px; text-align:center;"><'+academyName+'><br><a href="http://map.daum.net/link/map/'+academyName+','+lat+','+lng+'" style="color:blue" target="_blank">큰지도보기</a> <a href="http://map.daum.net/link/to/'+academyName+','+lat+','+lng+'" style="color:blue" target="_blank">길찾기</a></div>'; 
+
+// 인포윈도우를 생성합니다
+var infowindow = new daum.maps.InfoWindow({
+    content : iwContent 
+});
+  
+// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+infowindow.open(map, marker); 
+
+
+
+</script>
 
 
 </body>

@@ -27,8 +27,8 @@ public class MapController {
 		ModelAndView mv = new ModelAndView("map");
 		request.setCharacterEncoding("euc-kr"); // 받아올 때 한글설정
 
-		// String highDivision =request.getParameter("highDivision");
-		// System.out.println(highDivision);
+		// String lCategory =request.getParameter("lCategory");
+		// System.out.println(lCategory);
 
 		// map.put("month", month);
 
@@ -44,20 +44,22 @@ public class MapController {
 		ModelAndView mv = new ModelAndView("jsonView");
 		List<Map<String, Object>> list = null;
 					
-		String highDivision = request.getParameter("highDivision");
-		String middleDivision = request.getParameter("middleDivision");
+		String lCategory = request.getParameter("lCategory");
+		String sCategory = request.getParameter("sCategory");
 							
-		//System.out.println("middleDivision = "+middleDivision);
+		System.out.println("sCategory = "+sCategory);
 			
 		try{
-			Map.put("highDivision",highDivision);
-			Map.put("middleDivision",middleDivision);
+			Map.put("lCategory",lCategory);
+			Map.put("sCategory",sCategory);
 						
-			if(middleDivision==""){
+			if(sCategory==""){
 				list = service.selectFirstEdu(Map);
 			}else{
 				list = service.selectFirstEduDiv(Map);
 			}
+			
+			
 			mv.addObject("positions", list);
 		}catch(Exception e){}
 		
@@ -74,18 +76,18 @@ public class MapController {
 		List<Map<String, Object>> count = null;
 		
 		String gu = request.getParameter("gu");
-		String highDivision = request.getParameter("highDivision");
-		String middleDivision = request.getParameter("middleDivision");
+		String lCategory = request.getParameter("lCategory");
+		String sCategory = request.getParameter("sCategory");
 		String currentTemp = request.getParameter("current");
 		int current = (Integer.parseInt(currentTemp)-1)*10;
 			
 		try{
 			Map.put("current",current);
 			Map.put("gu",gu);
-			Map.put("highDivision",highDivision);
-			Map.put("middleDivision",middleDivision);
+			Map.put("lCategory",lCategory);
+			Map.put("sCategory",sCategory);
 						
-			if(middleDivision==""){
+			if(sCategory==""){
 				if(current==0){
 					list = service.selectFirstEduList(Map);
 				}else{
@@ -102,7 +104,8 @@ public class MapController {
 				}
 				count = service.selectCountDiv(Map);
 			}
-				
+			
+			System.out.println(list);
 			mv.addObject("pagination", count);
 			mv.addObject("positions", list);
 		}catch(Exception e){}

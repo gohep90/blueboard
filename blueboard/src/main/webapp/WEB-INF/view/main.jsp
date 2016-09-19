@@ -60,11 +60,11 @@
 
 	</div>
 	<div class="category_div">
-		<a href="map.do?highDivision=스포츠"><img class="category_img" src="images/MAINPAGE/sport.png" /></a>
-		<a href="map.do?highDivision=외국어"><img class="category_img" src="images/MAINPAGE/language.png" /></a>
-		<a href="map.do?highDivision=취미"><img class="category_img" src="images/MAINPAGE/favorite.png" /> </a>
-		<a href="map.do?highDivision=음악/미술"><img class="category_img" src="images/MAINPAGE/music.png" /> </a>
-		<a href="map.do?highDivision=직업교육"><img class="category_img" src="images/MAINPAGE/job.png" /></a>
+		<a href="map.do?lCategory=스포츠"><img class="category_img" src="images/MAINPAGE/sport.png" /></a>
+		<a href="map.do?lCategory=외국어"><img class="category_img" src="images/MAINPAGE/language.png" /></a>
+		<a href="map.do?lCategory=취미"><img class="category_img" src="images/MAINPAGE/favorite.png" /> </a>
+		<a href="map.do?lCategory=음악/미술"><img class="category_img" src="images/MAINPAGE/music.png" /> </a>
+		<a href="map.do?lCategory=직업교육"><img class="category_img" src="images/MAINPAGE/job.png" /></a>
 	</div>
 
 	<div class="info_div">

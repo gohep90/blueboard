@@ -17,5 +17,9 @@ public class service extends abDAO {
 		update("blue.updateEdu",map);
 	}
 
+	public List<Map<String, Object>> selectAcademyData(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("blue.selectAcademyData", map);
+	}
+
 	
 }

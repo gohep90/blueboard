@@ -16,6 +16,17 @@
 		]]>
 	</update>	
 	
+	<select id="selectAcademyData" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy
+			WHERE
+				academyId=#{academyId}
+		]]>
+	</select>
+	
 	
 	
 	

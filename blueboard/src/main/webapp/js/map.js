@@ -1,5 +1,5 @@
-var highDivision='';
-var middleDivision='';
+var lCategory='';
+var sCategory='';
 var gu ='';
 var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
@@ -1029,8 +1029,8 @@ function startData(high,middle) { //초기 조건을
 	//alert(division);
 	
 	var infos = null; //infowindow를 위해서??
-	highDivision=high;
-	middleDivision=middle;
+	lCategory=high;
+	sCategory=middle;
 	
 	$.ajax({
 		type : "POST",
@@ -1038,8 +1038,8 @@ function startData(high,middle) { //초기 조건을
 		async:false,
 		dataType : "json",
 		data : {
-			highDivision : highDivision,
-			middleDivision : middleDivision
+			lCategory : lCategory,
+			sCategory : sCategory
 		},
 		error : function(e) {
 			alert("에러났소!");
@@ -1091,14 +1091,14 @@ function startData(high,middle) { //초기 조건을
 				var small= '<div class="item" style="margin:0px;"><div class="seq2"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
 						+position.academyName+'</h5><span>'
 						+position.academyAddress+'</span><span>'
-						+position.academyInfo+'</span><span class="tel">'
-						+position.academyTel +'</span></div></div>';
+						+position.academyIntro+'</span><span class="tel">'
+						+position.teacherTel +'</span></div></div>';
 				
 				var big='<div class="item" style="margin:0px;"><div class="seq2"><br><div class="bigbg" ></div><div class="bigInfo"><h5>'
 						+position.academyName+'</h5><span>'
 						+position.academyAddress+'</span><span>'
-						+position.academyInfo+'</span><span class="tel">'
-						+position.academyTel +'</span></div></div></div>';
+						+position.academyIntro+'</span><span class="tel">'
+						+position.teacherTel +'</span></div></div></div>';
 				
 				var temp ="";
 				if(position.big==1)
@@ -1191,8 +1191,8 @@ function gotoPage(i) { //page 이동할 때
 		data : {
 			current : i,
 			gu	:	gu,
-			highDivision: highDivision,
-			middleDivision : middleDivision
+			lCategory: lCategory,
+			sCategory : sCategory
 		},
 		error : function(e) {
 			alert("에러났소!");
@@ -1483,14 +1483,14 @@ function getListItem(index, places) {
 				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy4.jpg" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
-				+places.academyInfo+'</span><br></div></div>';
+				+places.academyIntro+'</span><br></div></div>';
 		
 	}else{
 		var el = document.createElement('li'), 
 		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
-				+places.academyInfo+'</span><br></div></div>';
+				+places.academyIntro+'</span><br></div></div>';
 	}
 	el.innerHTML = itemStr;
 	el.className = 'item';
@@ -1507,14 +1507,14 @@ function getBigItem(index,places){
 				+'<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
-				+places.academyInfo+'</span></div></div>';
+				+places.academyIntro+'</span></div></div>';
 		
 	}else{
 		var el	=	document.createElement('li'), 
 		itemStr ='<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
-				+places.academyInfo+'</span></div></div>';
+				+places.academyIntro+'</span></div></div>';
 	}
 	
 	el.innerHTML = itemStr;
@@ -1684,16 +1684,16 @@ function test(){
 /////////////////////////// 분류 누를때 이동!! //////////////////////////////
 
 $(".high").click(function(){
-	highDivision = $(this).text();
-	middleDivision='';
-	window.location="map.do?highDivision="+highDivision+"&middleDivision="+middleDivision;
+	lCategory = $(this).text();
+	sCategory='';
+	window.location="map.do?lCategory="+lCategory+"&sCategory="+sCategory;
 });
 
 $(".middle").click(function(){
-	highDivision = $(this).parent().parent().children('div').text();
-	middleDivision=$(this).text();
+	lCategory = $(this).parent().parent().children('div').text();
+	sCategory=$(this).text();
 	
-	window.location="map.do?highDivision="+highDivision+"&middleDivision="+middleDivision;
+	window.location="map.do?lCategory="+lCategory+"&sCategory="+sCategory;
 });
 
 /////////////////////////////tab 구성////////////////////////////////////////////////////////
