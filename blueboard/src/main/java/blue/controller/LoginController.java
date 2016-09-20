@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,7 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("login");
 		return mv;
 	}
+	
 	
 	// 이용약관 화면
 	@RequestMapping(value = "/agreement.do")
@@ -53,7 +55,22 @@ public class LoginController {
 	public ModelAndView finish(Map<String, Object> Map) throws Exception {
 		ModelAndView mv = new ModelAndView("finish");
 		return mv;
-	}	
+	}
+	
+	// 로그아웃
+	@RequestMapping(value = "/logout.do")
+	public ModelAndView logout(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		HttpSession session = request.getSession();		//spring session 생성
+		session.setAttribute("userId", null);
+		session.setAttribute("userName", null);
+		
+		System.out.println("logout성공");
+		
+		return mv;
+	}
+	
 	
 	// 로그인
 	@RequestMapping(value="/checkLogin.do")

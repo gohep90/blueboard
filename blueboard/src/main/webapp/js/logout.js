@@ -22,26 +22,34 @@ if(userName!='LOGIN'){
 
 $(function(){
 	$("#logout").click(function(){
-		alert(11);
+		var temp = confirm('로그아웃 하시겠습니까?');
+		if(temp==true)
+			logoutSession();
 	});
 });
 
-///////////////////////////////////// 그림 클릭시 form데이터 전송	//////////////////////////////////////
-function post_to_url(path,params){
-	var method="post";
-	var form = document.createElement("form");
-	form.setAttribute("method",method);
-	form.setAttribute("action",path);
-	 for(var key in params) {
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", key);
-	        hiddenField.setAttribute("value", params[key]);
-	        form.appendChild(hiddenField);
-	    }
-	    document.body.appendChild(form);
-	    form.submit();
+
+
+function logoutSession(){ //page 이동할 때
+	$.ajax({
+		type : "POST",
+		url : "logout.do",
+		dataType : "json",
+		data : {
+		},
+		error : function(request,status,error) {
+			alert("에러났소!");
+			 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		},
+		success : function(data) {
+			
+			var link = document.location.href;
+			window.location=link;
+		}
+	});
 }
+
+
 
 
 

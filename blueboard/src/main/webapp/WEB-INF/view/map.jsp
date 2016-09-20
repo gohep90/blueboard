@@ -46,14 +46,19 @@
 <body onload="startData('<%=lCategory%>','<%=sCategory%>')">
 
 	<div class="logo">
-		<a href="main.do"><img src="images/logo.png"/></a>
-		<ul class="util">
-			<li><a href="login.do"><%=userName%></a></li>
-			<li><a href="mypage.do">MY PAGE</a></li>
-			<li><a href="#">FAVORITE</a></li>
-		</ul>
-		<hr>
-	</div>
+			<a href="main.do"><img src="images/logo.png" /></a>
+
+			<ul class="util">
+				<li id="userName" style="display:none; cursor: pointer;"><%=userName%></li>
+				<li id="login" ><a  href="login.do">LOGIN</a></li>
+				<li id="logout" style="display:none; cursor: pointer;">LOGOUT</li>
+				<li><a href="mypage.do">MY PAGE</a></li>
+				<li><a href="#">FAVORITE</a></li>
+			</ul>
+			<hr>
+		</div>
+		
+		<script type="text/javascript" src="<c:url value='/js/logout.js'/>"></script>
 	
 	<div id="gnb">
 		<ul class="gnblist">
