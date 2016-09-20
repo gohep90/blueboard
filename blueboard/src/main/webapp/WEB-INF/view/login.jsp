@@ -9,10 +9,12 @@
 
 	String userId=request.getParameter("userId");
 	String userName=request.getParameter("userName");
+	String userLike=request.getParameter("userLike");
 	
 	if(userName!=null && !userName.equals("")){
 	session.setAttribute("userId", userId);
 	session.setAttribute("userName", userName);
+	session.setAttribute("userLike", userLike);
 	userName+=" 님";
 	response.sendRedirect("main.do");
 	}else{
@@ -54,6 +56,7 @@
 			<form id="login_form" action="login.do" method="post">
 				<input type="hidden" id="userId" name="userId" value="">
 				<input type="hidden" id="userName" name="userName" value="">
+				<input type="hidden" id="userLike" name="userLike" value="">
 				<div class="input_box">
 					<input type="text" name="userId" class="login_id" placeholder=" 아이디" />
 					<hr>

@@ -7,7 +7,7 @@
 	<select id="selectCheckLogin" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			    userId, userName
+			    userId, userName, userLike
 			FROM
 			    user
 			WHERE

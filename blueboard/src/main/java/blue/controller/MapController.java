@@ -47,7 +47,6 @@ public class MapController {
 		String lCategory = request.getParameter("lCategory");
 		String sCategory = request.getParameter("sCategory");
 							
-		System.out.println("sCategory = "+sCategory);
 			
 		try{
 			Map.put("lCategory",lCategory);

@@ -65,6 +65,7 @@ public class LoginController {
 		HttpSession session = request.getSession();		//spring session 생성
 		session.setAttribute("userId", null);
 		session.setAttribute("userName", null);
+		session.setAttribute("userLike", null);
 		
 		System.out.println("logout성공");
 		

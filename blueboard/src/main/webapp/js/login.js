@@ -226,6 +226,7 @@ function checkLogin(){
 				EMsg.style.display = "none";
 				$("#userId").val(list[0].userId);
 				$("#userName").val(list[0].userName);
+				$("#userLike").val(list[0].userLike);
 				//alert($("#userName").val(list[0].userName));
 				document.getElementById('login_form').submit()
 			}

@@ -9,6 +9,7 @@
 
 	String userId=(String)session.getAttribute("userId");
 	String userName=(String)session.getAttribute("userName");
+	String userLike=(String)session.getAttribute("userLike");
 	
 	if(userName!=null && !userName.equals("")){
 	userName+=" 님";
@@ -44,7 +45,8 @@
 %>
 
 <body onload="startData('<%=lCategory%>','<%=sCategory%>')">
-
+	
+	<p id="userLike" style="display:none;"><%=userLike%></p>
 	<div class="logo">
 			<a href="main.do"><img src="images/logo.png" /></a>
 
@@ -129,6 +131,15 @@
 		</div>
 
 		<div id="menu_wrap" class="bg_white">
+			<div id="smart" >
+				<h3 class="text">스마트 추천</h3>
+				<br><br>
+				<div style="text-align:center;">
+					<h3>페이스북 인증 후 이용하실 수 있습니다.</h3>
+					<br><br>
+					<img width="100px" src="images/mapFacebook.png" />
+				</div>
+			</div>
 			<ul id="placesList"></ul>
 		</div>
 		<div id="pagination"></div>

@@ -4,13 +4,27 @@ var gu ='';
 var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
 
-var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
+
+///////////////////////////////////////  myLike 받아오기  //////////////////////////////////////////////////
+//var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
+var myLike=$('#userLike').text();
+
 var maxLike= new Array(5); //5개 행 만들기
 for(var i=0;i<maxLike.length;i++){
 	maxLike[i] = new Array(2); //각 행에 2개의 열을 만든다
 }
 
-// 지도에 폴리곤으로 표시할 영역데이터 배열입니다 
+
+/////////////////////////////////////////  페이스북 인증 안했으면 스마트 추천 유도  ///////////////////////////////////////////////////////////////
+var smart = document.getElementById("smart");
+if(myLike=="null"){
+	smart.style.display = "block";
+}else{
+	smart.style.display = "none";
+}
+
+
+//////////////////////////////////////////////////////////// 지도에 폴리곤으로 표시할 영역데이터 배열입니다 ////////////////////////////////////
 var areas = [
     {
     	center: new daum.maps.LatLng(37.532966, 127.005514),
@@ -1048,40 +1062,42 @@ function startData(high,middle) { //초기 조건을
 		success : function(data) {
 
 			////////////faceBook 추천///////////////////////////
-			var list=data['positions'];
-	    	
-	    	var min=new Array(2); //min={비교값,academyId}
-	    	var tempJ=0;
-	    		
-	   		for(var i=0;i<list.length;i++){ //facebook 추천 상위 5개 추출
-	    		var temp=compare(myLike,list[i].userLike);
-	    		if(i<5){
-	    			maxLike[i][0]=temp;
-	    			maxLike[i][1]=list[i].academyId;
-	    		}else{
-	    			min[0]=maxLike[0][0];
-	    			min[1]=maxLike[0][1];
-	    			for(var j=1;j<5;j++){
-	    				if(min[0]>maxLike[j][0]){
-	    					min[0]=maxLike[j][0];
-	    	    			min[1]=maxLike[j][1];
-	    	    			tempJ=j;
-	    				}
+			
+			if(myLike!='null'){
+				var list=data['positions'];
+		    	
+		    	var min=new Array(2); //min={비교값,academyId}
+		    	var tempJ=0;
+		    		
+		   		for(var i=0;i<list.length;i++){ //facebook 추천 상위 5개 추출
+		    		var temp=compare(myLike,list[i].userLike);
+		    		if(i<5){
+		    			maxLike[i][0]=temp;
+		    			maxLike[i][1]=list[i].academyId;
+		    		}else{
+		    			min[0]=maxLike[0][0];
+		    			min[1]=maxLike[0][1];
+		    			for(var j=1;j<5;j++){
+		    				if(min[0]>maxLike[j][0]){
+		    					min[0]=maxLike[j][0];
+		    	    			min[1]=maxLike[j][1];
+		    	    			tempJ=j;
+		    				}
+			    		}
+		    			if(min[0]<temp){
+		    				maxLike[tempJ][0]=temp;
+		    				maxLike[tempJ][1]=list[i].academyId;;
+		    			}
 		    		}
-	    			if(min[0]<temp){
-	    				maxLike[tempJ][0]=temp;
-	    				maxLike[tempJ][1]=list[i].academyId;;
-	    			}
-	    		}
-	    	}
-	   		
-	   		maxLike.sort(function(a1,a2){ //5개 내림차순으르 정렬
-	   			a1=parseInt(a1);
-	   			a2=parseInt(a2);
-	   		
-	   			return (a1>a2)? -1:((a1<a2)? 1:0);
-	   		});
-	    	
+		    	}
+		   		
+		   		maxLike.sort(function(a1,a2){ //5개 내림차순으르 정렬
+		   			a1=parseInt(a1);
+		   			a2=parseInt(a2);
+		   		
+		   			return (a1>a2)? -1:((a1<a2)? 1:0);
+		   		});
+			}
 	   		//페이스북 비교값
 	    	//alert('maxLike = '+maxLike);
 			////////////////////////////////////////////////////
@@ -1249,9 +1265,7 @@ function displayPlaces(places,current) {
 				itemEl.onmouseover = function() {
 					//displayInfowindow(places);
 					displayOneMarker(marker, lat, lng);
-					var test = document.getElementById('seq_' + i);
-					test.style.backgroundColor = "#FFC000";
-					
+					var test = document.getElementById('seq_' + i).className="seq_mouse";
 					
 					var name = document.getElementById('name_' + i);
 					name.style.color = "#000000";
@@ -1271,8 +1285,7 @@ function displayPlaces(places,current) {
 					// 아래 코드는 인포윈도우를 지도에서 제거합니다
 					//infowindow.close();
 					removeMarker(marker);
-					var test = document.getElementById('seq_' + i);
-					test.style.backgroundColor = "";
+					var test = document.getElementById('seq_' + i).className="seq";
 					
 					var name = document.getElementById('name_' + i);
 					name.style.color = "#FFC000";
@@ -1322,9 +1335,7 @@ function displayPlaces(places,current) {
 				itemEl.onmouseover = function() {
 					//displayInfowindow(places);
 					displayOneMarker(marker, lat, lng);
-					var test = document.getElementById('seq_' + i);
-					test.style.backgroundColor = "#FFC000";
-					
+					var test = document.getElementById('seq_' + i).className="seq_mouse";
 					
 					var name = document.getElementById('name_' + i);
 					name.style.color = "#000000";
@@ -1341,8 +1352,7 @@ function displayPlaces(places,current) {
 					// 아래 코드는 인포윈도우를 지도에서 제거합니다
 					//infowindow.close();
 					removeMarker(marker);
-					var test = document.getElementById('seq_' + i);
-					test.style.backgroundColor = "";
+					var test = document.getElementById('seq_' + i).className="seq";
 					
 					var name = document.getElementById('name_' + i);
 					name.style.color = "#FFC000";
@@ -1387,9 +1397,7 @@ function displayPlaces(places,current) {
 				itemEl.onmouseover = function() {
 					//displayInfowindow(places);
 					displayOneMarker(marker, lat, lng);
-					var test = document.getElementById('seq_' + i);
-					test.style.backgroundColor = "#FFC000";
-					
+					var test = document.getElementById('seq_' + i).className="seq_mouse";
 					
 					var name = document.getElementById('name_' + i);
 					name.style.color = "#000000";
@@ -1406,8 +1414,7 @@ function displayPlaces(places,current) {
 					// 아래 코드는 인포윈도우를 지도에서 제거합니다
 					//infowindow.close();
 					removeMarker(marker);
-					var test = document.getElementById('seq_' + i);
-					test.style.backgroundColor = "";
+					var test = document.getElementById('seq_' + i).className="seq";
 					
 					var name = document.getElementById('name_' + i);
 					name.style.color = "#FFC000";
@@ -1554,21 +1561,17 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 				var el = document.createElement('a');
 				
 				if(i==current-5){
-					el.href = "#";
 					el.innerHTML = "<<";
 					el.onclick = changePage(current-1,length);
 				}else if(i==current+5){
-					el.href = "#";
 					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 				}else if(i>=length+1){
-					el.href = "#";
 					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 					fragment.appendChild(el);
 					break;
 				}else{
-					el.href = "#";
 					el.innerHTML = i;
 			
 					if (i == current) {
@@ -1588,21 +1591,17 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 				var el = document.createElement('a');
 				
 				if(i==length-9){
-					el.href = "#";
 					el.innerHTML = "<<";
 					el.onclick = changePage(current-1,length);
 				}else if(i==length+1){
-					el.href = "#";
 					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 				}else if(i>=length+1){
-					el.href = "#";
 					el.innerHTML = ">>";
 					el.onclick = changePage(current+1,length);
 					fragment.appendChild(el);
 					break;
 				}else{
-					el.href = "#";
 					el.innerHTML = i;
 			
 					if (i == current) {
@@ -1625,23 +1624,19 @@ function displayPagination(pagination, current) { //초기 받아오는것!!
 			var el = document.createElement('a');
 			
 			if(i==0){
-				el.href = "#";
 				el.innerHTML ="<<";
 				el.onclick = changePage(current-1,length);
 			}else if(i==10){
-				el.href = "#";
 				el.innerHTML = ">>";
 				el.onclick = changePage(current+1,length);
 
 			}else if(i>=length+1){
-				el.href = "#";
 				el.innerHTML = ">>";
 				el.onclick = changePage(current+1,length);
 				
 				fragment.appendChild(el);
 				break;
 			}else{
-				el.href = "#";
 				el.innerHTML = i;
 		
 				if (i == current) {
