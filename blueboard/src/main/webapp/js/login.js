@@ -145,55 +145,6 @@ window.fbAsyncInit = function() {
  	fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
 
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
-
-
-function compare(){
-	var count=0;
-	var strArray = likes.split(',');
-	var teatherArray = teather.split(',');
-	
-	for(var i=0;i<strArray.length-1;i++){
-		for(var j=0;j<teatherArray.length-1;j++){
-			if(strArray[i]==teatherArray[j]){
-				count++;
-			}
-		}
-	}
-	alert(count);
-}
-
-
-
-/*
-function testAPI() {
-	$.ajax({
-		type:"GET",
-		url:"https://graph.facebook.com/me/likes?access_token="+accessToken+"&limit=100",
-		dataType:"json",
-		error : function(e) {
-			 alert("에러났소!");
-			 alert(e);
-		},
-		success: function(data){
-			$.each(data,function(key){
-				var list=data[key];
-				//alert(list.length);
-				
-				for(var i=0;i<list.length;i++){
-					likes+=list[i].name+",";
-				}
-			});
-			alert(likes);
-			//$('#status').text(likes);
-			//compare();
-			
-			
-		}
-	});
-}
-*/
 //////////////////   일반 로그인    ///////////////////////////
 
 function checkLogin(){

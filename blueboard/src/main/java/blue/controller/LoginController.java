@@ -43,6 +43,42 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("register");
 		return mv;
 	}
+	// 회원정보수정 화면
+	@RequestMapping(value = "/modify.do")
+	public ModelAndView modify(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("modify");
+		
+		return mv;
+	}
+		
+	// 회원정보수정 화면
+	@RequestMapping(value = "/modifyFirst.do")
+	public ModelAndView modifyFirst(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Map<String, Object>> list =null;
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");
+		System.out.println("modifyFirst : "+userId);
+		
+		try{
+			map.put("userId", userId);
+			
+			list = service.selectModify(map);
+			
+			mv.addObject("modify", list);
+			System.out.println("list : "+list);
+		
+			System.out.println("modifyFirst 성공");
+					
+		}catch(Exception e){
+			System.out.println("modifyFirst 실패");
+			return null;
+		}
+		
+		return mv;
+	}
 	
 	// 회원가입 화면
 	@RequestMapping(value = "/complete.do")
@@ -92,7 +128,6 @@ public class LoginController {
 			
 			list = service.selectCheckLogin(map);
 			
-			System.out.println("list = "+list);
 			mv.addObject("checkLogin", list);
 		
 			System.out.println("checkLogin 성공");
@@ -142,8 +177,11 @@ public class LoginController {
 		String userPw = request.getParameter("pswd1");
 		String userName = request.getParameter("nm");
 		String userSex = request.getParameter("sex");
-		String userBirth = request.getParameter("birthday");
+		String userBirthday = request.getParameter("birthday");
 		String userEmail = request.getParameter("email");
+		
+		
+		System.out.println("userBirthday :"+userBirthday);
 		
 		if(userSex.equals("0")){
 			userSex="남성";
@@ -156,7 +194,7 @@ public class LoginController {
 			map.put("userPw", userPw);
 			map.put("userName", userName);
 			map.put("userSex", userSex);
-			map.put("userBirth", userBirth);
+			map.put("userBirthday", userBirthday);
 			map.put("userEmail", userEmail);
 			
 			service.insertUser(map);
@@ -200,14 +238,65 @@ public class LoginController {
 			map.put("userEmail", userEmail);
 			map.put("userLike", userLike);
 			
-			service.insertFacebook(map);
+			if(service.checkId(map) == null) {
+				service.insertFacebook(map);
+			}
+			
+			HttpSession session = request.getSession();		//spring session 생성
+			session.setAttribute("userId", userId);
+			session.setAttribute("userName", userName);
+			session.setAttribute("userLike", userLike);
+			
 			
 		}catch(Exception e){
 			
 		}
+		
 		return mv;
 	}
 	
-	
+	// 회원가입 완료
+	@RequestMapping("/modifyUser.do")
+	public ModelAndView modifyUser(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("main");
+		Map<String, Object> map = new HashMap<String, Object>();
+		//List<Map<String, Object>> list = null;
+		
+		String userId = request.getParameter("id");
+		String userPw = request.getParameter("pswd1");
+		String userName = request.getParameter("nm");
+		String userSex = request.getParameter("sex");
+		String userBirthday = request.getParameter("birthday");
+		String userEmail = request.getParameter("email");
+		
+		System.out.println("===========modifyUser============");
+		System.out.println("userId :"+userId);
+		System.out.println("userPw :"+userPw);
+		System.out.println("userName :"+userName);
+		System.out.println("userSex :"+userSex);
+		System.out.println("userBirthday :"+userBirthday);
+		System.out.println("userEmail :"+userEmail);
+		
+		if(userSex.equals("0")){
+			userSex="남성";
+		}else{
+			userSex="여성";
+		}
+		
+		try{
+			map.put("userId", userId);
+			map.put("userPw", userPw);
+			map.put("userName", userName);
+			map.put("userSex", userSex);
+			map.put("userBirthday", userBirthday);
+			map.put("userEmail", userEmail);
+			
+			//service.insertUser(map);
+			
+		}catch(Exception e){
+				
+		}
+		return mv;
+	}
 	
 }

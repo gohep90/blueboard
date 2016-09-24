@@ -52,7 +52,7 @@
 		<div class="login_logo">
 			<p class="login">MY PAGE</p>
 		</div>
-		<img class="start_icon" src="images/person.png"/>
+		<img id="modify" class="start_icon" src="images/person.png" />
 		<img class="start_icon" src="images/academyEnroll.png"/>
 		<img class="copyright" src="images/copyright.png"/>
 	</div>

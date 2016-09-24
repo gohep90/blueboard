@@ -17,7 +17,7 @@
 }
 
 .comm_tab1>.tab_menu>li a{
-	line-height:1em;
+	line-height:0.5em;
 	font-size:23px;
 	text-align:center;
 }
@@ -25,6 +25,7 @@
 	line-height:1em;
 	font-size:15px;
 	text-align:center;
+	margin-top:12px;
 }
 .comm_tab1>.tab_menu .on  {height:30px;background-color:#FFD757;}
 .comm_tab1>.tab_cont>.cont {margin-top:20px;}

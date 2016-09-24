@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -10,7 +10,7 @@
 	String userName = (String) session.getAttribute("userName");
 	System.out.println("main : " + userName);
 	if (userName != null && !userName.equals("")) {
-		userName += " ´Ô";
+		userName += " ë‹˜";
 		//response.sendRedirect("HighLevelUI.html");
 	} else {
 		userName = "LOGIN";
@@ -18,10 +18,10 @@
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ko">
+<html lang="UTF-8">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¹è¿ì·¯ °¡´Â±æ ÇĞ¿ø È¨ÆäÀÌÁö</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ë°°ìš°ëŸ¬ ê°€ëŠ”ê¸¸ í•™ì› í™ˆí˜ì´ì§€</title>
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/academy.css'/>" />
@@ -42,7 +42,7 @@
 	$(document)
 			.ready(
 					function() {
-						//ÅÇ(ul) onoff
+						//íƒ­(ul) onoff
 						$('.jq_tabonoff>.jq_cont').children().css('display',
 								'none');
 						$('.jq_tabonoff>.jq_cont div:first-child').css(
@@ -64,21 +64,25 @@
 					});
 </script>
 
-<!-- div µ¿Àû Ãß°¡ ÇÔ¼ö Áö±İ 5°³»ı¼º-->
+<!-- div ë™ì  ì¶”ê°€ í•¨ìˆ˜ ì§€ê¸ˆ 5ê°œìƒì„±-->
 
 <script type="text/javascript">
-<!--
-	function add_item() {
-		// pre_set ¿¡ ÀÖ´Â ³»¿ëÀ» ÀĞ¾î¿Í¼­ Ã³¸®..
-		for (var i = 0; i < 5; i++) {
-			var div = document.createElement('div');
-			div.innerHTML = document.getElementById('pre_set').innerHTML;
-			document.getElementById('field').appendChild(div);
-		}
-	}
-	//divµ¿Àû »èÁ¦ -->
+
+function add_item(){
+    // pre_set ì— ìˆëŠ” ë‚´ìš©ì„ ì½ì–´ì™€ì„œ ì²˜ë¦¬..
+  for( var i = 0; i<5 ; i++){
+	  var div = document.createElement('div');
+	  div.setAttribute('id','div'+i);
+	  //  div.innerHTML = document.getElementById('pre_set').innerHTML;
+	  var inner = '<div id="cat"><div id="cat_name"><h3 id="day'+i+'">9ì›”8ì¼(ì›”)</h3></div><div id="cat_content"><h3 id="content'+i+'">ì›í•˜ëŠ” ê²ƒì„ ê·¸ë ¤ë¼!<br>ë¨¸ë¦¿ì†ì—ë§Œ ìˆë˜ ë””ìì¸ì„ ì†ìœ¼ë¡œ ë‚˜íƒ€ë‚´ë³´ê¸°</h3></div></div>';
+	  div.innerHTML = inner;
+	  document.getElementById('field').appendChild(div);
+	  }
+}
+	
+	//divë™ì  ì‚­ì œ -->
 	function remove_item(obj) {
-		// obj.parentNode ¸¦ ÀÌ¿ëÇÏ¿© »èÁ¦
+		// obj.parentNode ë¥¼ ì´ìš©í•˜ì—¬ ì‚­ì œ
 		document.getElementById('field').removeChild(obj.parentNode);
 	}
 </script>
@@ -119,17 +123,17 @@
 		<div id="teb">
 			<div class="jq_tabonoff comm_tab1">
 				<ul class="jq_tab tab_menu">
-					<li id="first"><a href="javascript:;" class="tit">°­»çÁ¤º¸</a>
+					<li id="first"><a href="javascript:;" class="tit">ê°•ì‚¬ì •ë³´</a>
 						<p>Information</p></li>
-					<li><a href="javascript:;" class="tit">°­ÀÇÁ¤º¸</a>
+					<li><a href="javascript:;" class="tit">ê°•ì˜ì •ë³´</a>
 						<p>Contents</p></li>
-					<li><a href="javascript:;" class="tit">°­ÀÇÀå¼Ò</a>
+					<li><a href="javascript:;" class="tit">ê°•ì˜ì¥ì†Œ</a>
 						<p>Place</p></li>
-					<li><a href="javascript:;" class="tit">¼ö°­ÈÄ±â</a>
+					<li><a href="javascript:;" class="tit">ìˆ˜ê°•í›„ê¸°</a>
 						<p>Comment</p></li>
 				</ul>
 				<div class="jq_cont tab_cont">
-					<!-- //ÅÇ1 -->
+					<!-- //íƒ­1 -->
 
 					<div id="information" class="cont">
 						<img id="Title2" src="images/SUBPAGE/TITLE1.png" width="270">
@@ -137,7 +141,7 @@
 
 						<div id="name">
 							<div id="name_name">
-								<h2>ÀÌ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¸§</h2>
+								<h2>ì´&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ë¦„</h2>
 							</div>
 							<div id="name_content">
 								<h2>${row.teacherName}</h2>
@@ -146,7 +150,7 @@
 
 						<div id="career">
 							<div id="career_name">
-								<h2>¿¬&nbsp;&nbsp;&nbsp;¶ô&nbsp;&nbsp;&nbsp;Ã³</h2>
+								<h2>ì—°&nbsp;&nbsp;&nbsp;ë½&nbsp;&nbsp;&nbsp;ì²˜</h2>
 							</div>
 							<div id="career_content">
 								<h2>${row.teacherTel}</h2>
@@ -155,13 +159,13 @@
 
 						<div id="book">
 							<div id="book_name">
-								<h2>°æ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·Â</h2>
+								<h2>ê²½ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ë ¥</h2>
 							</div>
 							<div id="book_content">
 								<h2>
-									<!-- úŞ ÇÑ¾ç´ëÇĞ±³ ½Ç³»°ÇÃàµğÀÚÀÎÇĞ°ú °âÀÓ±³¼ö<br> úŞ HY Magazine ¸¶ÄÉÆÃ Àü·«ÆÀ ÀÚ¹®<br>
-									îñ °æÈñ´ëÇĞ±³ ÀÎÅ×¸®¾îµğÀÚÀÎÇĞ°ú °âÀÓ±³¼ö<br> îñ ¿¬¼¼´ëÇĞ±³ µğÀÚÀÎ´ëÇĞ¿ø ¼®»ç Á¹¾÷<br> îñ
-									¿¬¼¼´ëÇĞ±³ »ıÈ°µğÀÚÀÎÇĞ°ú Á¹¾÷
+									<!-- ç¾ í•œì–‘ëŒ€í•™êµ ì‹¤ë‚´ê±´ì¶•ë””ìì¸í•™ê³¼ ê²¸ì„êµìˆ˜<br> ç¾ HY Magazine ë§ˆì¼€íŒ… ì „ëµíŒ€ ìë¬¸<br>
+									å‰ ê²½í¬ëŒ€í•™êµ ì¸í…Œë¦¬ì–´ë””ìì¸í•™ê³¼ ê²¸ì„êµìˆ˜<br> å‰ ì—°ì„¸ëŒ€í•™êµ ë””ìì¸ëŒ€í•™ì› ì„ì‚¬ ì¡¸ì—…<br> å‰
+									ì—°ì„¸ëŒ€í•™êµ ìƒí™œë””ìì¸í•™ê³¼ ì¡¸ì—…
 									 -->
 									 ${row.teacherCareer}
 								</h2>
@@ -170,34 +174,34 @@
 
 						<div id="etc">
 							<div id="etc_name">
-								<h2>°­ »ç ¼Ò °³</h2>
+								<h2>ê°• ì‚¬ ì†Œ ê°œ</h2>
 							</div>
 							<div id="etc_content">
 								<h2>${row.teacherIntro}</h2>
 							</div>
 						</div>
 					</div>
-					<!-- ÅÇ1// -->
+					<!-- íƒ­1// -->
 
-					<!-- //ÅÇ2 -->
+					<!-- //íƒ­2 -->
 					<div class="cont">
 						<img id="Title1" src="images/SUBPAGE/TITLE2.png" width="240"
 							style="margin-bottom: 20px">
 
 						<div class="jq_tabonoff comm_tab2" style="margin-top: 0px">
 							<ul class="jq_tab tab_menu">
-								<li><a href="javascript:;" class="tit">Info</a></li>
-								<li><a href="javascript:;" class="tit">Photo</a></li>
-								<li><a href="javascript:;" class="tit">Video</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:23px;">I</b>nfo</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:23px;">P</b>hoto</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:23px;">V</b>ideo</a></li>
 							</ul>
 							<div class="jq_cont tab_cont">
-								<!-- //ÅÇ2-1 -->
+								<!-- //íƒ­2-1 -->
 
 								<div id="information" class="cont">
 									<br> 
 									<div id="period">
 										<div id="period_name">
-											<h2>±â &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;°£</h2>
+											<h2>ê¸° &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ê°„</h2>
 										</div>
 										<div id="period_content">
 											<h2>${row.academyTerm}</h2>
@@ -206,7 +210,7 @@
 
 									<div id="day">
 										<div id="day_name">
-											<h2>¿ä&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÀÏ</h2>
+											<h2>ìš”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ì¼</h2>
 										</div>
 										<div id="day_content">
 											<h2>${row.academyWeek}</h2>
@@ -215,7 +219,7 @@
 
 									<div id="time">
 										<div id="time_name">
-											<h2>½Ã&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; °£</h2>
+											<h2>ì‹œ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ê°„</h2>
 										</div>
 										<div id="time_content">
 											<h2>${row.academyTime}</h2>
@@ -224,7 +228,7 @@
 
 									<div id="money">
 										<div id="money_name">
-											<h2>±İ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¾×</h2>
+											<h2>ê¸ˆ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ì•¡</h2>
 										</div>
 										<div id="money_content">
 											<h2>${row.academyPay}</h2>
@@ -233,56 +237,40 @@
 
 									<div id="introduce">
 										<div id="introduce_name">
-											<h2>°­ ÁÂ ¼Ò °³</h2>
+											<h2>ê°• ì¢Œ ì†Œ ê°œ</h2>
 										</div>
 										<div id="introduce_content">
 											<h2>${row.academyIntro}</h2>
 										</div>
 									</div>
-									<!--Ä¿¸®Å§·³-->
+									<!--ì»¤ë¦¬í˜ëŸ¼-->
 									<div id="curriculum">
 										<div id="curriculum_name">
-											<h2>Ä¿ ¸® Å§ ·³</h2>
+											<h2>ì»¤ ë¦¬ í˜ ëŸ¼</h2>
 										</div>
-										<!--div¿¡ µé¾î°¥ ³»¿ë ³Ö´Â°÷-->
-										<div id="pre_set"
-											style="width: auto; height: auto; display: none;">
-											<div id="cat">
-												<div id="cat_name">
-													<h3>9¿ù8ÀÏ(¿ù)</h3>
-												</div>
-												<div id="cat_content">
-													<h3>
-														1±³½Ã:¼öÇĞ<br>2±³½Ã:¹°¸®
-													</h3>
-												</div>
-											</div>
-
-										</div>
-										<!--div¿¡ µé¾î°¥ ³»¿ë ³Ö´Â°÷-->
+										<!--divì— ë“¤ì–´ê°ˆ ë‚´ìš© ë„£ëŠ”ê³³-->
 										<div id="curriculum_content">
 
-
-											<!--½ÇÁ¦ div³»¿ëÀÌ ¹İ¿µµÇ´Â°ø°£-->
+											<!--ì‹¤ì œ divë‚´ìš©ì´ ë°˜ì˜ë˜ëŠ”ê³µê°„-->
 											<div id="field" style=""></div>
-											<!--½ÇÁ¦ div³»¿ëÀÌ ¹İ¿µµÇ´Â°ø°£-->
+											<!--ì‹¤ì œ divë‚´ìš©ì´ ë°˜ì˜ë˜ëŠ”ê³µê°„-->
 										</div>
 									</div>
-									<!--Ä¿¸®Å§·³-->
+									<!--ì»¤ë¦¬í˜ëŸ¼-->
 									<div id="category">
 										<div id="category_name">
-											<h2>Ä« Å× °í ¸®</h2>
+											<h2>ì¹´ í…Œ ê³  ë¦¬</h2>
 										</div>
 										<div id="category_content">
-											<div id="large">´ëºĞ·ù</div>
-											<div id="small">ÁßºĞ·ù</div>
+											<div id="large">ëŒ€ë¶„ë¥˜</div>
+											<div id="small">ì¤‘ë¶„ë¥˜</div>
 										</div>
 									</div>
 								</div>
 
-								<!-- ÅÇ2-1// -->
+								<!-- íƒ­2-1// -->
 
-								<!-- //ÅÇ2-2 -->
+								<!-- //íƒ­2-2 -->
 								<div class="cont">
 
 									<div id="slider">
@@ -321,41 +309,41 @@
 											</div>
 										</div>
 									</div>
-									<!-- ÅÇ2-2// -->
+									<!-- íƒ­2-2// -->
 								</div>
-								<!-- //ÅÇ2-3 -->
+								<!-- //íƒ­2-3 -->
 
 								<div class="cont">
 									<div id="class_video">
 										<iframe id="video"
-											src="https://www.youtube.com/embed/GSkRnMJ7WaE"
+											src="https://www.youtube.com/embed/JeN3LH-GGUE"
 											frameborder="0" allowfullscreen></iframe>
 									</div>
 								</div>
-								<!-- ÅÇ2-3// -->
+								<!-- íƒ­2-3// -->
 							</div>
 						</div>
-						<!-- ÅÇ2// -->
+						<!-- íƒ­2// -->
 
-						<!-- ÅÇ3 -->
+						<!-- íƒ­3 -->
 					</div>
 					<div class="cont">
 						<img id="Title3" src="images/SUBPAGE/TITLE3.png" width="270">
 						<div id="map"></div>
 						<div id="address">
 							<div id="address_name">
-								<h2>»ó ¼¼ ÁÖ ¼Ò</h2>
+								<h2>ìƒ ì„¸ ì£¼ ì†Œ</h2>
 							</div>
 							<div id="address_content">
 								<h2>${row.academyAddress}</h2>
 							</div>
 						</div>
 					</div>
-					<!--ÅÇ3 //-->
+					<!--íƒ­3 //-->
 
-					<!--ÅÇ4-->
-					<div class="cont">ÅÇ4</div>
-					<!--ÅÇ4//-->
+					<!--íƒ­4-->
+					<div class="cont">íƒ­4</div>
+					<!--íƒ­4//-->
 				</div>
 			</div>
 		</div>
@@ -364,22 +352,22 @@
 	</c:when>
 	</c:choose>
 	
-	<!-- ÇÏ´Ü¹Ù -->
+	<!-- í•˜ë‹¨ë°” -->
 	<div class="info_div">
 		<div class="info_bottom">
-			<div class="info_logo">¹è¿ì·¯°¡´Â±æ</div>
+			<div class="info_logo">ë°°ìš°ëŸ¬ê°€ëŠ”ê¸¸</div>
 			<div class="info-address">
-				<p class="info_text">´ëÇ¥ : ÀåÁö¿õ</p>
-				<p class="info_text">ÁÖ¼Ò : ¼­¿ï½Ã ¼ºµ¿±¸ ¿Õ½Ê¸®·Î 222 ÇÑ¾ç´ëÇĞ±³ Á¤Ã¥´ëÇĞ±³ 704È£</p>
+				<p class="info_text">ëŒ€í‘œ : ì¥ì§€ì›…</p>
+				<p class="info_text">ì£¼ì†Œ : ì„œìš¸ì‹œ ì„±ë™êµ¬ ì™•ì‹­ë¦¬ë¡œ 222 í•œì–‘ëŒ€í•™êµ ì •ì±…ëŒ€í•™êµ 704í˜¸</p>
 				<p class="info_text">
-					<span>ÀüÈ­ : 02-234-5678 </span><span class="fax"> ÆÑ½º :
+					<span>ì „í™” : 02-234-5678 </span><span class="fax"> íŒ©ìŠ¤ :
 						02-554-9774</span>
 				</p>
 			</div>
 			<div class="info-address">
-				<p class="info_text">»ç¾÷ÀÚ ¹øÈ£ : 220-88-59156</p>
-				<p class="info_text">¹®ÀÇ¸ŞÀÏ : biz@station3.co.kr</p>
-				<p class="info_text">2016/07/28 ¢ç All rights reserved by BAEGA.</p>
+				<p class="info_text">ì‚¬ì—…ì ë²ˆí˜¸ : 220-88-59156</p>
+				<p class="info_text">ë¬¸ì˜ë©”ì¼ : biz@station3.co.kr</p>
+				<p class="info_text">2016/07/28 Â® All rights reserved by BAEGA.</p>
 			</div>
 		</div>
 	</div>
@@ -411,44 +399,44 @@ var lat=$('#lat').text();
 var lng=$('#lng').text();
 var academyName = $('.academy_p').text();
 
-var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
+var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
     mapOption = { 
-        center: new daum.maps.LatLng(lat, lng), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-        level: 3 // ÁöµµÀÇ È®´ë ·¹º§
+        center: new daum.maps.LatLng(lat, lng), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+        level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
     };
 
-var map = new daum.maps.Map(mapContainer, mapOption); // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
+var map = new daum.maps.Map(mapContainer, mapOption); // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 
-var imageSrc = 'images/academyMarker.png', // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ ÁÖ¼ÒÀÔ´Ï´Ù    
-imageSize = new daum.maps.Size(30, 55), // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ Å©±âÀÔ´Ï´Ù
-imageOption = {offset: new daum.maps.Point(15, 45)}; // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ ¿É¼ÇÀÔ´Ï´Ù. ¸¶Ä¿ÀÇ ÁÂÇ¥¿Í ÀÏÄ¡½ÃÅ³ ÀÌ¹ÌÁö ¾È¿¡¼­ÀÇ ÁÂÇ¥¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+var imageSrc = 'images/academyMarker.png', // ë§ˆì»¤ì´ë¯¸ì§€ì˜ ì£¼ì†Œì…ë‹ˆë‹¤    
+imageSize = new daum.maps.Size(30, 55), // ë§ˆì»¤ì´ë¯¸ì§€ì˜ í¬ê¸°ì…ë‹ˆë‹¤
+imageOption = {offset: new daum.maps.Point(15, 45)}; // ë§ˆì»¤ì´ë¯¸ì§€ì˜ ì˜µì…˜ì…ë‹ˆë‹¤. ë§ˆì»¤ì˜ ì¢Œí‘œì™€ ì¼ì¹˜ì‹œí‚¬ ì´ë¯¸ì§€ ì•ˆì—ì„œì˜ ì¢Œí‘œë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
   
-//¸¶Ä¿ÀÇ ÀÌ¹ÌÁöÁ¤º¸¸¦ °¡Áö°í ÀÖ´Â ¸¶Ä¿ÀÌ¹ÌÁö¸¦ »ı¼ºÇÕ´Ï´Ù
+//ë§ˆì»¤ì˜ ì´ë¯¸ì§€ì •ë³´ë¥¼ ê°€ì§€ê³  ìˆëŠ” ë§ˆì»¤ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption),
-markerPosition = new daum.maps.LatLng(lat, lng); // ¸¶Ä¿°¡ Ç¥½ÃµÉ À§Ä¡ÀÔ´Ï´Ù
+markerPosition = new daum.maps.LatLng(lat, lng); // ë§ˆì»¤ê°€ í‘œì‹œë  ìœ„ì¹˜ì…ë‹ˆë‹¤
 
-//¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù
+//ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 var marker = new daum.maps.Marker({
 position: markerPosition, 
-image: markerImage // ¸¶Ä¿ÀÌ¹ÌÁö ¼³Á¤ 
+image: markerImage // ë§ˆì»¤ì´ë¯¸ì§€ ì„¤ì • 
 });
 
-//¸¶Ä¿°¡ Áöµµ À§¿¡ Ç¥½ÃµÇµµ·Ï ¼³Á¤ÇÕ´Ï´Ù
+//ë§ˆì»¤ê°€ ì§€ë„ ìœ„ì— í‘œì‹œë˜ë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤
 marker.setMap(map);  
 
 
-// ¾Æ·¡ ÄÚµå´Â Áöµµ À§ÀÇ ¸¶Ä¿¸¦ Á¦°ÅÇÏ´Â ÄÚµåÀÔ´Ï´Ù
+// ì•„ë˜ ì½”ë“œëŠ” ì§€ë„ ìœ„ì˜ ë§ˆì»¤ë¥¼ ì œê±°í•˜ëŠ” ì½”ë“œì…ë‹ˆë‹¤
 // marker.setMap(null);    
 
-// ÀÎÆ÷À©µµ¿ì¿¡ Ç¥ÃâµÉ ³»¿ëÀ¸·Î HTML ¹®ÀÚ¿­ÀÌ³ª document element°¡ °¡´ÉÇÕ´Ï´Ù
-var iwContent = '<div style="padding:5px; text-align:center;"><'+academyName+'><br><a href="http://map.daum.net/link/map/'+academyName+','+lat+','+lng+'" style="color:blue" target="_blank">Å«Áöµµº¸±â</a> <a href="http://map.daum.net/link/to/'+academyName+','+lat+','+lng+'" style="color:blue" target="_blank">±æÃ£±â</a></div>'; 
+// ì¸í¬ìœˆë„ìš°ì— í‘œì¶œë  ë‚´ìš©ìœ¼ë¡œ HTML ë¬¸ìì—´ì´ë‚˜ document elementê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤
+var iwContent = '<div style="padding:5px; text-align:center;"><'+academyName+'><br><a href="http://map.daum.net/link/map/'+academyName+','+lat+','+lng+'" style="color:blue" target="_blank">í°ì§€ë„ë³´ê¸°</a> <a href="http://map.daum.net/link/to/'+academyName+','+lat+','+lng+'" style="color:blue" target="_blank">ê¸¸ì°¾ê¸°</a></div>'; 
 
-// ÀÎÆ÷À©µµ¿ì¸¦ »ı¼ºÇÕ´Ï´Ù
+// ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 var infowindow = new daum.maps.InfoWindow({
     content : iwContent 
 });
   
-// ¸¶Ä¿ À§¿¡ ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÕ´Ï´Ù. µÎ¹øÂ° ÆÄ¶ó¹ÌÅÍÀÎ marker¸¦ ³Ö¾îÁÖÁö ¾ÊÀ¸¸é Áöµµ À§¿¡ Ç¥½ÃµË´Ï´Ù
+// ë§ˆì»¤ ìœ„ì— ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤. ë‘ë²ˆì§¸ íŒŒë¼ë¯¸í„°ì¸ markerë¥¼ ë„£ì–´ì£¼ì§€ ì•Šìœ¼ë©´ ì§€ë„ ìœ„ì— í‘œì‹œë©ë‹ˆë‹¤
 infowindow.open(map, marker); 
 
 

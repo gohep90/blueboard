@@ -55,7 +55,7 @@
 		]]>
 	</insert>	
 	
-	<!-- 회원가입-->
+	<!-- 회원가입 facebook-->
 	<insert id="insertFacebook" parameterType="hashmap">
 		<![CDATA[
 			INSERT
@@ -79,6 +79,19 @@
 			    )
 		]]>
 	</insert>	
+	
+	
+	<!-- 회원정보 수정 -->
+	<select id="selectModify" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    *
+			FROM
+			    user
+			WHERE
+				userId=#{userId}
+		]]>
+	</select>
 	
 	
 </mapper>

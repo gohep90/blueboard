@@ -27,6 +27,10 @@ public class LoginService extends abDAO {
 	public void insertFacebook(Map<String, Object> map) {
 		insert("login.insertFacebook", map);
 	}
+
+	public List<Map<String, Object>> selectModify(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("login.selectModify", map);
+	}
 	
 
 

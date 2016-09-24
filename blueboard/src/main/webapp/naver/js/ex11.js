@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
   //$("#id").focus();
-	
-	$('#id').val('gogogogo');
 });
 
 
@@ -287,21 +285,14 @@ function checkId(event) {
 				//alert(result);
 				if (result == "Y") {
 					if (event == "first") {
-						oMsg.style.display = "block";
-						oMsg.className = "error gm";
-						oMsg.innerHTML = "사용가능한 아이디입니다.";
 					} else {
-						oMsg.style.display = "none";
 					}
 					idFlag = true;	
 					return true;
 				} else {
-					oMsg.style.display = "block";
-					oMsg.className = "error";
-					oMsg.innerHTML = "이미 사용중이거나 탈퇴한 아이디입니다.";
 					
 					lua_do('join_kr'+document.getElementById("platform").value,'',ERROR_FORMAT_ID, document.getElementById("token_sjoin").value, true,'');
-					return false;
+					return true;
 				}
 			}
 		};
@@ -638,8 +629,8 @@ function checkBirthday(event) {
 
 	var birthday = "";
 	var yy = document.getElementById("yy").value;
-	var s = document.getElementById('mm');
-	var mm = s.options[s.selectedIndex].value;
+	//var s = document.getElementById('mm');
+	var mm = document.getElementById('mm').value;
 	var dd = document.getElementById("dd").value;
 	var oMsg = document.getElementById("birthdayMsg");
 
@@ -1508,12 +1499,10 @@ function mainSubmit(cnt) {
 	//var mode = document.getElementById("platform").value;	
 	//var agentType = document.getElementById("agentType").value;
 
-	
 	cnt++;
 	if (cnt > 10) {
 		return false;
 	}
-	
 	if (cnt == 1) {
 		if (checkId('join') != true) {
 			res = false;
@@ -1538,7 +1527,6 @@ function mainSubmit(cnt) {
 		}
 	}
 		
-		
 	var oMsg = document.getElementById("joinMsg");
 	
 	
@@ -1554,28 +1542,9 @@ function mainSubmit(cnt) {
 		return false;
 	}
 	if (res == true) {
-		if (idFlag != true || pwFlag != true) {
-			setTimeout("mainSubmit(" + cnt + ")", 300);
-			return false;
-		} else 
-		{
-			oMsg.style.display = "none";
-
-			if (cnt > 1) {
-				lua_do('join_kr'+document.getElementById("platform").value,'',SUCCESS_JOIN_SUBMIT, document.getElementById("token_sjoin").value, true, document.getElementById("id").value);
-				
-				if ("undefined" !== typeof log1 && "undefined" !== typeof log2) {
-					lua_do2('join_kr'+document.getElementById("platform").value,'',SUCCESS_JOIN_SUBMIT+";keyboard^"+log2.sb() + ";mouse^"+log1.sb(), document.getElementById("token_sjoin").value, true, document.getElementById("id").value);
-				}
-				
-				document.getElementById('join_form').submit();
-				
-				document.getElementById("pswd1").value = "";
-				document.getElementById("pswd2").value = "";
-			} else {
-				return true;
-			}
-		};
+		oMsg.style.display = "none";
+		document.getElementById('join_form').submit();
+			
 	};
 };
 

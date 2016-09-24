@@ -21,11 +21,13 @@ if(userName!='LOGIN'){
 ///////////////////////////////////////////   LOGOUT  ///////////////////////////////////////////////////
 
 $(function(){
+
 	$("#logout").click(function(){
-		var temp = confirm('로그아웃 하시겠습니까?');
-		if(temp==true)
-			logoutSession();
+		//var temp = confirm('로그아웃 하시겠습니까?');
+		//if(temp==true)
+		logoutSession();
 	});
+	
 });
 
 

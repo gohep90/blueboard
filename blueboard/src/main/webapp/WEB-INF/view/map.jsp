@@ -137,7 +137,7 @@
 				<div style="text-align:center;">
 					<h3>페이스북 인증 후 이용하실 수 있습니다.</h3>
 					<br><br>
-					<img width="100px" src="images/mapFacebook.png" />
+					<img src="images/mapFacebook.png" id="login_img" />
 				</div>
 			</div>
 			<ul id="placesList"></ul>

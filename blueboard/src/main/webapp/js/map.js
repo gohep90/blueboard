@@ -4,6 +4,14 @@ var gu ='';
 var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
 
+//////////////////클릭 이벤트///////////////////////////
+$(function(){
+	$("#login_img").click(function(){
+		window.location="login.do";
+	});
+});
+
+
 
 ///////////////////////////////////////  myLike 받아오기  //////////////////////////////////////////////////
 //var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
@@ -1107,14 +1115,12 @@ function startData(high,middle) { //초기 조건을
 				var small= '<div class="item" style="margin:0px;"><div class="seq2"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
 						+position.academyName+'</h5><span>'
 						+position.academyAddress+'</span><span>'
-						+position.academyIntro+'</span><span class="tel">'
-						+position.teacherTel +'</span></div></div>';
+						+position.academyIntro+'</span><br></div></div>';
 				
 				var big='<div class="item" style="margin:0px;"><div class="seq2"><br><div class="bigbg" ></div><div class="bigInfo"><h5>'
 						+position.academyName+'</h5><span>'
 						+position.academyAddress+'</span><span>'
-						+position.academyIntro+'</span><span class="tel">'
-						+position.teacherTel +'</span></div></div></div>';
+						+position.academyIntro+'</span><br></div></div></div>';
 				
 				var temp ="";
 				if(position.big==1)
