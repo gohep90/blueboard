@@ -9,30 +9,32 @@
 
 	String userId=(String)session.getAttribute("userId");
 	String userName=(String)session.getAttribute("userName");
-	System.out.println("main : "+userName);
+	String userLike=(String)session.getAttribute("userLike");
+	
 	if(userName!=null && !userName.equals("")){
 	userName+=" 님";
-	//response.sendRedirect("HighLevelUI.html");
 	}else{
 		userName="LOGIN";
 	}
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>배가 : 마이페이지</title>
+<meta charset="utf-8">
+<title>배가 : 관심항목</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="<c:url value='/js/mypage.js'/>"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/mypage.css'/>" />
+	href="<c:url value='/css/favorite.css'/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/base.css'/>" />
 
-
 </head>
-<body>
+
+
+<body onload="gotoPage(1)">
 	<div class="logo">
 			<a href="main.do"><img src="images/logo.png" /></a>
 
@@ -47,14 +49,19 @@
 		</div>
 		
 		<script type="text/javascript" src="<c:url value='/js/logout.js'/>"></script>
+	
+	
 
-	<div class="container">
-		<div class="login_logo">
-			<p class="login">MY PAGE</p>
+	<div class="map_wrap">
+		<img id="Title2" src="images/favorite/favorite.png" width="270">
+		<div id="menu_wrap" class="bg_white">
+			<hr>
+			<ul id="placesList"></ul>
 		</div>
-		<img id="modify" class="start_icon" src="images/person.png" />
-		<img class="start_icon" src="images/academyEnroll.png"/>
-		<img class="copyright" src="images/copyright.png"/>
+		<div id="pagination"></div>
 	</div>
+	
+	<script type="text/javascript" src="<c:url value='/js/favorite.js'/>"></script>
+
 </body>
 </html>

@@ -42,7 +42,7 @@
 				<li id="login" ><a  href="login.do">LOGIN</a></li>
 				<li id="logout" style="display:none; cursor: pointer;">LOGOUT</li>
 				<li><a href="mypage.do">MY PAGE</a></li>
-				<li><a href="#">FAVORITE</a></li>
+				<li><a href="favorite.do">FAVORITE</a></li>
 			</ul>
 			<hr>
 		</div>

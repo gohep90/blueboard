@@ -81,7 +81,7 @@
 	</insert>	
 	
 	
-	<!-- 회원정보 수정 -->
+	<!-- 회원정보 검색 -->
 	<select id="selectModify" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
@@ -93,5 +93,20 @@
 		]]>
 	</select>
 	
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="hashmap">
+		<![CDATA[
+			UPDATE
+				user
+			SET
+				userName=#{userName},
+			    userSex=#{userSex},
+			    userEmail=#{userEmail},
+			    userBirthday=#{userBirthday}
+			WHERE
+				userId=#{userId}
+		]]>
+	</update>	
 	
 </mapper>

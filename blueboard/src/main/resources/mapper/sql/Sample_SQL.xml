@@ -27,6 +27,46 @@
 		]]>
 	</select>
 	
+	<select id="selectFirstFavorite" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				b.*  
+			FROM 
+				favorite a, academy b
+			WHERE 
+				a.academyId=b.academyId
+			AND
+				a.userId =#{userId}
+		]]>
+	</select>
+	
+	
+	<select id="selectFavorite" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				b.*  
+			FROM 
+				favorite a, academy b
+			WHERE 
+				a.academyId=b.academyId
+			AND
+				a.userId =#{userId}
+			LIMIT
+				#{current},10
+		]]>
+	</select>
+	
+	<select id="selectFavoriteCount" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   count(*) as last
+			FROM
+			    favorite
+			WHERE
+				userId =#{userId}
+			
+		]]>
+	</select>
 	
 	
 	

@@ -31,6 +31,10 @@ public class LoginService extends abDAO {
 	public List<Map<String, Object>> selectModify(Map<String, Object> map) {
 		return (List<Map<String,Object>>)selectList("login.selectModify", map);
 	}
+
+	public void updateUser(Map<String, Object> map) {
+		update("login.updateUser", map);
+	}
 	
 
 

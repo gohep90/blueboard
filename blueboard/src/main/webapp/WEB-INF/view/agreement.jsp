@@ -23,9 +23,9 @@
 		<a href="main.do"><img class="logo_img" src="images/register_logo.png"/></a>
 	</div>
 	<div class="container">
-		<textarea class="tos">이용약관</textarea>
+		<textarea class="tos" readonly>이용약관</textarea>
 		<div class="tos_form"><label class="tos_text" for="ch1">상기 이용 약관을 확인하였으며, 이에 동의합니다.</label><input id="ch1" class="ch" type="checkbox"/></div>
-		<textarea class="tos">개인정보 이용 동의</textarea>
+		<textarea class="tos" readonly>개인정보 이용 동의</textarea>
 		<div class="tos_form"><label class="tos_text" for="ch2">상기 이용 동의 내용을 확인하였으며, 이에 동의합니다.</label><input id="ch2" class="ch" type="checkbox"/></div>
 		
 		<input type="image" class="next" src="images/next.png">

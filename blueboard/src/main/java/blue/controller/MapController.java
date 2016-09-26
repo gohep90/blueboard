@@ -104,7 +104,6 @@ public class MapController {
 				count = service.selectCountDiv(Map);
 			}
 			
-			System.out.println(list);
 			mv.addObject("pagination", count);
 			mv.addObject("positions", list);
 		}catch(Exception e){}

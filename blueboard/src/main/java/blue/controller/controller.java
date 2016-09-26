@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,10 +52,82 @@ public class controller {
 	
 	//mypage
 	@RequestMapping(value = "/mypage.do")
-	public ModelAndView mypage(Map<String, Object> Map) throws Exception {
-		ModelAndView mv = new ModelAndView("mypage");
+	public String mypage(HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");
+		
+		if(userId!=null){
+			return "mypage";
+		}else{
+			return "login";
+		}
+		
+	}
+	
+	//mypage
+	@RequestMapping(value = "/favorite.do")
+	public String favorite(HttpServletRequest request) throws Exception {
+			
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");
+			
+		if(userId!=null){
+			return "favorite";
+		}else{
+			return "login";
+		}
+	}
+	
+	
+	//json eduList
+	@RequestMapping(value="/favoJson.do")
+	public ModelAndView eduJson(Map<String, Object> map, HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+				
+		List<Map<String, Object>> list = null;
+		List<Map<String, Object>> count = null;
+		
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");	
+		String currentTemp = request.getParameter("current");
+		int current = (Integer.parseInt(currentTemp)-1)*10;
+			
+		try{
+			map.put("userId",userId);
+			map.put("current",current);
+						
+			
+			if(current==0){
+				list = service.selectFirstFavorite(map);
+			}else{
+				list =service.selectFavorite(map);
+			}
+			
+			count =service.selectFavoriteCount(map);
+			
+			
+			mv.addObject("positions", list);
+			mv.addObject("pagination", count);
+			
+			System.out.println("list 성공  "+list);
+			System.out.println("count 성공  "+count);
+			
+			System.out.println("favoJson 성공");
+		}catch(Exception e){System.out.println("favoJson 실패");}
+		
 		return mv;
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	
 

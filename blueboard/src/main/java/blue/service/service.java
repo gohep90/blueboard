@@ -21,5 +21,17 @@ public class service extends abDAO {
 		return (List<Map<String,Object>>)selectList("blue.selectAcademyData", map);
 	}
 
+	public List<Map<String, Object>> selectFavorite(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("blue.selectFavorite", map);
+	}
+
+	public List<Map<String, Object>> selectFavoriteCount(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("blue.selectFavoriteCount", map);
+	}
+
+	public List<Map<String, Object>> selectFirstFavorite(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("blue.selectFirstFavorite", map);
+	}
+
 	
 }

@@ -119,9 +119,6 @@ public class LoginController {
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
 		
-		System.out.println("userId = "+userId);
-		System.out.println("userPw = "+userPw);
-		
 		try{
 			map.put("userId", userId);
 			map.put("userPw", userPw);
@@ -129,6 +126,7 @@ public class LoginController {
 			list = service.selectCheckLogin(map);
 			
 			mv.addObject("checkLogin", list);
+			System.out.println("checkLogin :" + list);
 		
 			System.out.println("checkLogin 성공");
 			return mv;
@@ -255,10 +253,11 @@ public class LoginController {
 		return mv;
 	}
 	
+	
 	// 회원가입 완료
 	@RequestMapping("/modifyUser.do")
 	public ModelAndView modifyUser(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("main");
+		ModelAndView mv = new ModelAndView("mypage");
 		Map<String, Object> map = new HashMap<String, Object>();
 		//List<Map<String, Object>> list = null;
 		
@@ -291,7 +290,7 @@ public class LoginController {
 			map.put("userBirthday", userBirthday);
 			map.put("userEmail", userEmail);
 			
-			//service.insertUser(map);
+			service.updateUser(map);
 			
 		}catch(Exception e){
 				

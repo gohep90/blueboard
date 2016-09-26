@@ -30,7 +30,6 @@
 <!--
 
 $(document).ready(function() {
-	$('#email').val("gohep90@nate.com");
 });
 
 //nClicks 전역변수
@@ -137,7 +136,7 @@ function reCaptcha() {
 											name="id" value="" maxlength="20" autocomplete="off"
 											onFocus="toggleLabel('idLb','id', 'in');"
 											onBlur="toggleLabel('idLb','id', 'out');"
-											placeholder="아이디" class="int"><label id="idLb"
+											placeholder="아이디" class="int" readonly ><label id="idLb"
 											for="id" class="lbl">아이디</label>
 											<button type="button" disabled="" title="delete" class="wrg">삭제</button>
 										</span>

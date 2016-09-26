@@ -1525,6 +1525,12 @@ function mainSubmit(cnt) {
 		if (checkEmail('check') != true) {
 			res = false;
 		}
+		if (checkPassword() != true) { // 비밀번호 확인
+			alert("비밀번호를 확인해주세요");
+			$('#pswd1').val('');
+			$('#pswd2').val('');
+			res = false;
+		}
 	}
 		
 	var oMsg = document.getElementById("joinMsg");
@@ -1541,12 +1547,55 @@ function mainSubmit(cnt) {
 		
 		return false;
 	}
+	
+	
 	if (res == true) {
+		
 		oMsg.style.display = "none";
 		document.getElementById('join_form').submit();
 			
 	};
 };
+
+
+function checkPassword() { //page 이동할 때
+	var userId=$('#id').val();
+	var userPw=$('#pswd1').val();
+	
+	var res=true;
+	
+	$.ajax({
+		type : "POST",
+		url : "checkLogin.do",
+		async:false,
+		dataType : "json",
+		data : {
+			userId : userId,
+			userPw	: userPw
+		},
+		error : function(e) {
+			alert("에러났소!");
+			alert(e);
+		},
+		success : function(data) {
+			var list = data['checkLogin'];
+			
+			//비밀번호 확인 빈 오브젝트 확인
+			if(jQuery.isEmptyObject(list)){
+				res=false;
+			}
+			
+		}
+	});
+	
+	if(res==true){
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+
 
 function checkShiftDownJoin(e) {
 	if (e.which && e.which==16){
