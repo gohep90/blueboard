@@ -84,7 +84,7 @@ public class controller {
 	
 	//json eduList
 	@RequestMapping(value="/favoJson.do")
-	public ModelAndView eduJson(Map<String, Object> map, HttpServletRequest request)throws Exception {
+	public ModelAndView favoJson(Map<String, Object> map, HttpServletRequest request)throws Exception {
 		ModelAndView mv = new ModelAndView("jsonView");
 				
 		List<Map<String, Object>> list = null;
@@ -94,19 +94,14 @@ public class controller {
 		
 		String userId=(String)session.getAttribute("userId");	
 		String currentTemp = request.getParameter("current");
-		int current = (Integer.parseInt(currentTemp)-1)*10;
+		int current = (Integer.parseInt(currentTemp)-1)*5;
 			
 		try{
 			map.put("userId",userId);
 			map.put("current",current);
 						
 			
-			if(current==0){
-				list = service.selectFirstFavorite(map);
-			}else{
-				list =service.selectFavorite(map);
-			}
-			
+			list =service.selectFavorite(map);
 			count =service.selectFavoriteCount(map);
 			
 			
@@ -123,10 +118,77 @@ public class controller {
 	}
 	
 	
+	//json eduList
+	@RequestMapping(value="/registerFavorite.do")
+	public ModelAndView registerFavorite(Map<String, Object> map,HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+			
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");
+		String academyId= request.getParameter("academyId");
+		
+		try{
+			map.put("userId",userId);
+			map.put("academyId",academyId);
+						
+			service.insertFavorite(map);
+			
+			mv.addObject("result", "yes");
+		
+			System.out.println("registerFavorite 성공");
+		}catch(Exception e){System.out.println("registerFavorite 실패");}
+		
+		return mv;
+	}
 	
 	
+	//json eduList
+	@RequestMapping(value="/cancelFavo.do")
+	public ModelAndView cancelFavo(Map<String, Object> map,HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");	
+		String academyId = request.getParameter("academyId");
+			
+		try{
+			map.put("userId",userId);
+			map.put("academyId",academyId);
+						
+			service.deleteFavorite(map);
+			
+			mv.addObject("result", "yes");
+		
+			System.out.println("cancelFavo 성공");
+		}catch(Exception e){System.out.println("favoJson 실패");}
+		
+		return mv;
+	}
 	
-	
+	//json eduList
+	@RequestMapping(value="/cancelAll.do")
+	public ModelAndView cancelAll(Map<String, Object> map,HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+			
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");	
+			
+		try{
+			map.put("userId",userId);
+						
+			service.deleteFavoriteAll(map);
+			
+			mv.addObject("result", "yes");
+		
+			System.out.println("cancelAll 성공");
+		}catch(Exception e){System.out.println("cancelAll 실패");}
+		
+		return mv;
+	}
+
 	
 
 	

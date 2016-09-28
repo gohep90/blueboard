@@ -6,6 +6,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
+	String academyId = request.getParameter("academyId");
+
 	String userId = (String) session.getAttribute("userId");
 	String userName = (String) session.getAttribute("userName");
 	System.out.println("main : " + userName);
@@ -91,6 +93,7 @@ function add_item(){
 </head>
 
 <body onload="add_item();">
+	<p id="academyId" style="display:none;"><%=academyId%></p>
 	<div class="logo">
 			<a href="main.do"><img src="images/logo.png" /></a>
 

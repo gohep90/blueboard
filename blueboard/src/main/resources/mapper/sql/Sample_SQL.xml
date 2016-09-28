@@ -27,19 +27,6 @@
 		]]>
 	</select>
 	
-	<select id="selectFirstFavorite" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			SELECT 
-				b.*  
-			FROM 
-				favorite a, academy b
-			WHERE 
-				a.academyId=b.academyId
-			AND
-				a.userId =#{userId}
-		]]>
-	</select>
-	
 	
 	<select id="selectFavorite" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
@@ -52,7 +39,7 @@
 			AND
 				a.userId =#{userId}
 			LIMIT
-				#{current},10
+				#{current},5
 		]]>
 	</select>
 	
@@ -68,6 +55,39 @@
 		]]>
 	</select>
 	
+	<delete id="deleteFavorite" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM
+				favorite
+			WHERE
+				userId =#{userId}
+			AND
+				academyId=#{academyId}
+		]]>
+	</delete>	
+	
+	<delete id="deleteFavoriteAll" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM
+				favorite
+			WHERE
+				userId =#{userId}
+		]]>
+	</delete>	
+	
+	<insert id="insertFavorite" parameterType="hashmap">
+		<![CDATA[
+			INSERT
+				INTO favorite(
+			    	userId,
+			    	academyId
+			    	)
+				VALUES(
+					#{userId},
+					#{academyId}
+			    )
+		]]>
+	</insert>	
 	
 	
 </mapper>

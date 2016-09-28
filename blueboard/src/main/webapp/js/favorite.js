@@ -1,13 +1,16 @@
 //////////////////클릭 이벤트///////////////////////////
-/*
+
  $(function(){
- $("#login_img").click(function(){
- window.location="login.do";
- });
+	 $("#all").click(function(){
+		 var check = confirm('관심목록을 모두 삭제하시겠습니까?');
+		 if(check==true){
+			 cancelAll();
+		}
+	 });
  });
 
- */
-
+ 
+/////////////////////서버와 통신/////////////////////////////////////////
 function gotoPage(i) { // page 이동할 때
 
 	$.ajax({
@@ -23,14 +26,85 @@ function gotoPage(i) { // page 이동할 때
 			alert(e);
 		},
 		success : function(data) {
-
-			displayPlaces(data['positions'], i); // 리스트 출력
-			displayPagination(data['pagination'], i); // 리스트 순번
+			
+			var list = data['positions'];
+			
+			var intro = document.getElementById("intro");
+			var menu_wrap = document.getElementById("menu_wrap");
+			var all = document.getElementById("all");
+			var pagination = document.getElementById("pagination");
+			
+			//관심항목이 없을 때
+			if(list==""){
+				intro.style.display = "block";
+				menu_wrap.style.display = "none";
+				all.style.display = "none";
+				pagination.style.display = "none";
+			}else{
+				//관심항목이 있을 때
+				intro.style.display = "none";
+				menu_wrap.style.display = "block";
+				all.style.display = "block";
+				pagination.style.display = "block";
+				
+				displayPlaces(data['positions'], i); // 리스트 출력
+				displayPagination(data['pagination'], i); // 리스트 순번
+			}
 		}
 	});
 
 }
 
+//관심항목 취소
+function cancelFavo(i) { 
+
+	$.ajax({
+		type : "POST",
+		url : "cancelFavo.do",
+		async : false,
+		dataType : "json",
+		data : {
+			academyId : i
+		},
+		error : function(e) {
+			alert("에러났소!");
+			alert(e);
+		},
+		success : function(data) {
+			
+			//alert("취소 성공");
+			window.location.href="favorite.do";
+			
+		}
+	});
+
+}
+
+
+
+//관심항목 전체 취소
+function cancelAll() { 
+
+	$.ajax({
+		type : "POST",
+		url : "cancelAll.do",
+		async : false,
+		dataType : "json",
+		data : {
+		},
+		error : function(e) {
+			alert("에러났소!");
+			alert(e);
+		},
+		success : function(data) {
+			
+			window.location.href="favorite.do";
+			
+		}
+	});
+
+}
+/////////////////////////////리스트 출력////////////////////////////////////////
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places, current) {
 
@@ -58,11 +132,23 @@ function displayPlaces(places, current) {
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// mouseout 했을 때는 인포윈도우를 닫습니다
 		(function(academyId, i) {
-
+			
+			var temp=true;
 			itemEl.onmouseover = function() {
-				
 				var test = document.getElementById('seq_' + i).className = "seq_mouse";
+				
+				$('#img_'+i).on('click',function(event){
+					if(temp==true){
+						temp=false;
+						var check = confirm('관심목록에서 삭제하시겠습니까?');
+						if(check==true){
+							cancelFavo(academyId);
+						}
+						event.stopPropagation(); //연속적 이벤트 막기
+					}
+				});
 
+				temp=true; //취소버튼 위해서
 		//		var name = document.getElementById('name_' + i);
 		//		name.style.color = "#000000";
 
@@ -77,6 +163,8 @@ function displayPlaces(places, current) {
 
 				var test = document.getElementById('seq_' + i).className = "seq";
 
+				
+				
 		//		var name = document.getElementById('name_' + i);
 		//		name.style.color = "#FFC000";
 
@@ -92,7 +180,9 @@ function displayPlaces(places, current) {
 				// window.location.href="academy.do?year="+year+"&month="+temp;
 				window.open("academy.do?academyId=" + academyId, "_blank"); // 이동
 			};
+			
 
+			
 		})(places[i].academyId, i);
 
 		fragment.appendChild(itemEl);
@@ -119,7 +209,9 @@ function getListItem(index, places) {
 			+ places.academyAddress
 			+ '</span><span id="info_'
 			+ (index)
-			+ '">' + places.academyIntro + '</span></div><div class="aaaa"><image src="images/favorite/favoriteCancel.png" class="favoriteCancel"></div></div><hr>';
+			+ '">' + places.academyIntro + '</span></div><div class="aaaa"><image id="img_'
+			+ (index)
+			+'" src="images/favorite/favoriteCancel.png" class="favoriteCancel"></div></div><hr>';
 	
 	el.innerHTML = itemStr;
 	el.className = 'item';
@@ -140,7 +232,7 @@ function displayPagination(pagination, current) { // 초기 받아오는것!!
 	}
 
 	// 소수점 올림!!
-	var length = Math.ceil(pagination[0].last / 10);
+	var length = Math.ceil(pagination[0].last / 5);
 
 	var start = 0;
 

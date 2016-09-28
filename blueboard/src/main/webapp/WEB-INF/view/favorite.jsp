@@ -54,10 +54,13 @@
 
 	<div class="map_wrap">
 		<img id="Title2" src="images/favorite/favorite.png" width="270">
+		
+		<div id="intro" style="display:none;">아직 관심항목 등록한 강의가 없으시네요?<br>강의 보기에서 강의를 둘러보시다가 마음에 드는 강의가 있다면 관심항목 추가를 눌러주세요</div>
 		<div id="menu_wrap" class="bg_white">
 			<hr>
 			<ul id="placesList"></ul>
 		</div>
+		<div id="all" style="float:right; margin-top:5px; display:none;"><img class="favoriteCancel" src="images/favorite/allCancel.png"></div>
 		<div id="pagination"></div>
 	</div>
 	

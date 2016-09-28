@@ -16,7 +16,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 /* 맵 구성 */
 .map_wrap {position:relative; width:800px; top:50px; margin:auto;}
-#menu_wrap {margin-top:50px;}
+#menu_wrap {margin-top:40px;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 1px solid #8C8C8C;margin:3px 0;}
 
 
@@ -31,10 +31,10 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 .info .jibun {padding-left:26px;background:url(http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
 .info .tel {color:#009900;}
 .item .markerbg {float:left;width:150px; height:112px; background-repeat:no-repeat; background-size:contain; margin:4px;}
-.aaaa{height:420px;}
-.favoriteCancel{height:30px; float:right;}
+.aaaa{position: absolute; bottom:5px; right:0px; z-index:10;}
+.favoriteCancel{height:35px; cursor: pointer; }
 
-#pagination {margin:50px; height:150px; z-index: 1; text-align: center;}
+#pagination {margin:70px; height:130px; z-index: 1; text-align: center;}
 #pagination a {display:inline-block;margin-right:15px; color:#000000; font-size:15px; cursor: pointer;}
 #pagination .on {font-weight: bold; cursor: default;color:#FFC000;}
 
