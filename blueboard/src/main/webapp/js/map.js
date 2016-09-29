@@ -3,6 +3,7 @@ var sCategory='';
 var gu ='';
 var bigCommend=0;	//추천학원
 var noCommend=0;	//일반학원
+var res=0;
 
 //////////////////클릭 이벤트///////////////////////////
 $(function(){
@@ -1112,12 +1113,14 @@ function startData(high,middle) { //초기 조건을
 			
 			var oinfo = $(data.positions).map(function(i, position) {
 				
-				var small= '<div class="item" style="margin:0px;"><div class="seq2"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5>'
+				var small= '<div class="item" style="margin:0px;"><div class="seq2"><image src="images/academy/'
+						+position.photoName+'" class="markerbg"></image><div class="info"><h5>'
 						+position.academyName+'</h5><span>'
 						+position.academyAddress+'</span><span>'
 						+position.academyIntro+'</span><br></div></div>';
 				
-				var big='<div class="item" style="margin:0px;"><div class="seq2"><br><div class="bigbg" ></div><div class="bigInfo"><h5>'
+				var big='<div class="item" style="margin:0px;"><div class="seq2"><br><image src="images/academy/'
+						+position.photoName+'" class="bigbg"></image><div class="bigInfo"><h5>'
 						+position.academyName+'</h5><span>'
 						+position.academyAddress+'</span><span>'
 						+position.academyIntro+'</span><br></div></div></div>';
@@ -1223,7 +1226,7 @@ function gotoPage(i) { //page 이동할 때
 		success : function(data) {
 			noCommend=0;	//추천학원 일반학원 초기화!!
 	    	bigCommend=0;
-	    	
+	    	res=0;
 			displayPlaces(data['positions'],i); //리스트 출력
 			displayPagination(data['pagination'], i); //리스트 순번
 		}
@@ -1493,14 +1496,15 @@ function getListItem(index, places) {
 	if(noCommend==0){
 		var el = document.createElement('li'), 
 		itemStr ='<div style="margin: 5px;"><h3 style="margin: 20px; color:#ffffff; font-size:15px;">이 지역  추천</h3><hr></div> '
-				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy4.jpg" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
+				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy/'+places.photoName+'" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
 				+places.academyIntro+'</span><br></div></div>';
 		
 	}else{
 		var el = document.createElement('li'), 
-		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
+		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy/'
+				+places.photoName+'" class="markerbg"></image><div class="info"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span id="info_'+(index)+'">'
 				+places.academyIntro+'</span><br></div></div>';
@@ -1513,21 +1517,26 @@ function getListItem(index, places) {
 
 
 function getBigItem(index,places){
-	
 	if(bigCommend==0){
 		var el	=	document.createElement('li'), 
 		itemStr ='<div style="margin:5px;"><h3 style=" margin-bottom:8px; margin-left:20px; color:#ffffff; font-size:15px;">스마트 추천</h3></div>'
-				+'<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
+				+'<div class="seq" id="seq_'+(index)+'"><image src="images/academy/'
+				+places.photoName+'" class="bigbg"></image><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
-				+places.academyAddress+'</span><span id="info_'+(index)+'">'
+				+places.academyAddress+'</span><span style="float:right; margin-right:20px;">'
+				+maxLike[0][0]+'개</span><span id="info_'+(index)+'">'
 				+places.academyIntro+'</span></div></div>';
 		
 	}else{
+		res++;
 		var el	=	document.createElement('li'), 
-		itemStr ='<div class="seq" id="seq_'+(index)+'"><div class="bigbg"></div><div class="bigInfo"><h5 id="name_'+(index)+'">'
+		itemStr ='<div class="seq" id="seq_'+(index)+'"><image src="images/academy/'
+				+places.photoName+'" class="bigbg"></image><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
-				+places.academyAddress+'</span><span id="info_'+(index)+'">'
+				+places.academyAddress+'</span><span style="float:right; margin-right:20px;">'
+				+maxLike[res][0]+'개</span><span id="info_'+(index)+'">'
 				+places.academyIntro+'</span></div></div>';
+		
 	}
 	
 	el.innerHTML = itemStr;

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -78,14 +78,14 @@ function add_item(){
 	  //  div.innerHTML = document.getElementById('pre_set').innerHTML;
 	  var inner = '<div id="cat"><div id="cat_name"><h3 id="day'+i+'">9월8일(월)</h3></div><div id="cat_content"><h3 id="content'+i+'">원하는 것을 그려라!<br>머릿속에만 있던 디자인을 손으로 나타내보기</h3></div></div>';
 	  div.innerHTML = inner;
-	  document.getElementById('field').appendChild(div);
+	  document.getElementById('curriculum_content').appendChild(div);
 	  }
 }
 	
 	//div동적 삭제 -->
 	function remove_item(obj) {
 		// obj.parentNode 를 이용하여 삭제
-		document.getElementById('field').removeChild(obj.parentNode);
+		document.getElementById('curriculum_content').removeChild(obj.parentNode);
 	}
 </script>
 
@@ -193,9 +193,9 @@ function add_item(){
 
 						<div class="jq_tabonoff comm_tab2" style="margin-top: 0px">
 							<ul class="jq_tab tab_menu">
-								<li><a href="javascript:;" class="tit"><b style="font-size:23px;">I</b>nfo</a></li>
-								<li><a href="javascript:;" class="tit"><b style="font-size:23px;">P</b>hoto</a></li>
-								<li><a href="javascript:;" class="tit"><b style="font-size:23px;">V</b>ideo</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:20px;">I</b>nfo</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:20px;">P</b>hoto</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:20px;">V</b>ideo</a></li>
 							</ul>
 							<div class="jq_cont tab_cont">
 								<!-- //탭2-1 -->
@@ -234,7 +234,7 @@ function add_item(){
 											<h2>금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 액</h2>
 										</div>
 										<div id="money_content">
-											<h2>${row.academyPay}</h2>
+											<h2><fmt:formatNumber value="${row.academyPay}" pattern="#,###" /> 원</h2>
 										</div>
 									</div>
 
@@ -253,20 +253,7 @@ function add_item(){
 										</div>
 										<!--div에 들어갈 내용 넣는곳-->
 										<div id="curriculum_content">
-
 											<!--실제 div내용이 반영되는공간-->
-											<div id="field" style=""></div>
-											<!--실제 div내용이 반영되는공간-->
-										</div>
-									</div>
-									<!--커리큘럼-->
-									<div id="category">
-										<div id="category_name">
-											<h2>카 테 고 리</h2>
-										</div>
-										<div id="category_content">
-											<div id="large">대분류</div>
-											<div id="small">중분류</div>
 										</div>
 									</div>
 								</div>

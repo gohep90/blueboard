@@ -6,41 +6,51 @@
 	<select id="selectFirstEdu" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			 	a.*, u.userLike
+			 	a.*, u.userLike, p.photoName
 			FROM
-			    academy a,user u
+			    academy a, user u, photo p 
 			WHERE
 				a.userId = u.userId
 			AND
-				lCategory=#{lCategory}
+				a.academyId= p.academyId
+			AND
+				p.photoSeq=1
+			AND
+				a.lCategory=#{lCategory}
 		]]>
 	</select>
 	
 	<select id="selectFirstEduDiv" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-				 a.*, u.userLike
+				 a.*, u.userLike, p.photoName
 			FROM
-			    academy a,user u
+			    academy a, user u, photo p 
 			WHERE
 				a.userId = u.userId
 			AND
-				lCategory=#{lCategory}
+				a.academyId= p.academyId
 			AND
-				sCategory =#{sCategory}
+				p.photoSeq=1
+			AND
+				a.lCategory=#{lCategory}
+			AND
+				a.sCategory =#{sCategory}
 		]]>
 	</select>
 	
 	<select id="selectEduList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			   a.* , p.photoName
 			FROM
-			    academy 
+			    academy a, photo p
 			WHERE
-				lCategory=#{lCategory}
+				a.academyId= p.academyId
 			AND
-				academyAddress like concat('%',#{gu},'%')
+				a.lCategory=#{lCategory}
+			AND
+				a.academyAddress like concat('%',#{gu},'%')
 			LIMIT
 				#{current},10
 		]]>
@@ -49,28 +59,32 @@
 	<select id="selectFirstEduList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			   a.* , p.photoName
 			FROM
-			    academy
+			    academy a, photo p
 			WHERE
-				lCategory=#{lCategory}
+				a.academyId= p.academyId
 			AND
-				academyAddress like concat('%',#{gu},'%')
+				a.lCategory=#{lCategory}
+			AND
+				a.academyAddress like concat('%',#{gu},'%')
 		]]>
 	</select>
 	
 	<select id="selectEduListDiv" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			   a.* , p.photoName
 			FROM
-			    academy
+			    academy a, photo p
 			WHERE
-				lCategory=#{lCategory}
+				a.academyId= p.academyId
 			AND
-				sCategory =#{sCategory}
+				a.lCategory=#{lCategory}
 			AND
-				academyAddress like concat('%',#{gu},'%')
+				a.sCategory =#{sCategory}
+			AND
+				a.academyAddress like concat('%',#{gu},'%')
 			LIMIT
 				#{current},10
 		]]>
@@ -79,13 +93,15 @@
 	<select id="selectFirstEduListDiv" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			   a.* , p.photoName
 			FROM
-			    academy
+			    academy a, photo p
 			WHERE
-				lCategory=#{lCategory}
+				a.academyId= p.academyId
 			AND
-				sCategory =#{sCategory}
+				a.lCategory=#{lCategory}
+			AND
+				a.sCategory =#{sCategory}
 			AND
 				academyAddress like concat('%',#{gu},'%')
 		]]>
