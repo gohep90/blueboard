@@ -31,13 +31,17 @@
 	<select id="selectFavorite" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT 
-				b.*  
+				b.*, p.photoName  
 			FROM 
-				favorite a, academy b
+				favorite a, academy b, photo p
 			WHERE 
 				a.academyId=b.academyId
 			AND
+				b.academyId=p.academyId
+			AND
 				a.userId =#{userId}
+			AND
+				p.photoSeq=1
 			LIMIT
 				#{current},5
 		]]>

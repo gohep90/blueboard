@@ -47,6 +47,7 @@
 <body onload="startData('<%=lCategory%>','<%=sCategory%>')">
 	
 	<p id="userLike" style="display:none;"><%=userLike%></p>
+	<p id="userId" style="display:none;"><%=userId%></p>
 	<div class="logo">
 			<a href="main.do"><img src="images/logo.png" /></a>
 

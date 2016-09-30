@@ -17,6 +17,8 @@ $(function(){
 ///////////////////////////////////////  myLike 받아오기  //////////////////////////////////////////////////
 //var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
 var myLike=$('#userLike').text();
+var userId=$('#userId').text();
+
 
 var maxLike= new Array(5); //5개 행 만들기
 for(var i=0;i<maxLike.length;i++){
@@ -1077,27 +1079,31 @@ function startData(high,middle) { //초기 조건을
 		    	
 		    	var min=new Array(2); //min={비교값,academyId}
 		    	var tempJ=0;
-		    		
+		    	var tempI=0;
+		    	
 		   		for(var i=0;i<list.length;i++){ //facebook 추천 상위 5개 추출
-		    		var temp=compare(myLike,list[i].userLike);
-		    		if(i<5){
-		    			maxLike[i][0]=temp;
-		    			maxLike[i][1]=list[i].academyId;
-		    		}else{
-		    			min[0]=maxLike[0][0];
-		    			min[1]=maxLike[0][1];
-		    			for(var j=1;j<5;j++){
-		    				if(min[0]>maxLike[j][0]){
-		    					min[0]=maxLike[j][0];
-		    	    			min[1]=maxLike[j][1];
-		    	    			tempJ=j;
-		    				}
-			    		}
-		    			if(min[0]<temp){
-		    				maxLike[tempJ][0]=temp;
-		    				maxLike[tempJ][1]=list[i].academyId;;
-		    			}
-		    		}
+		   			if(userId!=list[i].userId){  //자기 강의는 빼기
+				   		var temp=compare(myLike,list[i].userLike);
+				   		if(tempI < 5){
+				   			maxLike[tempI][0]=temp;
+				   			maxLike[tempI][1]=list[i].academyId;
+				   			tempI++;
+				   		}else{
+				   			min[0]=maxLike[0][0];
+				   			min[1]=maxLike[0][1];
+				   			for(var j=1;j<5;j++){
+				   				if(min[0]>maxLike[j][0]){
+				   					min[0]=maxLike[j][0];
+				   	    			min[1]=maxLike[j][1];
+				   	    			tempJ=j;
+				   				}
+				    		}
+				   			if(min[0]<temp){
+				   				maxLike[tempJ][0]=temp;
+				   				maxLike[tempJ][1]=list[i].academyId;;
+				   			}
+				   		}
+		   			}
 		    	}
 		   		
 		   		maxLike.sort(function(a1,a2){ //5개 내림차순으르 정렬
@@ -1252,6 +1258,32 @@ function displayPlaces(places,current) {
 	
 	if(current==1){ //첫번째 페이지에서 큰거 작은거 구분
 		//큰거 먼저 출력하기 위해서!!
+		
+		var checkI= new Array(5); //5개 행 만들기
+		var tempI=0;
+		
+		for (var i = 0; i < places.length; i++) {  //스마트 추천이 어디있는지 확인
+			
+			if(places[i].academyId==maxLike[0][1]){
+				checkI[0]=i;
+			}
+			if(places[i].academyId==maxLike[1][1]){
+				checkI[1]=i;
+			}
+			if(places[i].academyId==maxLike[2][1]){
+				checkI[2]=i;
+			}
+			if(places[i].academyId==maxLike[3][1]){
+				checkI[3]=i;
+			}
+			if(places[i].academyId==maxLike[4][1]){
+				checkI[4]=i;
+			}
+		}
+		
+		
+		//alert(checkI);
+		
 		for (var i = 0; i < places.length; i++) {
 	
 			// 마커를 생성하고 지도에 표시합니다
@@ -1260,8 +1292,9 @@ function displayPlaces(places,current) {
 			var itemEl='';
 			
 			if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
-				itemEl=getBigItem(i,places[i]);
+				itemEl=getBigItem(checkI[tempI],places[checkI[tempI]]);
 				bigCommend=1;
+				
 			}else{
 				continue;
 			}
@@ -1314,9 +1347,10 @@ function displayPlaces(places,current) {
 					window.open("academy.do?academyId="+academyId ,"_blank"); //이동
 				};
 	
-			})(places[i].lat, places[i].lng, places[i].academyId, i);
+			})(places[checkI[tempI]].lat, places[checkI[tempI]].lng, places[checkI[tempI]].academyId, checkI[tempI]);
 	
 			fragment.appendChild(itemEl);
+			tempI++;
 		}
 		
 		var count=10;

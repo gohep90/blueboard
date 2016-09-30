@@ -1,0 +1,55 @@
+.comm_tba1{
+	font-family:'nanumgothic', '나눔고딕', 'malgun gothic', '맑은 고딕', 'dotum', '돋움', sans-serif;
+	
+}
+
+
+.comm_tab1>.tab_menu>li{
+	border-left-radius: 2em 0.5em;
+	display:inline-block;
+    font-variant:small-caps;
+    padding:30px;
+    text-align:center;
+    width:19%;
+    line-height:1em;
+    font-weight:bold;
+    background:#eee;
+    color:#777;
+	cursor:pointer;
+	height:25px;
+	margin-left:2px;
+}
+#first{
+	margin-left: 4%;
+	
+}
+.comm_tab1>.tab_menu>li a{
+	line-height:1em;
+	font-size:20px;
+	text-align:center;
+}
+.comm_tab1>.tab_menu>li p{
+	line-height:1em;
+	font-size:16px;
+	text-align:center;
+}
+.comm_tab1>.tab_menu .on  {height:25px;background-color:#00e1d3;background-color:#FFD757;}
+.comm_tab1>.tab_cont>.cont {margin-top:20px;padding:20px;}
+.comm_tab2>.tab_menu>li {display:inline-block;
+    font-variant:small-caps;
+    padding:24px;
+    text-align:left;
+    width:18%;
+    line-height:0.8em;
+    font-weight:bold;
+    background:#7D7D7D;
+    color:#777;
+	cursor:pointer;
+	height:10px;}
+.comm_tab2>.tab_menu .on  {height:10px;background-color:#424242;}
+.comm_tab2>.tab_menu>li a {
+	font-family:"맑은 고딕";
+	font-size:18px;
+	color:white;
+}
+a {color:#777;text-decoration:none;}

@@ -199,7 +199,8 @@ function getListItem(index, places) {
 
 	var el = document.createElement('li'), itemStr = '<div class="seq" id="seq_'
 			+ (index)
-			+ '"><image src="images/academy2.jpg" class="markerbg"></image><div class="info"><h5 id="name_'
+			+ '"><image src="images/academy/'
+			+places.photoName+'" class="markerbg"></image><div class="info"><h5 id="name_'
 			+ (index)
 			+ '">'
 			+ places.academyName
