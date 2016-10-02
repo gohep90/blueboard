@@ -53,7 +53,7 @@
 			<p class="login">MY PAGE</p>
 		</div>
 		<img id="modify" class="start_icon" src="images/person.png" />
-		<img class="start_icon" src="images/academyEnroll.png"/>
+		<img id="register" class="start_icon" src="images/academyEnroll.png"/>
 		<img class="copyright" src="images/copyright.png"/>
 	</div>
 </body>

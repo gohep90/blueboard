@@ -7,3 +7,10 @@ $(function(){
 	});
 });
 
+$(function(){
+	$("#register").click(function(){
+		window.location="downloadFile.do";
+	});
+});
+
+

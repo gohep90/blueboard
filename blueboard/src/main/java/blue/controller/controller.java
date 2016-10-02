@@ -1,13 +1,18 @@
 package blue.controller;
 
+import java.io.File;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -190,7 +195,31 @@ public class controller {
 	}
 
 	
+	//파일 다운로드
+	@RequestMapping("/downloadFile.do")
+	public void downloadFile(HttpServletRequest request,HttpServletResponse response)throws Exception {
+		//String fileName = URLDecoder.decode(request.getParameter("fileName"),"utf-8");
+		String fileName = "배우러가는길 표준 강좌 등록 신청서.hwp";
+		String client = request.getHeader("User-Agent");
+		boolean ie = client.indexOf("MSIE") > -1;
+		
+		byte fileByte[] = FileUtils.readFileToByteArray(new File("/usr/local/tomcat/webapps/ROOT/learnway/"+fileName));
 
+		response.setContentType("application/octet-stream");
+	    response.setContentLength(fileByte.length);
+	    
+	    //IE
+	    if(ie){
+	    	fileName = URLEncoder.encode(fileName, "euc-kr");
+	    }else{
+	    	fileName=new String(fileName.getBytes("euc-kr"),"iso-8859-1");
+	    }
+		response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName+"\";");
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		response.getOutputStream().write(fileByte);
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
+	}
 	
 
 	// json updateEdu

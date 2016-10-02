@@ -17,6 +17,9 @@ $(function(){
 ///////////////////////////////////////  myLike 받아오기  //////////////////////////////////////////////////
 //var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
 var myLike=$('#userLike').text();
+
+var tempstrArray = myLike.split(',');
+var myLikeCount=tempstrArray.length-1; //myLike 개수
 var userId=$('#userId').text();
 
 
@@ -1558,7 +1561,7 @@ function getBigItem(index,places){
 				+places.photoName+'" class="bigbg"></image><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span style="float:right; margin-right:20px;">'
-				+maxLike[0][0]+'개</span><span id="info_'+(index)+'">'
+				+parseInt(maxLike[0][0]/myLikeCount*100)+'%</span><span id="info_'+(index)+'">'
 				+places.academyIntro+'</span></div></div>';
 		
 	}else{
@@ -1568,7 +1571,7 @@ function getBigItem(index,places){
 				+places.photoName+'" class="bigbg"></image><div class="bigInfo"><h5 id="name_'+(index)+'">'
 				+places.academyName+'</h5><span id="address_'+(index)+'">'
 				+places.academyAddress+'</span><span style="float:right; margin-right:20px;">'
-				+maxLike[res][0]+'개</span><span id="info_'+(index)+'">'
+				+parseInt(maxLike[res][0]/myLikeCount*100)+'%</span><span id="info_'+(index)+'">'
 				+places.academyIntro+'</span></div></div>';
 		
 	}
