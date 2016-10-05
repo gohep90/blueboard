@@ -9,7 +9,7 @@
 
 	String userId=(String)session.getAttribute("userId");
 	String userName=(String)session.getAttribute("userName");
-	System.out.println("main : "+userName);
+	String userCode=(String)session.getAttribute("userCode");
 	if(userName!=null && !userName.equals("")){
 	userName+=" 님";
 	//response.sendRedirect("HighLevelUI.html");
@@ -24,7 +24,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>배가 : 마이페이지</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="<c:url value='/js/mypage.js'/>"></script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/mypage.css'/>" />
 <link rel="stylesheet" type="text/css"
@@ -33,6 +32,7 @@
 
 </head>
 <body>
+	<p id="userCode" style="display:none;"><%=userCode%></p>
 	<div class="logo">
 			<a href="main.do"><img src="images/logo.png" /></a>
 
@@ -56,5 +56,28 @@
 		<img id="register" class="start_icon" src="images/academyEnroll.png"/>
 		<img class="copyright" src="images/copyright.png"/>
 	</div>
+	
+	
+	<!-- 하단바 -->
+	<div class="info_div">
+		<div class="info_bottom">
+			<div class="info_logo">배우러가는길</div>
+			<div class="info-address">
+				<p class="info_text">대표 : 장지웅</p>
+				<p class="info_text">주소 : 서울시 성동구 왕십리로 222 한양대학교 정책대학교 704호</p>
+				<p class="info_text">
+					<span>전화 : 02-234-5678 </span><span class="fax"> 팩스 :
+						02-554-9774</span>
+				</p>
+			</div>
+			<div class="info-address">
+				<p class="info_text">사업자 번호 : 220-88-59156</p>
+				<p class="info_text">문의메일 : biz@station3.co.kr</p>
+				<p class="info_text">2016/07/28 ® All rights reserved by BAEGA.</p>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="<c:url value='/js/mypage.js'/>"></script>
 </body>
 </html>

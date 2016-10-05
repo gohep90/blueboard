@@ -118,8 +118,9 @@ function add_item(){
 	
 	<div id="main_content">
 		<div class="academy_name">
-			<u class="academy_p">${row.academyName}</u> <img id="interest"
-				src="images/PLUS.png">
+			<u class="academy_p">${row.academyName}</u> 
+			<img id="pay" src="images/pay.png">
+			<img id="interest" src="images/PLUS.png">
 		</div>
 
 

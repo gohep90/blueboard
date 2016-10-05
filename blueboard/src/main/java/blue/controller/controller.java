@@ -199,7 +199,7 @@ public class controller {
 	@RequestMapping("/downloadFile.do")
 	public void downloadFile(HttpServletRequest request,HttpServletResponse response)throws Exception {
 		//String fileName = URLDecoder.decode(request.getParameter("fileName"),"utf-8");
-		String fileName = "배우러가는길 표준 강좌 등록 신청서.hwp";
+		String fileName = "배우러가는길 강좌 등록 신청서.hwp";
 		String client = request.getHeader("User-Agent");
 		boolean ie = client.indexOf("MSIE") > -1;
 		

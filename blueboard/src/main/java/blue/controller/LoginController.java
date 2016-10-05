@@ -102,6 +102,7 @@ public class LoginController {
 		session.setAttribute("userId", null);
 		session.setAttribute("userName", null);
 		session.setAttribute("userLike", null);
+		session.setAttribute("userCode", null);
 		
 		System.out.println("logout성공");
 		
@@ -237,15 +238,15 @@ public class LoginController {
 			map.put("userLike", userLike);
 			
 			if(service.checkId(map) == null) {
-				System.out.println("1 = ");
 				service.insertFacebook(map);
 			}
-			System.out.println("2 = ");
 			
 			HttpSession session = request.getSession();		//spring session 생성
 			session.setAttribute("userId", userId);
 			session.setAttribute("userName", userName);
 			session.setAttribute("userLike", userLike);
+			session.setAttribute("userCode", "2");
+			
 			
 			
 		}catch(Exception e){

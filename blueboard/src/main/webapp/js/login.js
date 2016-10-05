@@ -178,6 +178,7 @@ function checkLogin(){
 				$("#userId").val(list[0].userId);
 				$("#userName").val(list[0].userName);
 				$("#userLike").val(list[0].userLike);
+				$("#userCode").val(list[0].userCode);
 				//alert($("#userName").val(list[0].userName));
 				document.getElementById('login_form').submit()
 			}

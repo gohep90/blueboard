@@ -7,7 +7,7 @@
 	<select id="selectCheckLogin" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			    userId, userName, userLike
+			    userId, userName, userLike, userCode
 			FROM
 			    user
 			WHERE
@@ -75,7 +75,7 @@
 					#{userEmail},
 					#{userBirthday},
 					#{userLike},
-			    	1
+			    	2
 			    )
 		]]>
 	</insert>	
