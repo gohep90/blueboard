@@ -1,0 +1,30 @@
+package blue.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import blue.absolute.dao.abDAO;
+
+@SuppressWarnings("unchecked")
+@Service("AcademyService")
+public class AcademyService extends abDAO {
+
+	public List<Map<String, Object>> selectAcademyData(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("academy.selectAcademyData", map);
+	}
+
+	public void insertComment(Map<String, Object> map) {
+		insert("academy.insertComment",map);
+	}
+
+	public List<java.util.Map<String, Object>> selectCommentList(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("academy.selectCommentList", map);	
+	}
+
+	public void deleteComment(Map<String, Object> map) {
+		delete("academy.deleteComment",map);
+	}
+	
+}

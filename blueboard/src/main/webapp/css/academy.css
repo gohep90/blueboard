@@ -594,6 +594,15 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	
 }
 
+/* 댓글  */
+#commentParentText{width:950px; margin-top:30px;}
+#submitComment{float:right; margin:10px 4px;}
+#comment {margin-right:20px;}
+#comment .commentDiv{padding:20px 0px 20px 10px; border-bottom:solid 1px #dddddd;}
+
+
+
+
 
 
 

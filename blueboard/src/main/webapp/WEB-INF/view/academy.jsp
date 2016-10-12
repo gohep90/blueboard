@@ -10,6 +10,7 @@
 
 	String userId = (String) session.getAttribute("userId");
 	String userName = (String) session.getAttribute("userName");
+	String user=userName;
 	System.out.println("main : " + userName);
 	if (userName != null && !userName.equals("")) {
 		userName += " 님";
@@ -25,6 +26,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>배우러 가는길 학원 홈페이지</title>
 
+<link href="<c:url value='/css/bootstrap/bootstrap.css'/>" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/academy.css'/>" />
 <link rel="stylesheet" type="text/css"
@@ -33,37 +35,26 @@
 	href="<c:url value='/css/base.css'/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/teb.css'/>" />
+	   <!-- Bootstrap -->
 
 
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript"
 	src="<c:url value='/js/jquery.slidertron-1.1.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/academy.js'/>"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
-						//탭(ul) onoff
-						$('.jq_tabonoff>.jq_cont').children().css('display',
-								'none');
-						$('.jq_tabonoff>.jq_cont div:first-child').css(
-								'display', 'block');
-						$('.jq_tabonoff>.jq_tab li:first-child').addClass('on');
-						$('.jq_tabonoff')
-								.delegate(
-										'.jq_tab>li',
-										'click',
-										function() {
-											var index = $(this).parent()
-													.children().index(this);
-											$(this).siblings().removeClass();
-											$(this).addClass('on');
-											$(this).parent().next('.jq_cont')
-													.children().hide()
-													.eq(index).show();
-										});
-					});
+	$(document).ready(function() {
+			//탭(ul) onoff
+			$('.jq_tabonoff>.jq_cont').children().css('display','none');
+			$('.jq_tabonoff>.jq_cont div:first-child').css('display', 'block');
+			$('.jq_tabonoff>.jq_tab li:first-child').addClass('on');
+			$('.jq_tabonoff').delegate('.jq_tab>li','click',function() {
+				var index = $(this).parent().children().index(this);
+				$(this).siblings().removeClass();
+				$(this).addClass('on');
+				$(this).parent().next('.jq_cont').children().hide().eq(index).show();
+			});
+	});
 </script>
 
 <!-- div 동적 추가 함수 지금 5개생성-->
@@ -92,8 +83,10 @@ function add_item(){
 
 </head>
 
-<body onload="add_item();">
+<body onload="add_item();commentList();">
 	<p id="academyId" style="display:none;"><%=academyId%></p>
+	<p id="user" style="display:none;"><%=user%></p>
+	<p id="userId" style="display:none;"><%=userId%></p>
 	<div class="logo">
 			<a href="main.do"><img src="images/logo.png" /></a>
 
@@ -140,7 +133,7 @@ function add_item(){
 					<!-- //탭1 -->
 
 					<div id="information" class="cont">
-						<img id="Title2" src="images/SUBPAGE/TITLE1.png" width="270">
+						<img id="Title2" src="images/SUBPAGE/TITLE1.png" width="240">
 						<br>
 
 						<div id="name">
@@ -189,7 +182,7 @@ function add_item(){
 
 					<!-- //탭2 -->
 					<div class="cont">
-						<img id="Title1" src="images/SUBPAGE/TITLE2.png" width="240"
+						<img id="Title1" src="images/SUBPAGE/TITLE2.png" width="215"
 							style="margin-bottom: 20px">
 
 						<div class="jq_tabonoff comm_tab2" style="margin-top: 0px">
@@ -319,7 +312,7 @@ function add_item(){
 						<!-- 탭3 -->
 					</div>
 					<div class="cont">
-						<img id="Title3" src="images/SUBPAGE/TITLE3.png" width="270">
+						<img id="Title3" src="images/SUBPAGE/TITLE3.png" width="235">
 						<div id="map"></div>
 						<div id="address">
 							<div id="address_name">
@@ -333,7 +326,18 @@ function add_item(){
 					<!--탭3 //-->
 
 					<!--탭4-->
-					<div class="cont">탭4</div>
+					<div class="cont">
+						<img id="Title2" src="images/SUBPAGE/comment.png" width="235">
+						<textarea id="commentParentText" class="form-control col-lg-12" style="width:950px" rows="5"></textarea>
+						<div class="form-group">
+							<button type="button" id="submitComment" name="submitComment" class="btn btn-default">확인</button>
+                        </div>
+                        
+                        <!--댓글 달리는 곳-->
+                        <div id="comment">
+                        	
+                        </div>	
+					</div>
 					<!--탭4//-->
 				</div>
 			</div>
@@ -362,6 +366,9 @@ function add_item(){
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript" src="<c:url value='/js/comment.js'/>"></script>
+	
 
 
 	<script type="text/javascript">

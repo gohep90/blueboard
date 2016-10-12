@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="academy">
+	
+	<select id="selectAcademyData" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    academy
+			WHERE
+				academyId=#{academyId}
+		]]>
+	</select>
+	
+	<insert id="insertComment" parameterType="hashmap">
+		<selectKey keyProperty="key_seq" resultType="String" order="BEFORE">
+				<![CDATA[
+				select ifnull(max(commentSeq),0)+1 seq
+				from comment
+				where academyId=#{academyId}
+			]]>
+        </selectKey>
+	
+		<![CDATA[
+			INSERT
+				INTO comment(
+			    	academyId,
+			    	commentSeq,
+			    	userId,
+			    	commentName,
+			    	commentTime,
+			    	comment
+			    	)
+				VALUES(
+					#{academyId},
+					#{key_seq},
+					#{userId},
+					#{commentName},
+					#{commentTime},
+					#{comment}
+			    )
+		]]>
+	</insert>
+	
+	<select id="selectCommentList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    comment
+			WHERE
+				academyId=#{academyId}
+			ORDER BY commentSeq desc;
+		]]>
+	</select>	
+	
+	
+	<delete id="deleteComment" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM
+				comment
+			WHERE
+				commentSeq =#{commentSeq}
+			AND
+				academyId=#{academyId}
+		]]>
+	</delete>	
+	
+	
+</mapper>

@@ -39,7 +39,7 @@ public class service extends abDAO {
 	}
 
 	public void insertFavorite(Map<String, Object> map) {
-		delete("blue.insertFavorite",map);
+		insert("blue.insertFavorite",map);
 	}
 
 	
