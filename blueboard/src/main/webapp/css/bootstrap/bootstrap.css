@@ -1727,7 +1727,7 @@ textarea.form-control {
 .form-group {
   margin-right: 20px;
   border-bottom:solid 1px #dddddd;
-  height:70px;
+  height:100px;
 }
 
 .radio,
@@ -1811,8 +1811,8 @@ textarea.input-sm {
 
 .input-lg {
   height: 45px;
-  padding: 10px 16px;
-  font-size: 18px;
+  padding: 2px;
+  font-size: 15px;
   line-height: 1.33;
   border-radius: 6px;
 }

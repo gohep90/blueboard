@@ -63,6 +63,7 @@ public class AcademyController {
 		String commentName= request.getParameter("commentName");
 		String commentTime= request.getParameter("commentTime");
 		String comment= request.getParameter("comment");
+		String commentStar= request.getParameter("commentStar");
 		
 		try{
 			map.put("userId",userId);
@@ -70,6 +71,7 @@ public class AcademyController {
 			map.put("commentName",commentName);
 			map.put("commentTime",commentTime);
 			map.put("comment",comment);
+			map.put("commentStar",commentStar);
 						
 			service.insertComment(map);
 			
@@ -86,6 +88,7 @@ public class AcademyController {
 	public ModelAndView commentList(Map<String, Object> Map,HttpServletRequest request)throws Exception {
 		ModelAndView mv = new ModelAndView("jsonView");
 		List<Map<String, Object>> list = null;
+		List<Map<String, Object>> count = null;
 		
 		String academyId = request.getParameter("academyId");
 			
@@ -93,9 +96,13 @@ public class AcademyController {
 			Map.put("academyId",academyId);
 						
 			list = service.selectCommentList(Map);
+			count= service.selectCount(Map);
 			
-			System.out.println("commentList = "+list);
+			System.out.println("count :: "+count);
+			
+			mv.addObject("count", count);
 			mv.addObject("commentList", list);
+			
 			System.out.println("commentList 성공");
 		}catch(Exception e){System.out.println("commentList 실패");}
 		

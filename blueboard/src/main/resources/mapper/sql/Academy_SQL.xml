@@ -31,7 +31,8 @@
 			    	userId,
 			    	commentName,
 			    	commentTime,
-			    	comment
+			    	comment,
+			    	commentStar
 			    	)
 				VALUES(
 					#{academyId},
@@ -39,7 +40,8 @@
 					#{userId},
 					#{commentName},
 					#{commentTime},
-					#{comment}
+					#{comment},
+					#{commentStar}
 			    )
 		]]>
 	</insert>
@@ -47,12 +49,25 @@
 	<select id="selectCommentList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			   c.*, u.userEmail
+			FROM
+			    comment c, user u
+			WHERE
+				c.userId=u.userId
+			AND
+				academyId=#{academyId}
+			ORDER BY commentSeq desc;
+		]]>
+	</select>	
+	
+	<select id="selectCount" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   count(*) count, avg(commentStar) avg
 			FROM
 			    comment
 			WHERE
 				academyId=#{academyId}
-			ORDER BY commentSeq desc;
 		]]>
 	</select>	
 	

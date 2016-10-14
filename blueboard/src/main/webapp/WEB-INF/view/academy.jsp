@@ -26,24 +26,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>배우러 가는길 학원 홈페이지</title>
 
+<!-- Bootstrap -->
 <link href="<c:url value='/css/bootstrap/bootstrap.css'/>" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/academy.css'/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/reset.css'/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/base.css'/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/teb.css'/>" />
-	   <!-- Bootstrap -->
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/academy.css'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/reset.css'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/base.css'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/teb.css'/>" />
+
+<!-- image drop down -->
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/dd.css'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/flags.css'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/skin2.css'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/sprite.css'/>" />
+	   
+
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript"
-	src="<c:url value='/js/jquery.slidertron-1.1.js'/>"></script>
+
+<script type="text/javascript" src="<c:url value='/js/jquery.slidertron-1.1.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/academy.js'/>"></script>
+
+<script type="text/javascript" src="<c:url value='/js/jquery.dd.js'/>"></script>
 <script>
 	$(document).ready(function() {
+		
 			//탭(ul) onoff
 			$('.jq_tabonoff>.jq_cont').children().css('display','none');
 			$('.jq_tabonoff>.jq_cont div:first-child').css('display', 'block');
@@ -328,10 +336,38 @@ function add_item(){
 					<!--탭4-->
 					<div class="cont">
 						<img id="Title2" src="images/SUBPAGE/comment.png" width="235">
+						<div id="starDiv">
+							<p id="total">(참여 0)</p>
+							<b id="avg">0/5</b>
+							<img id="starImg" src="images/star_1.gif">
+							<b id="starB">강의별점</b>
+						</div>
 						<textarea id="commentParentText" class="form-control col-lg-12" style="width:950px" rows="5"></textarea>
 						<div class="form-group">
-							<button type="button" id="submitComment" name="submitComment" class="btn btn-default">확인</button>
+							<button  type="button" id="submitComment" name="submitComment" class="btn btn-default">확인</button>
+                        	
+                        	<select name="appraisal" style="width:128px; height:25px; float:right; margin:14px;" id="satisfaction" title="만족도 평가 선택">
+					        	<!-- Notice the HTML5 data attributes -->
+						        <option value="5" data-image="images/star_5.gif" style="height:20px;"></option>
+					        	<option value="4" data-image="images/star_4.gif" style="height:20px;"></option>
+					        	<option value="3" data-image="images/star_3.gif" style="height:20px;"></option>
+					            <option value="2" data-image="images/star_2.gif" style="height:20px;"></option>
+					            <option value="1" data-image="images/star_1.gif" style="height:20px;"></option>
+					        </select>
+							<b style="float:right; margin:18px 10px; color:#777777; font-size:13px;" >별점주기</b>
                         </div>
+                        
+                        <script type="text/javascript">
+                        $(document).ready(function(e) {
+                        	try {
+                        	$("body select").msDropDown();
+                        	} catch(e) {
+                        	alert(e.message);
+                        	}
+                        	});
+                
+                        </script>
+                        
                         
                         <!--댓글 달리는 곳-->
                         <div id="comment">

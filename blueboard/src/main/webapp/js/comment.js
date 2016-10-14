@@ -3,6 +3,10 @@ $(function(){
     $("#submitComment").click(function( event ) {
         //서버로 댓글정보 보냄
         insertComment();
+    	
+    	//var aa = $('#satisfaction').val();
+    	
+    	//alert(aa);
     });
     
     
@@ -137,6 +141,8 @@ function insertComment() {
 	 //ajax로 저장하고 성공하면 저장한 데이터를 가져와 넣어야 하는데 여기서는 테스트라 그냥 입력값을 가져옴
     var pText = $("#commentParentText");
     var pName = $("#user");
+    //별점
+    var pStar = $('#satisfaction').val();
     
     var dt = new Date();
     
@@ -171,10 +177,11 @@ function insertComment() {
 		async:false,
 		dataType : "json",
 		data : {
-			academyId : academyId,
+			academyId   : academyId,
 			commentName	: pName.text(),
 			commentTime	: current,
-			comment 	: pText.val()
+			comment 	: pText.val(),
+			commentStar	: pStar
 		},
 		error : function(e) {
 			alert("에러났소!");
@@ -220,14 +227,35 @@ function commentList() {
 			alert(e);
 		},
 		success : function(data) {
+			
+			///토탈 관리
+			var count=data['count'];
+			
+			if(count[0].count!="0"){
+				var Astar;
+				var img1=document.getElementById('starImg');
+				
+				$('#total').text('(참여 '+count[0].count+')');
+				$('#avg').text(count[0].avg.toFixed(1)+'/5.0');
+				Astar=Math.floor(count[0].avg);
+				img1.src='images/star_'+Astar+'.gif';
+			}
+			
 	        
+			
+			///댓글 리스트 관리
 			var list=data['commentList'];
 			
-			for(var i=0;list.length;i++){	
+			for(var i=0;list.length;i++){
+				//이메일 @구분
+				var email = list[i].userEmail.split('@');
 				
 				 var commentParentText = '<div name="commentParentCode" class="commentDiv"><b>'
-					 			+list[i].commentName+'</b><font style="font-size:12px;">&nbsp;&nbsp;'
-					 			+list[i].commentTime+'</font>&nbsp;&nbsp;<button type="button" id="'+list[i].commentSeq+'" style="display:none; font-size:10px;" onclick="deleteComment('+list[i].commentSeq+');">X</button><p style="margin-top:7px;">'
+					 			+list[i].commentName+'</b>&nbsp;('
+					 			+email[0]+')<font style="font-size:12px;">&nbsp;&nbsp;'
+					 			+list[i].commentTime+'</font>&nbsp;&nbsp;<button type="button" id="'+list[i].commentSeq+'" style="display:none; font-size:10px;" onclick="deleteComment('+list[i].commentSeq+');">X</button><b style="float:right; padding-top:12px;">'
+					 			+list[i].commentStar+'/5</b><img style="float:right; width:80px; padding-top:15px; margin-right:15px;" src="images/star_'
+					 			+list[i].commentStar+'.gif"/><p style="margin-top:7px;">'
 					 			+list[i].comment.replace(/\n/g, "<br>")+'</p></div>';
 
 				$('#comment').append(commentParentText);

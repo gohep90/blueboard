@@ -26,5 +26,9 @@ public class AcademyService extends abDAO {
 	public void deleteComment(Map<String, Object> map) {
 		delete("academy.deleteComment",map);
 	}
+
+	public List<java.util.Map<String, Object>> selectCount(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("academy.selectCount", map);	
+	}
 	
 }

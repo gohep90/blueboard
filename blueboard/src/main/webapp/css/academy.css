@@ -594,14 +594,24 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	
 }
 
-/* 댓글  */
+/* 댓글 입력부분  */
 #commentParentText{width:950px; margin-top:30px;}
+/* 댓글  전송버튼*/
 #submitComment{float:right; margin:10px 4px;}
+
+/* 평점입력*/
+#satisfaction{float:right; margin:12px 4px; height:30px;}
+
+/* 댓글 리스트 */
 #comment {margin-right:20px;}
 #comment .commentDiv{padding:20px 0px 20px 10px; border-bottom:solid 1px #dddddd;}
 
-
-
+/* 총 평점 */
+#starDiv{float:right; padding:20px 26px;}
+#starDiv #total{float:right; color:#777777;}
+#starDiv #avg{float:right; margin-right:10px;}
+#starDiv #starImg{float:right; width:80px; margin:3px 10px 0px 0px;}
+#starDiv #starB{float:right; color:#777777; margin-right:15px;}
 
 
 
