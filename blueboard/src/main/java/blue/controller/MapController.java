@@ -104,7 +104,7 @@ public class MapController {
 				count = service.selectCountDiv(Map);
 			}
 			
-			System.out.println(list);
+			//System.out.println("academyList : "+list);
 			
 			mv.addObject("pagination", count);
 			mv.addObject("positions", list);

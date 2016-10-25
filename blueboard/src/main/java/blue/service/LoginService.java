@@ -35,6 +35,10 @@ public class LoginService extends abDAO {
 	public void updateUser(Map<String, Object> map) {
 		update("login.updateUser", map);
 	}
+
+	public void updateFacebook(Map<String, Object> map) {
+		update("login.updateFacebook", map);
+	}
 	
 
 

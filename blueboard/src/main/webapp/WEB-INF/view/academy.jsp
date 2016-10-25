@@ -39,19 +39,27 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/flags.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/skin2.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/sprite.css'/>" />
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/jquery.nailthumb.1.0.css'/>" />
 	   
 
-
-
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
 <script type="text/javascript" src="<c:url value='/js/jquery.slidertron-1.1.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/academy.js'/>"></script>
 
 <script type="text/javascript" src="<c:url value='/js/jquery.dd.js'/>"></script>
+
+
+<script type="text/javascript" src="<c:url value='/js/jquery.nailthumb.1.1.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/bootstrap.min.js'/>"></script>
+
+
+
 <script>
 	$(document).ready(function() {
-		
 			//탭(ul) onoff
 			$('.jq_tabonoff>.jq_cont').children().css('display','none');
 			$('.jq_tabonoff>.jq_cont div:first-child').css('display', 'block');
@@ -120,10 +128,76 @@ function add_item(){
 	<div id="main_content">
 		<div class="academy_name">
 			<u class="academy_p">${row.academyName}</u> 
-			<img id="pay" src="images/pay.png">
-			<img id="interest" src="images/PLUS.png">
+			
+			
 		</div>
-
+		
+		<div  class="info" >
+			<div class="nailthumb-container" >
+				<img src="images/academy/${row.photoName}">
+			</div>
+			<div id="infoPhoto"></div>
+			<div style="height:300px; width:384px;">
+			<!--  
+				<div class="teacherPhoto" >
+					<img src="images/academy/${row.photoName}">
+				</div>
+			-->	
+				<div class="academyInfo">
+					<div class="nameDiv">
+						<b>일자</b>
+					</div>
+					<div class="contentDiv">
+						${row.academyTerm}&nbsp;&nbsp; ${row.academyWeek}&nbsp;&nbsp;(${row.academyTime})
+					</div>
+					
+					<div class="nameDiv">
+						<b>장소</b>
+					</div>
+					<div class="contentDiv">
+						${row.academyAddress}
+					</div>
+				
+					<div class="nameDiv">
+						<b>인원</b>
+					</div>
+					<div class="contentDiv">
+						 ${row.academyTotal}
+					</div>
+					
+					<div class="nameDiv">
+						<b>수강비용</b>
+					</div>
+					<div class="contentDiv">
+						<p id="academyPay" style="display:none;">${row.academyPay}</p>
+						 <fmt:formatNumber value="${row.academyPay}" pattern="#,###" /> 원
+					</div>
+					<div class="nameDiv">
+						<b>연락처</b>
+					</div>
+					<div class="contentDiv">
+						 ${row.teacherTel}
+					</div>
+					
+				</div>
+				
+				
+				<div id="interest">
+					<img class="payImg" src="images/PLUS.png">
+				</div>
+				<div id="pay">
+					<img class="payImg" src="images/pay.png">
+				</div>
+			</div>
+		</div>
+		
+		
+		 <script type="text/javascript">
+		 $(document).ready(function() {
+	            $('.nailthumb-container').nailthumb({width:500,height:300,fitDirectrion:'center center'});
+	            $('.teacherPhoto').nailthumb({width:150,height:150,fitDirectrion:'center center'});
+	        });
+	    </script>
 
 		<div id="teb">
 			<div class="jq_tabonoff comm_tab1">
@@ -195,9 +269,9 @@ function add_item(){
 
 						<div class="jq_tabonoff comm_tab2" style="margin-top: 0px">
 							<ul class="jq_tab tab_menu">
-								<li><a href="javascript:;" class="tit"><b style="font-size:20px;">I</b>nfo</a></li>
-								<li><a href="javascript:;" class="tit"><b style="font-size:20px;">P</b>hoto</a></li>
-								<li><a href="javascript:;" class="tit"><b style="font-size:20px;">V</b>ideo</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:19px;">I</b>nfo</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:19px;">P</b>hoto</a></li>
+								<li><a href="javascript:;" class="tit"><b style="font-size:19px;">V</b>ideo</a></li>
 							</ul>
 							<div class="jq_cont tab_cont">
 								<!-- //탭2-1 -->
@@ -307,9 +381,7 @@ function add_item(){
 
 								<div class="cont">
 									<div id="class_video">
-										<iframe id="video"
-											src="https://www.youtube.com/embed/JeN3LH-GGUE"
-											frameborder="0" allowfullscreen></iframe>
+										<iframe width="800" height="500" src="https://www.youtube.com/embed/0UU-b17h-XI" frameborder="0" allowfullscreen></iframe>
 									</div>
 								</div>
 								<!-- 탭2-3// -->
@@ -342,7 +414,7 @@ function add_item(){
 							<img id="starImg" src="images/star_1.gif">
 							<b id="starB">강의별점</b>
 						</div>
-						<textarea id="commentParentText" class="form-control col-lg-12" style="width:950px" rows="5"></textarea>
+						<textarea id="commentParentText" class="form-control col-lg-12" style="width:900px" rows="5"></textarea>
 						<div class="form-group">
 							<button  type="button" id="submitComment" name="submitComment" class="btn btn-default">확인</button>
                         	
@@ -404,6 +476,8 @@ function add_item(){
 	</div>
 	
 	<script type="text/javascript" src="<c:url value='/js/comment.js'/>"></script>
+	
+	
 	
 
 

@@ -50,6 +50,8 @@
 			AND
 				a.lCategory=#{lCategory}
 			AND
+				p.photoSeq=1
+			AND
 				a.academyAddress like concat('%',#{gu},'%')
 			LIMIT
 				#{current},10
@@ -67,6 +69,8 @@
 			AND
 				a.lCategory=#{lCategory}
 			AND
+				p.photoSeq=1
+			AND
 				a.academyAddress like concat('%',#{gu},'%')
 		]]>
 	</select>
@@ -83,6 +87,8 @@
 				a.lCategory=#{lCategory}
 			AND
 				a.sCategory =#{sCategory}
+			AND
+				p.photoSeq=1
 			AND
 				a.academyAddress like concat('%',#{gu},'%')
 			LIMIT
@@ -102,6 +108,8 @@
 				a.lCategory=#{lCategory}
 			AND
 				a.sCategory =#{sCategory}
+			AND
+				p.photoSeq=1
 			AND
 				academyAddress like concat('%',#{gu},'%')
 		]]>

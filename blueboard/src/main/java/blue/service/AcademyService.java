@@ -30,5 +30,21 @@ public class AcademyService extends abDAO {
 	public List<java.util.Map<String, Object>> selectCount(Map<String, Object> map) {
 		return (List<Map<String,Object>>)selectList("academy.selectCount", map);	
 	}
+
+	public void insertAcademy(Map<String, Object> map) {
+		insert("academy.insertAcademy",map);
+	}
+
+	public void insertPhoto(Map<String, Object> map) {
+		insert("academy.insertPhoto",map);
+	}
+
+	public void deleteAcademy(Map<String, Object> map) {
+		delete("academy.deleteAcademy",map);
+	}
+
+	public List<Map<String, Object>> selectUserInfo(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("academy.selectUserInfo", map);	
+	}
 	
 }

@@ -93,4 +93,39 @@
 	</insert>	
 	
 	
+	
+	
+	
+	
+	
+	<select id="selectAdmin" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				b.*, p.photoName  
+			FROM 
+				academy b, photo p
+			WHERE 
+				b.academyId=p.academyId
+			AND
+				b.userId =#{userId}
+			AND
+				p.photoSeq=1
+			LIMIT
+				#{current},5
+		]]>
+	</select>
+	
+	<select id="selectAdminCount" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   count(*) as last
+			FROM
+			    academy
+			WHERE
+				userId =#{userId}
+			
+		]]>
+	</select>
+	
+	
 </mapper>

@@ -26,6 +26,14 @@ public class controller {
 
 	@Resource(name = "service")
 	private service service;
+	
+	// 결제화면
+	@RequestMapping(value = "/pay.do")
+	public ModelAndView pay(Map<String, Object> Map) throws Exception {
+		ModelAndView mv = new ModelAndView("pay");
+		return mv;
+	}
+
 
 	// 메인화면
 	@RequestMapping(value = "/main.do")
@@ -48,8 +56,63 @@ public class controller {
 		}else{
 			return "login";
 		}
-		
 	}
+	
+	//academyAdmin
+	@RequestMapping(value = "/academyAdmin.do")
+	public ModelAndView academyAdmin(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("academyAdmin");
+		return mv;
+	}
+	
+	
+	//json eduList
+	@RequestMapping(value="/academyAdminJson.do")
+	public ModelAndView academyAdminJson(Map<String, Object> map, HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+				
+		List<Map<String, Object>> list = null;
+		List<Map<String, Object>> count = null;
+		
+		HttpSession session = request.getSession();		//spring session 생성
+		
+		String userId=(String)session.getAttribute("userId");	
+		String currentTemp = request.getParameter("current");
+		int current = (Integer.parseInt(currentTemp)-1)*5;
+			
+		try{
+			map.put("userId",userId);
+			map.put("current",current);
+						
+			
+			list =service.selectAdmin(map);
+			count =service.selectAdminCount(map);
+			
+			
+			mv.addObject("positions", list);
+			mv.addObject("pagination", count);
+			
+			System.out.println("list 성공  "+list);
+			System.out.println("count 성공  "+count);
+			
+			System.out.println("academyAdminJson 성공");
+		}catch(Exception e){System.out.println("academyAdminJson 실패");}
+		
+		return mv;
+	}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//mypage
 	@RequestMapping(value = "/favorite.do")
@@ -183,8 +246,11 @@ public class controller {
 		String client = request.getHeader("User-Agent");
 		boolean ie = client.indexOf("MSIE") > -1;
 		
-		byte fileByte[] = FileUtils.readFileToByteArray(new File("/usr/local/tomcat/webapps/ROOT/learnway/"+fileName));
-
+		//서버
+		//byte fileByte[] = FileUtils.readFileToByteArray(new File("/usr/local/tomcat/webapps/ROOT/learnway/"+fileName));
+		
+		//내컴퓨터
+		byte fileByte[] = FileUtils.readFileToByteArray(new File("C:/apache-tomcat-8.0.36/webapps/ROOT/ttowang/"+fileName));
 		response.setContentType("application/octet-stream");
 	    response.setContentLength(fileByte.length);
 	    

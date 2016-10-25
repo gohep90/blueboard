@@ -8,14 +8,12 @@ var res=0;
 //////////////////클릭 이벤트///////////////////////////
 $(function(){
 	$("#login_img").click(function(){
-		window.location="login.do";
+		window.location="complete.do";
 	});
 });
 
 
-
 ///////////////////////////////////////  myLike 받아오기  //////////////////////////////////////////////////
-//var myLike='아는 형님,롯데시네마 - LOTTE CINEMA,SNL KOREA,엄청 웃긴 동영상,랩 연구소 - Rap Lab,쇼미더머니 - SMTM CLIP,넷마블,서경대학교 대나무숲,스타크래프트 하이라이트,진실 혹은 거짓 명예의전당,유머 레시피,쇼미더머니/언프리티랩스타 - Mnet,어머 이건 봐야 돼,너에게 하고 싶은 말,서울사람연애하기,노원 쭈꾸미달인,히든챔피언,마녀사냥,리뷰왕 김리뷰,옷 & 패션,응답하라 노원,맨즈룩,Dingo Life,뭐 입고 나가지?,EA Sports FIFA 온라인 3,니가 웃으면 나도 좋아,축구싶냐?,';
 var myLike=$('#userLike').text();
 
 var tempstrArray = myLike.split(',');
@@ -31,7 +29,8 @@ for(var i=0;i<maxLike.length;i++){
 
 /////////////////////////////////////////  페이스북 인증 안했으면 스마트 추천 유도  ///////////////////////////////////////////////////////////////
 var smart = document.getElementById("smart");
-if(myLike=="null"){
+
+if(myLike=="null" || myLike==""){
 	smart.style.display = "block";
 }else{
 	smart.style.display = "none";
@@ -1077,7 +1076,9 @@ function startData(high,middle) { //초기 조건을
 
 			////////////faceBook 추천///////////////////////////
 			
-			if(myLike!='null'){
+			if(myLike=="null" || myLike==""){
+			}else
+			{
 				var list=data['positions'];
 		    	
 		    	var min=new Array(2); //min={비교값,academyId}
@@ -1262,30 +1263,29 @@ function displayPlaces(places,current) {
 	if(current==1){ //첫번째 페이지에서 큰거 작은거 구분
 		//큰거 먼저 출력하기 위해서!!
 		
-		var checkI= new Array(5); //5개 행 만들기
-		var tempI=0;
+		//큐를 이용해 데이터 저장
+		var queue = new Array();
+		var tempI;
 		
 		for (var i = 0; i < places.length; i++) {  //스마트 추천이 어디있는지 확인
 			
 			if(places[i].academyId==maxLike[0][1]){
-				checkI[0]=i;
+				queue.push(i);
 			}
 			if(places[i].academyId==maxLike[1][1]){
-				checkI[1]=i;
+				queue.push(i);				
 			}
 			if(places[i].academyId==maxLike[2][1]){
-				checkI[2]=i;
+				queue.push(i);
 			}
 			if(places[i].academyId==maxLike[3][1]){
-				checkI[3]=i;
+				queue.push(i);
 			}
 			if(places[i].academyId==maxLike[4][1]){
-				checkI[4]=i;
+				queue.push(i);
 			}
 		}
 		
-		
-		//alert(checkI);
 		
 		for (var i = 0; i < places.length; i++) {
 	
@@ -1295,7 +1295,8 @@ function displayPlaces(places,current) {
 			var itemEl='';
 			
 			if(places[i].academyId==maxLike[0][1] || places[i].academyId==maxLike[1][1] || places[i].academyId==maxLike[2][1] || places[i].academyId==maxLike[3][1] || places[i].academyId==maxLike[4][1]){
-				itemEl=getBigItem(checkI[tempI],places[checkI[tempI]]);
+				tempI=queue.shift();
+				itemEl=getBigItem(tempI,places[tempI]);
 				bigCommend=1;
 				
 			}else{
@@ -1350,10 +1351,9 @@ function displayPlaces(places,current) {
 					window.open("academy.do?academyId="+academyId ,"_blank"); //이동
 				};
 	
-			})(places[checkI[tempI]].lat, places[checkI[tempI]].lng, places[checkI[tempI]].academyId, checkI[tempI]);
+			})(places[tempI].lat, places[tempI].lng, places[tempI].academyId, tempI);
 	
 			fragment.appendChild(itemEl);
-			tempI++;
 		}
 		
 		var count=10;
@@ -1529,7 +1529,7 @@ function removeMarker(maker) {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
-
+	
 	if(noCommend==0){
 		var el = document.createElement('li'), 
 		itemStr ='<div style="margin: 5px;"><h3 style="margin: 20px; color:#ffffff; font-size:15px;">이 지역  추천</h3><hr></div> '

@@ -48,7 +48,6 @@ function post_to_url(path,params){
 //////////////////페이스북 로그인??///////////////////////////
 
 var likes='';
-var teather='아는 형님,인사동,나랑놀자,응답하라 노원,맨즈룩,Dingo Life,우리끼리,싫으면 싫은거지,망할 민미경,EA Sports FIFA 온라인 3,사랑합니까?,니가 웃으면 나도 좋아,축구싶냐?,';
 
 var userId="";
 var userName="";

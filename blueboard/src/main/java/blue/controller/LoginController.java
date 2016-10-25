@@ -212,6 +212,8 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("main");
 		Map<String, Object> map = new HashMap<String, Object>();
 		//List<Map<String, Object>> list = null;
+		HttpSession session = request.getSession();		//spring session 생성
+		
 		
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
@@ -237,17 +239,30 @@ public class LoginController {
 			map.put("userEmail", userEmail);
 			map.put("userLike", userLike);
 			
-			if(service.checkId(map) == null) {
-				service.insertFacebook(map);
+			
+			
+			
+			String userIdCheck=(String)session.getAttribute("userId");
+			
+			System.out.println(userIdCheck);
+			
+			if(userIdCheck != null){
+				map.put("userIdCheck", userIdCheck);
+				service.updateFacebook(map);
+				session.setAttribute("userLike", userLike);
+				
+			}else{
+				
+				//로그인 안되있으면 새로 회원가입
+				if(service.checkId(map) == null) {
+					service.insertFacebook(map);
+				}
+				
+				session.setAttribute("userId", userId);
+				session.setAttribute("userName", userName);
+				session.setAttribute("userLike", userLike);
+				session.setAttribute("userCode", "2");
 			}
-			
-			HttpSession session = request.getSession();		//spring session 생성
-			session.setAttribute("userId", userId);
-			session.setAttribute("userName", userName);
-			session.setAttribute("userLike", userLike);
-			session.setAttribute("userCode", "2");
-			
-			
 			
 		}catch(Exception e){
 			

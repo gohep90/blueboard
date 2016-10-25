@@ -240,6 +240,12 @@ function commentList() {
 				Astar=Math.floor(count[0].avg);
 				img1.src='images/star_'+Astar+'.gif';
 			}
+			else{
+				var img1=document.getElementById('starImg');
+				img1.src='images/star_1.gif';
+				$('#total').text('(참여 0)');
+				$('#avg').text('0/5.0');
+			}
 			
 	        
 			

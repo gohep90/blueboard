@@ -13,9 +13,15 @@ $(function(){
 	});
 });
 
+
+
 $(function(){
 	$("#register").click(function(){
-		window.location="downloadFile.do";
+		
+		//파일 다운로드는 나중에
+		//window.location="downloadFile.do";
+		window.location="academyAdmin.do";
+		
 	});
 });
 

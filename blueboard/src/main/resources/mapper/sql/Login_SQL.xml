@@ -109,4 +109,17 @@
 		]]>
 	</update>	
 	
+	
+	<!-- 회원정보 수정 like정보 추가 -->
+	<update id="updateFacebook" parameterType="hashmap">
+		<![CDATA[
+			UPDATE
+				user
+			SET
+				userLike=#{userLike}
+			WHERE
+				userId=#{userIdCheck}
+		]]>
+	</update>	
+	
 </mapper>

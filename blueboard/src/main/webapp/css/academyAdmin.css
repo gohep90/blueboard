@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic'; background-color:#ffffff;}
+
+
+/* 상단 바   */
+.logo{position:relative; width:100%; min-width:800px; height:90px; background-color:#595959;}
+.logo img{margin:10px 0px 0px 20px; height:50px;}
+.logo hr { border: dotted 1px white; margin:6px 20px 0px 20px;}
+.util { position:absolute; right:50px; top:30px; font-size:15px;font-weight:bold; }
+.util a{color:#ffffff; text-decoration:none; }
+.util a:hover{color:#FFC000;}
+.util li { display:inline; padding-left:40px;  color:#ffffff; text-decoration:none;}
+.util li:hover{color:#FFC000;}
+
+
+/* 맵 구성 */
+.map_wrap {position:relative; width:800px; top:50px; margin:auto;}
+#menu_wrap {margin-top:40px;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 1px solid #8C8C8C;margin:3px 0;}
+
+
+<!--  #placesList -->
+#placesList ul { margin: 0;  padding: 0; }
+#placesList li {list-style: none;}
+.item {position:relative;cursor: pointer;min-height: 65px; margin-top:10px;margin-bottom:10px; }
+.item span {display: block;margin-top:7px; text-overflow:ellipsis; overflow:hidden; font-size:16px; color:#595959;}
+.item h5 { white-space:nowrap; color:#000000; font-size:20px; font-family:"NGothicEB";}
+.item .info{white-space:nowrap; width:300px; padding:10px 5px 10px 20px; float:left; }
+.info .gray {color:#000000; }
+.info .jibun {padding-left:26px;background:url(http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+.info .tel {color:#009900;}
+.item .markerbg {float:left;width:150px; height:112px; background-repeat:no-repeat; background-size:contain; margin:4px;}
+.aaaa{position: absolute; bottom:5px; right:0px; z-index:10;}
+.favoriteCancel{height:35px; cursor: pointer; }
+#register{float:right; margin-top:40px; }
+
+#pagination {margin:70px; height:130px; z-index: 1; text-align: center;}
+#pagination a {display:inline-block;margin-right:15px; color:#000000; font-size:15px; cursor: pointer;}
+#pagination .on {font-weight: bold; cursor: default;color:#FFC000;}
+
+.seq{ margin:5px 0px 5px 0px; height:120px;}
+.seq_mouse{ margin:5px 0px 5px 0px; height:120px; background-color:rgba(255, 192, 0, 0.7);  }
+.seq2{ margin:1px; padding-top:8px; border-radius: 5px; background:rgba(0, 0, 0, 0.7);  }
+
+
+#intro{ display:none; margin-top:50px;}
+#intro hr{margin:50px 0px 50px 0px; border: dotted 1px #595959;}
+#intro #noFavorite{width:800px;}
+
+
+
+/* info div */
+.info_div{width:100%; min-width:1000px; background-color:#A6A6A6; margin-top:300px; }
+.info_div .info_bottom{position:relative; width:1300px; height:200px; margin:auto; }
+.info_div .info_bottom .info_logo{padding:50px 0px 0px 100px; color:#ffffff; font-family:'NGothicEB';}
+.info_div .info_bottom .info-address{ float:left; width:450px;  margin:0px 30px 30px 90px; color:#ffffff;}
+.info_div .info_bottom .info_text{margin:10px; font-size:13px;}
+
+
+
+
+
+
+
+

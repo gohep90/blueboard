@@ -3,7 +3,7 @@
 html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic'; background-color:#ffffff;}
 
 /* 상단 바   */
-.logo{position:relative; width:100%; min-width:1000px; height:114px; background-color:#595959; box-shadow:0px 2px 4px rgba(0,0,0,0.3);}
+.logo{position:relative; width:100%; min-width:900px; height:114px; background-color:#595959; box-shadow:0px 2px 4px rgba(0,0,0,0.3);}
 .logo img{margin:10px 0px 0px 20px; height:50px;}
 .logo hr { border: dotted 1px white; margin:10px 20px 0px 20px;}
 .util { position:absolute; right:50px; top:30px; font-size:15px;font-weight:bold; }
@@ -12,13 +12,23 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 .util li { display:inline; padding-left:40px;  color:#ffffff; text-decoration:none;}
 .util li:hover{color:#FFC000;}
 
-#main_content {position:relative; top:70px; width: 1000px; margin: auto;}
-#main_content .academy_name{position:relative; height:60px;}
+#main_content {position:relative; top:70px; width: 900px; margin: auto;}
+#main_content .academy_name{position:relative; height:70px;}
 #main_content .academy_name .academy_p{font-size:35px; font-family:'NGothicEB'; color:#000000; letter-spacing:20px; float:left; margin-left:10px;}
-#main_content .academy_name #interest{height:40px; float:right;margin-right:18px; cursor:pointer;}
-#main_content .academy_name #pay{height:40px; float:right;margin-right:18px; cursor:pointer;}
 
-#teb{position:relative; top:20px; width: 1000px; margin:auto;}
+#main_content .info{position:relative; height:320px; border-bottom:solid 1.5px #e2e2e2;}
+#main_content .info div{float:left;}
+#main_content .info .nailthumb-container{width:500px; height:300px;}
+#main_content .info #infoPhoto{border-right:solid 1.5px #e2e2e2; padding-right:7px;margin-right: 7px; height:300px;}
+#main_content .info .teacherPhoto{width:150px; height:150px;}
+#main_content .info #interest{position:absolute; bottom:0px; margin:0px 15px 20px 15px;}
+#main_content .info #pay{position:absolute; bottom:0px; right:0px; margin:0px 15px 20px 15px;}
+#main_content .info .payImg{height:40px; cursor:pointer;}
+#main_content .info .academyInfo{width:384px; height:200px; margin-top:20px;}
+#main_content .info .academyInfo .nameDiv {width:70px; margin:0px 0px 10px 10px;}
+#main_content .info .academyInfo .contentDiv {width:300px; text-align:right;margin-bottom:10px;}
+
+#teb{position:relative; top:10px; width: 900px; margin:auto;}
 
 #class_info{
 	position: absolute;
@@ -84,6 +94,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 }
 #address_name h2{
 	font-size:20px;
+	font-weight:bold;
 }
 
 #address_content {
@@ -418,7 +429,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 #map
 {
-	width: 950px;
+	width: 900px;
 	height:500px;
 	border:1px solid #000000;
 	margin: 20px auto;
@@ -489,15 +500,15 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 	overflow: hidden;
 	padding-top:40px;
 	margin:auto;
-	width: 1000px;
-	height:700px;
+	width: 900px;
+	height:650px;
 
 }
 
 #slider .viewer
 {
 	position:relative;
-	width: 1000px;
+	width: 900px;
 	height:500px;
 	margin: auto;
 	overflow: hidden;
@@ -512,7 +523,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 {
 	position: relative;
 	text-align: center;
-	width: 1000px;
+	width: 900px;
 	height:500px;
 	overflow: hidden;
 	
@@ -521,7 +532,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 #slider .viewer .reel .slide img
 {  				/*//비효율적이다*/
 
-	width: 700px;
+	width: 900px;
 	height:auto;
 	
 }
@@ -597,17 +608,17 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 /* 댓글 입력부분  */
 #commentParentText{width:950px; margin-top:30px;}
 /* 댓글  전송버튼*/
-#submitComment{float:right; margin:10px 4px;}
+#submitComment{float:right; margin:10px 0px;}
 
 /* 평점입력*/
 #satisfaction{float:right; margin:12px 4px; height:30px;}
 
 /* 댓글 리스트 */
-#comment {margin-right:20px;}
-#comment .commentDiv{padding:20px 0px 20px 10px; border-bottom:solid 1px #dddddd;}
+#comment {}
+#comment .commentDiv{padding:20px 10px 20px 10px; border-bottom:solid 1px #dddddd;}
 
 /* 총 평점 */
-#starDiv{float:right; padding:20px 26px;}
+#starDiv{float:right; padding:20px 0px;}
 #starDiv #total{float:right; color:#777777;}
 #starDiv #avg{float:right; margin-right:10px;}
 #starDiv #starImg{float:right; width:80px; margin:3px 10px 0px 0px;}
@@ -617,7 +628,7 @@ html, body {width: 100%; height: 100%; margin:0; padding:0; font-family:'NGothic
 
 
 /* info div */
-.info_div{width:100%; min-width:1000px; background-color:#A6A6A6; margin-top:300px; }
+.info_div{width:100%; min-width:900px; background-color:#A6A6A6; margin-top:300px; }
 .info_div .info_bottom{position:relative; width:1300px; height:200px; margin:auto; }
 .info_div .info_bottom .info_logo{padding:50px 0px 0px 100px; color:#ffffff; font-family:'NGothicEB';}
 .info_div .info_bottom .info-address{ float:left; width:450px;  margin:0px 30px 30px 90px; color:#ffffff;}

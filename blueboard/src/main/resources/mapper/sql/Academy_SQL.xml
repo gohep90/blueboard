@@ -6,11 +6,15 @@
 	<select id="selectAcademyData" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-			   *
+			   a.*, p.photoName
 			FROM
-			    academy
+			    academy a, photo p
 			WHERE
-				academyId=#{academyId}
+				a.academyId=p.academyId
+			AND
+				p.photoSeq=1
+			AND
+				a.academyId=#{academyId}
 		]]>
 	</select>
 	
@@ -82,6 +86,98 @@
 				academyId=#{academyId}
 		]]>
 	</delete>	
+	
+	
+	
+	<insert id="insertAcademy" parameterType="hashmap" useGeneratedKeys="true" keyProperty="academyId">
+	
+		<![CDATA[
+			INSERT
+				INTO academy(
+			    	userId,
+			    	teacherName,
+			    	teacherTel,
+			    	teacherCareer,
+			    	teacherIntro,
+			    	academyName,
+			    	academyTerm,
+			    	academyWeek,
+			    	academyTime,
+			    	academyTotal,
+			    	academyPay,
+			    	academyIntro,
+			    	academyCurriculum,
+			    	lCategory,
+			    	sCategory,
+			    	academyAddress,
+			    	lat,
+			    	lng
+			    	)
+				VALUES(
+					#{userId},
+					#{teacherName},
+					#{teacherTel},
+					#{teacherCareer},
+					#{teacherIntro},
+					#{academyName},
+					#{academyTerm},
+					#{academyWeek},
+					#{academyTime},
+					#{academyTotal},
+					#{academyPay},
+					#{academyIntro},
+					#{academyCurriculum},
+					#{lCategory},
+					#{sCategory},
+					#{academyAddress},
+					#{lat},
+					#{lng}
+					
+			    )
+		]]>
+	</insert>
+	
+	
+	<insert id="insertPhoto" parameterType="hashmap">
+		<selectKey keyProperty="key_seq" resultType="Integer" order="BEFORE">
+				<![CDATA[
+				select ifnull(max(photoSeq),0)+1 seq
+				from photo
+				where academyId=#{academyId}
+			]]>
+        </selectKey>
+	
+		<![CDATA[
+			INSERT
+				INTO photo(academyId,photoSeq,photoName)
+				VALUES(#{academyId},#{key_seq},#{img1}),(#{academyId},#{key_seq}+1,#{img2}),
+				      (#{academyId},#{key_seq}+2,#{img3}),(#{academyId},#{key_seq}+3,#{img4})
+				      
+		]]>
+	</insert>
+	
+	
+	<delete id="deleteAcademy" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM
+				academy
+			WHERE
+				academyId=#{academyId}
+		]]>
+	</delete>	
+	
+	
+	
+	<select id="selectUserInfo" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			   *
+			FROM
+			    user
+			WHERE
+				userId=#{userId}
+		]]>
+	</select>
 	
 	
 </mapper>
